@@ -1,0 +1,98 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.claseLista {
+list-style-type:none;
+}
+.descripcion {
+	max-width:300;
+	min-width:300;
+	max-height:30;
+	min-height:30;
+	resize: none;
+}
+
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #222;
+}
+
+.form-signin-heading {
+	color: #9d9d9d;	
+	
+	}
+	
+.checkbox {
+	color: #9d9d9d;	
+	
+}
+.list-group-item {
+	color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236
+	
+}
+
+.intem-resultado{
+	
+	    border-bottom: 1px solid #cdcdcd;
+	
+}
+
+ .forma-busqueda {
+        margin-left: -2px;
+	}
+    
+    .forma-busqueda input {
+        color: transparent;
+		width: 24px;
+        height: 24px;
+        float: left;    
+        border: 0;
+        background: #007ABE url(../images/search-icon.png) no-repeat center; /* Nota 1 */
+        -webkit-transition:all 0.5s linear;  /* Chrome y Safari */
+        -o-transition:all 0.5s linear;  /* Opera */
+        -moz-transition:all 0.5s linear;  /* Mozilla Firefox */
+	    -ms-transition:all 0.5s linear;   /* Internet Explorer */
+        transition:all 0.5s linear;  /* W3C */
+	}
+
+    .forma-busqueda input:focus {
+        padding-left: 5px;
+		font: 14px 'didact gothic';
+		color:#000; /* Nota 4 */
+		background: #eee  no-repeat 9px center; /* Nota 2 */
+		-webkit-transition:all 0.5s linear;  /* Chrome y Safari */
+        -o-transition:all 0.5s linear;  /* Opera */
+        -moz-transition:all 0.5s linear;  /* Mozilla Firefox */
+        -ms-transition:all 0.5s linear;   /* Internet Explorer */
+        transition:all 0.5s linear;  /* W3C */
+		width: 400px; /* Nota 3 */
+		outline: 0;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+    
+    .forma-busqueda input::-webkit-input-placeholder {
+       color: #999; /* Nota 5 */
+       font-weight: normal;
+       font-style: italic;
+    }
+    
+    .forma-busqueda input:-moz-placeholder {
+        color: #999; /* Nota 5 */
+        font-weight: normal;
+        font-style: italic;
+    }
+	
+	
+    
+    .forma-busqueda input:-ms-input-placeholder {
+        color: #999; /* Nota 5 */
+        font-weight: normal;
+        font-style: italic;
+    }   
