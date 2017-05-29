@@ -2,7 +2,36 @@
 	if (!isset($_SESSION["PHPSESSID"])) {
 	session_start(); }
 	echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></script>";
+	
+	require_once('../clases/Usuario.class.php');	
+	require_once('../logica/funciones.php');
+		
 ?>
+
+												<?php
+													$conex = conectar();
+													$d = new Usuario('','','','','',$_SESSION["ID"]);
+													$datos_d=$d->traeUsuario($conex);
+													$cuenta=count($datos_d);
+													
+												?>
+													
+												<?php
+												for ($i=0;$i<$cuenta;$i++)
+												{
+												?>
+													
+											
+		
+													
+												<?php
+
+												}
+												?>	
+										
+
+											   <?php $id_usu=$datos_d[0][0];?>
+											ID <?php echo $id_usu;?>
 
 <!doctype html>
 <html lang="en">
@@ -35,7 +64,7 @@
 					  </div>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
-					<div class="navbar-brand"><label>Bienvenido <?php echo $_SESSION["LOGIN"];?></label></div>
+					<div class="navbar-brand"><label>Bienvenido <?php echo $_SESSION["LOGIN"];?> Numero de Id persona<?php echo $_SESSION["ID"];?> # Id usuario<?php echo $id_usu;?></label></div>
 					  <form class="navbar-form navbar-right">
 					  
 					  
@@ -142,7 +171,11 @@
 				<li><a href="#"><b>Logout</b></a></li>
 			</ul>
 		</div>
-		</div>	
+		</div>
+
+										
+
+		
 	
 		</div>
 

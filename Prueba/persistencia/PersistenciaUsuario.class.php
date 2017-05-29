@@ -108,6 +108,19 @@ class PersistenciaUsuario
 		$result = $consulta->fetchAll();
 		return $result;
     }
+	
+    public function traeUsu($obj, $conex)
+   {
+        $id_usu= trim($obj->getIdpersona());   
+        $sql = "select id_usu from usuario, persona where id_personau=:id_usu group by id_usu";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usu" => $id_usu));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
+	
 
  }
 
