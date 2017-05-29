@@ -3,7 +3,7 @@ class PersistenciaUsuario
 {
     //param es un objeto de tipo Usuario
     //conex es una variable de tipo conexion
-      public function agregar($obj, $conex)
+      public function agregar($obj, $conexu)
     {
    
        
@@ -12,12 +12,12 @@ class PersistenciaUsuario
         $rol=$obj->getRol();
         $premium=$obj->getPremium();
 
-		$sql = "insert into usuario (reputacion_usu, suspendido, rol, premium) 
-		values (:reputacion_usu,:suspendido,:rol,:premium)";
+		$sql = "insert into usuario (reputacion_usu, suspendido, rol, premium, id_personau) 
+		values (:reputacion_usu,:suspendido,:rol,:premium,:id_personau)";
 		
 		$result = $conex->prepare($sql);
 		$result->execute(array(":reputacion_usu" => $reputacion_usu, ":suspendido" => $suspendido,
-								":rol" => $=$,":premium" => $premium));
+								":rol" => $rol,":premium" => $premium));
         
 
         if($result)
@@ -76,14 +76,14 @@ class PersistenciaUsuario
 	   
 		$result = $conex->prepare($sql);
 		$result->execute(array(":reputacion_usu" => $reputacion_usu, ":suspendido" => $suspendido,
-								":rol" => $=$,":premium" => $premium, ":id_usu" => $id_usu, ":id_personau" => $id_personau));
+								":rol" => $rol,":premium" => $premium, ":id_usu" => $id_usu, ":id_personau" => $id_personau));
         		
 		
 		
        return $result;
     }
 	
-	public function eliminar($obj, $conex)
+	public function eliminar($obj, $conexu)
     {
         $id= trim($obj->getIdusuario());      		
         $sql = "update usuario set suspendido='si' where id_usu=:id_usu";

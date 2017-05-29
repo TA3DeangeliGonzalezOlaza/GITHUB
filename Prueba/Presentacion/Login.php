@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,7 +41,10 @@
 			
 			<input type="text" id="inputdir" name="dir" class="form-control" placeholder="Direccion" required="" autofocus="">
 			
+			
 			<button class="btn btn-lg btn-warning btn-block" type="submit">REGISTRAR</button>
+			
+			
 		  </form>
 
 		</div>

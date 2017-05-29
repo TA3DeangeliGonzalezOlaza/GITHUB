@@ -28,7 +28,8 @@ class PersistenciaPersona
 		//La sql que vale es la primera, pero hay que completar los parametros en el execute
 		
 		$sql = "insert into persona (ci_per, nick_per, password_per, nom1_per, nom2_per, ape1_per, ape2_per, email_per, tel_per, dir_per) 
-		values (:ci_usu,:nick_usu,:password_usu,:nom1_usu,:nom2_usu,:ape1_usu,:ape2_usu,:email_usu,:tel_usu,:dir_usu)";
+		values (:ci_usu,:nick_usu,:password_usu,:nom1_usu,:nom2_usu,:ape1_usu,:ape2_usu,:email_usu,:tel_usu,:dir_usu);
+		insert into usuario (id_personau, rol )select (select id_per from persona where nick_per=:nick_usu and password_per=:password_usu), 'user'";
 		
 		$result = $conex->prepare($sql);
 		$result->execute(array(":ci_usu" => $ci_per, ":nick_usu" => $nick_per,

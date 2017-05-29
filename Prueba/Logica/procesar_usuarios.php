@@ -3,22 +3,24 @@ session_start();
 require_once('funciones.php');
 require_once('../presentacion/Login.php');
 require_once('../clases/Persona.class.php');
+require_once('../clases/Usuario.class.php');
 echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></script>";
 
 //----------------------------Variables por Form
 
-     $ci_per=strip_tags($_POST['ci']); // id usuario
-	 $nick_per=strip_tags($_POST['nick']); // cedula
-     $pass_per=strip_tags($_POST['pass']); //nombre
-     $nom1_per=strip_tags($_POST['nom1']); //apellido
-     $nom2_per=strip_tags($_POST['nom2']); //correo
-     $ape1_per=strip_tags($_POST['ape1']); //celular
-     $ape2_per=strip_tags($_POST['ape2']); //tipo usuario/admin
-     $email_per=strip_tags($_POST['mail']); //numero de tarjeta
-	 $tel_per=strip_tags($_POST['tel']); //codigo verificador
-	 $dir_per=strip_tags($_POST['dir']); // fecha de vencimiento de tarjeta
-	// $activo_usu=strip_tags($_POST['ActUsu']); //si esta de baja logica.
+     $ci_per=strip_tags($_POST['ci']); // 
+	 $nick_per=strip_tags($_POST['nick']); 
+     $pass_per=strip_tags($_POST['pass']); 
+     $nom1_per=strip_tags($_POST['nom1']); 
+     $nom2_per=strip_tags($_POST['nom2']);
+     $ape1_per=strip_tags($_POST['ape1']); 
+     $ape2_per=strip_tags($_POST['ape2']); 
+     $email_per=strip_tags($_POST['mail']);
+	 $tel_per=strip_tags($_POST['tel']); 
+	 $dir_per=strip_tags($_POST['dir']); 
 	 $modo=strip_tags($_POST['Modo']);
+
+	 
 $mensaje="";
 $ejecucionOK=true;
 
@@ -26,12 +28,21 @@ $ejecucionOK=true;
 //Se conecta a la base
 $conex = conectar();
 if ($modo == "ALTA")
-{
+{		
+	
 	$login= strip_tags($_POST['nick']);
 	$password= strip_tags($_POST['pass']);
 	//Se crea un objeto con los datos de los cuadros de texto del formulario
 	$u = new Persona('',$ci_per,$nick_per,$pass_per,$nom1_per,$nom2_per,$ape1_per,$ape2_per,$email_per,$tel_per,$dir_per);
+	
+
+
 	$ejecucionOK=$u->alta($conex);
+	
+
+	
+	
+	
 	if ($ejecucionOK)
 	{
 			?>
