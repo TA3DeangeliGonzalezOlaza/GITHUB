@@ -1,12 +1,18 @@
 <?php
-	if (!isset($_SESSION["PHPSESSID"])) {
-	session_start(); }
-	echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></script>";
-	
+session_start();
+$_SESSION["PHPSESSID"]=session_id();
+echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></script>";
+
+
 require_once('../logica/funciones.php');
 require_once('../clases/Publicacion.class.php');	
-	
+ 
+	  
+$categoria= strip_tags(trim($_GET['categoria'])); 
+
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -26,7 +32,7 @@ require_once('../clases/Publicacion.class.php');
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
+					  <a class="navbar-brand" href="index.php">PAGINA</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="/search.php" method="post">
 								<label for="search_box">
@@ -39,46 +45,39 @@ require_once('../clases/Publicacion.class.php');
 					  </div>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
-					<div class="navbar-brand"><label>Bienvenido <?php echo $_SESSION["LOGIN"];?></label></div>
+					
 					  <form class="navbar-form navbar-right">
 					  
-					  
-							<div class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-								<img src="../images/engine-icon.png" alt="">
-									<!--Cuenta <b class="caret"></b>-->
-								</a>
-								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
-									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
-									<li class="divider"></li>
-									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
-								</ul>
-								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>
-							</div>
+						<!--<div class="form-group">
+						  <input type="text" placeholder="Buscar..." class="form-control">
+						</div>
+						<button type="submit" class="btn btn-danger" >BUSCAR</button>-->
+						<!--<button type="submit" class="btn btn-warning btn-sm" >Ingresar</button>-->
+						<a href="singin.php" class="btn btn-warning btn-sm">Ingresar</a>
+						<a href="Login.php" class="btn btn-warning btn-sm">Registrarse</a>
+		
+				
+		
 					  </form>
 					  
 					</div><!--/.navbar-collapse -->
 				  </div>
 			</nav>
 		</div>
-
 		<div class="jumbotron">
 			<div class="container">
 
 				<section class="main row">
 					<div class="col-md-9">
-					<ul class="pre-scrollable" class="claseLista">
+					<ol class="pre-scrollable">
 					
 						<li class="intem-resultado">
 							<div class="container">
 								<div class="row">
 									<?php
 										$conex = conectar();
-										$d = new Publicacion();
-										$datos_d=$d->consultaTodos($conex);
+										$d = new Publicacion('','','','','','','','','','','','',$categoria);
+										$datos_d=$d->consultaCategoria($conex);
 										$cuenta=count($datos_d);
 									?>
 									<?php
@@ -116,22 +115,22 @@ require_once('../clases/Publicacion.class.php');
 
 
 						
-					</ul>
+					</ol>
 					
 					
 					</div>
 					<div>
 						<div class="col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas aling-left" id="sidebar">
 						  <div class="list-group"><b>
-						 	<a href="cargamenucategoria.php?categoria=ARTE" class="list-group-item">ARTE</a>
-							<a href="cargamenucategoria.php?categoria=TECNOLOGIA" class="list-group-item">TECNOLOGIA</a>
-							<a href="cargamenucategoria.php?categoria=MODA" class="list-group-item">MODA</a>
-							<a href="cargamenucategoria.php?categoria=HOGAR" class="list-group-item">HOGAR</a>
-							<a href="cargamenucategoria.php?categoria=VEHICULOS" class="list-group-item">VEHICULOS</a>
-							<a href="cargamenucategoria.php?categoria=MUSICA" class="list-group-item">MUSICA</a>
-							<a href="cargamenucategoria.php?categoria=DEPORTE" class="list-group-item">DEPORTE</a>
-							<a href="cargamenucategoria.php?categoria=PASATIEMPOS" class="list-group-item">PASATIEMPOS</a>
-							<a href="cargamenucategoria.php?categoria=OTROS" class="list-group-item">OTROS</a>
+						 	<a href="menucategoria.php?categoria=ARTE" class="list-group-item">ARTE</a>
+							<a href="menucategoria.php?categoria=TECNOLOGIA" class="list-group-item">TECNOLOGIA</a>
+							<a href="menucategoria.php?categoria=MODA" class="list-group-item">MODA</a>
+							<a href="menucategoria.php?categoria=HOGAR" class="list-group-item">HOGAR</a>
+							<a href="menucategoria.php?categoria=VEHICULOS" class="list-group-item">VEHICULOS</a>
+							<a href="menucategoria.php?categoria=MUSICA" class="list-group-item">MUSICA</a>
+							<a href="menucategoria.php?categoria=DEPORTE" class="list-group-item">DEPORTE</a>
+							<a href="menucategoria.php?categoria=PASATIEMPOS" class="list-group-item">PASATIEMPOS</a>
+							<a href="menucategoria.php?categoria=OTROS" class="list-group-item">OTROS</a>
 							</b>
 						  </div>
 						</div>
@@ -143,9 +142,16 @@ require_once('../clases/Publicacion.class.php');
 		<div class="container">
 			<div class="row">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, repellat, sunt, rerum sit ab est consequuntur quo id optio minima repellendus debitis omnis quidem nihil ullam saepe nisi nulla. Similique.
-				</div>	
+		
+		</div>	
 	
 		</div>
+
+
+
+
+
+
 
 
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -156,6 +162,6 @@ require_once('../clases/Publicacion.class.php');
 </body>
 </html>
 
+<?php
 
-
-
+?>

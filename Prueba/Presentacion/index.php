@@ -7,7 +7,9 @@ echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></sc
 require_once('../logica/funciones.php');
 require_once('../clases/Publicacion.class.php');	
       
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -27,7 +29,7 @@ require_once('../clases/Publicacion.class.php');
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="#">PAGINA</a>
+					  <a class="navbar-brand" href="index.php?categoria=Index">PAGINA</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="/search.php" method="post">
 								<label for="search_box">
@@ -70,6 +72,7 @@ require_once('../clases/Publicacion.class.php');
 							<div class="container">
 								<div class="row">
 									<?php
+										
 										$conex = conectar();
 										$d = new Publicacion();
 										$datos_d=$d->consultaTodos($conex);
@@ -83,19 +86,21 @@ require_once('../clases/Publicacion.class.php');
 											imagen
 											</div>
 											<div class="col-md-3">
-												<a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a>
+											<strong>
+												<a href="#" value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a>
+											</strong>
 											</div>
 											<div class="col-md-2">
 												<strong>
-												<option value="<?php echo $datos_d[$i][0]?>"  >$<?php echo $datos_d[$i][3]?></option>
+												<option value="<?php echo $datos_d[$i][0]?>"  >PRECIO $<?php echo $datos_d[$i][3]?></option>
 												</strong>
 											</div>
 											<div class="col-md-4">
-												<ol>
+												<ul>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][11]?></option></li>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][18]?></option></li>
-												</ol>
+												</ul>
 												
 											</div>
 									
@@ -115,15 +120,15 @@ require_once('../clases/Publicacion.class.php');
 					<div>
 						<div class="col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas aling-left" id="sidebar">
 						  <div class="list-group"><b>
-						 	<a href="#" class="list-group-item">ARTE</a>
-							<a href="#" class="list-group-item">TECNOLOGIA</a>
-							<a href="#" class="list-group-item">MODA</a>
-							<a href="#" class="list-group-item">HOGAR</a>
-							<a href="#" class="list-group-item">VEHICULOS</a>
-							<a href="#" class="list-group-item">MUSICA</a>
-							<a href="#" class="list-group-item">DEPORTE</a>
-							<a href="#" class="list-group-item">PASATIEMPOS</a>
-							<a href="#" class="list-group-item">OTRAS</a>
+						 	<a href="menucategoria.php?categoria=ARTE" class="list-group-item">ARTE</a>
+							<a href="menucategoria.php?categoria=TECNOLOGIA" class="list-group-item">TECNOLOGIA</a>
+							<a href="menucategoria.php?categoria=MODA" class="list-group-item">MODA</a>
+							<a href="menucategoria.php?categoria=HOGAR" class="list-group-item">HOGAR</a>
+							<a href="menucategoria.php?categoria=VEHICULOS" class="list-group-item">VEHICULOS</a>
+							<a href="menucategoria.php?categoria=MUSICA" class="list-group-item">MUSICA</a>
+							<a href="menucategoria.php?categoria=DEPORTE" class="list-group-item">DEPORTE</a>
+							<a href="menucategoria.php?categoria=PASATIEMPOS" class="list-group-item">PASATIEMPOS</a>
+							<a href="menucategoria.php?categoria=OTROS" class="list-group-item">OTROS</a>
 							</b>
 						  </div>
 						</div>
@@ -136,20 +141,6 @@ require_once('../clases/Publicacion.class.php');
 			<div class="row">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, repellat, sunt, rerum sit ab est consequuntur quo id optio minima repellendus debitis omnis quidem nihil ullam saepe nisi nulla. Similique.
 		
-		<div class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-			<img src="../images/engine-icon.png" alt="">
-				<!--Cuenta <b class="caret"></b>-->
-			</a>
-			<ul class="dropdown-menu" style="background:#f0ad4e">
-				<li><a href="#"><b>Mi Cuenta</b></a></li>
-				<li class="divider"></li>
-				<li><a href="#"><b>Cambiar Email</b></a></li>
-				<li><a href="#"><b>Cambiar Password</b></a></li>
-				<li class="divider"></li>
-				<li><a href="#"><b>Logout</b></a></li>
-			</ul>
-		</div>
 		</div>	
 	
 		</div>

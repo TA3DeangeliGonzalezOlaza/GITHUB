@@ -6,6 +6,9 @@
 require_once('../logica/funciones.php');
 require_once('../clases/Publicacion.class.php');	
 	
+$categoria= strip_tags(trim($_GET['categoria'])); 	
+	
+	
 ?>
 
 <!doctype html>
@@ -77,8 +80,8 @@ require_once('../clases/Publicacion.class.php');
 								<div class="row">
 									<?php
 										$conex = conectar();
-										$d = new Publicacion();
-										$datos_d=$d->consultaTodos($conex);
+										$d = new Publicacion('','','','','','','','','','','','',$categoria);
+										$datos_d=$d->consultaCategoria($conex);
 										$cuenta=count($datos_d);
 									?>
 									<?php
@@ -155,7 +158,3 @@ require_once('../clases/Publicacion.class.php');
 	
 </body>
 </html>
-
-
-
-

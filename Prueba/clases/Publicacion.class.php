@@ -228,6 +228,14 @@ class Publicacion
     	$datos= $pp->consXCat($this,$conex);
     	return $datos;
     }
+	
+	public function consultaCategoria($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->consCat($this,$conex);
+      return $datos;
+    }
+	
   
     //Devuelve true si el Login y el Password coinciden
   //  public function coincideLoginPassword($conex)

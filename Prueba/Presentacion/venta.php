@@ -53,7 +53,7 @@
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="#">PAGINA</a>
+					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="/search.php" method="post">
 								<label for="search_box">

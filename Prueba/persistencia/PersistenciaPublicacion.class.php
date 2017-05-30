@@ -165,6 +165,30 @@ class PersistenciaPublicacion
         		
        return $result;
     }
+	
+	    public function consCat($obj, $conex)
+   {
+        $categoria_pub= trim($obj->getCategoria());   
+        $sql = "select * from publicacion,usuario where id_usu= id_usup and categoria_pub=:categoria_pub order by premium DESC";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":categoria_pub" => $categoria_pub));
+		$resultados=$result->fetchAll();
+        
+
+       return $resultados;
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
  }
 
 ?>
