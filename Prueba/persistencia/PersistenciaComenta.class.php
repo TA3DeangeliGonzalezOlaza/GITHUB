@@ -55,6 +55,23 @@ class PersistenciaComenta
        //return $resultados;
     }	
 	
+	
+   public function consTodosPub($obj, $conex)
+   {
+		$id_pub= trim($obj->getIdpub());
+        $sql = "select * from comenta where id_pubcom=:id_pub";
+		
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_pub" => $id_pub));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
+    
+	
+	
+	
  }
 
 ?>

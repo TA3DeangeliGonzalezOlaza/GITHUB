@@ -108,6 +108,16 @@ class Comenta
       $datos= $pu->consUno($this,$conex,$IdLug);
       return $datos;
     }
+	
+	    
+    public function consultaTodosPub($conex)
+    {
+      $pu=new PersistenciaComenta;
+      $datos= $pu->consTodosPub($this,$conex);
+      return $datos;
+    }
+    
+	
     //Devuelve true si el Login y el Password coinciden
   //  public function coincideLoginPassword($conex)
  //   {

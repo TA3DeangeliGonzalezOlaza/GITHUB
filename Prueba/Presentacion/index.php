@@ -6,7 +6,8 @@ echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></sc
 
 require_once('../logica/funciones.php');
 require_once('../clases/Publicacion.class.php');	
-      
+ 
+ 
 
 ?>
 
@@ -87,7 +88,7 @@ require_once('../clases/Publicacion.class.php');
 											</div>
 											<div class="col-md-3">
 											<strong>
-												<a href="#" value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a>
+												<a href="articulo.php?id_pub=<?php echo $datos_d[$i][0] ?>" value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a>
 											</strong>
 											</div>
 											<div class="col-md-2">

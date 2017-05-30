@@ -95,11 +95,11 @@ class PersistenciaPublicacion
     
     public function consUno($obj, $conex)
    {
-        $id_pub= trim($obj->getId());   
+        $id_pub= trim($obj->getIdPublicacion());   
         $sql = "select * from publicacion where id_pub=:id_pub";
 		
         $result = $conex->prepare($sql);
-	    $result->execute(array(":id_pub " => $id_pub));
+	    $result->execute(array(":id_pub" => $id_pub));
 		$resultados=$result->fetchAll();
         //Obtiene el registro de la tabla Usuario 
 
