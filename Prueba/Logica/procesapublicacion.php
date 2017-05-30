@@ -19,10 +19,11 @@ echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></sc
 	$estado=strip_tags($_POST['estado']); 
 	$fecha=strip_tags($_POST['fecha']); 
 	$permuta=strip_tags($_POST['permuta']); 
-	$categoria=strip_tags($_POST['categoria']); 
+	$categoria=strip_tags($_POST['categoria']);
+	$denuncia=strip_tags($_POST['denuncia']);	
 
 		$conex = conectar();
-		$d = new Publicacion('',$id_usu,$nom_pub,$precio_pub,$stock_pub,$descripcion_pub,$img01_pub,$img02_pub,$img03_pub,$estado,$fecha,$permuta,$categoria,'');
+		$d = new Publicacion('',$id_usu,$nom_pub,$precio_pub,$stock_pub,$descripcion_pub,$img01_pub,$img02_pub,$img03_pub,$estado,$fecha,$permuta,$categoria,$denuncia);
 		$datos_d=$d->alta($conex);
 
 	?>

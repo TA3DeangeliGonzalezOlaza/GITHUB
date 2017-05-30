@@ -98,12 +98,13 @@
 					<div class="col-md-12">
 					
 			<!--FORMULARIO DE ENVIO LINCEEEE -->		
-						<form action="../Logica/pruebasillegaventa.php" method="POST">
+						<form action="../Logica/procesapublicacion.php" method="POST">
 							<form class="form-inline" id="formventa">
 							
 							
 								<input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly">
 								<input  type="hidden" name="id_usu" id="id_usu" value="<?php echo $id_usu;?>" />
+								<input  type="hidden" name="denuncia" id="denuncia" value="0" />
 								
 								<h2 class="form-signin-heading">Articulo a vender</h2>
 								<strong>NOMBRE DEL ARTICULO</strong>

@@ -1,10 +1,12 @@
 <?php
 class PersistenciaPublicacion
 {
-
+    //param es un objeto de tipo Usuario
+    //conex es una variable de tipo conexion
     public function agregar($obj, $conex)
     {
-
+        //Obtiene los datos del objeto $obj
+       
 		$id_usu = $obj->getIdusuario();
 		$nom_pub = $obj->getNombre();
         $precio_pub=$obj->getPrecio();
@@ -17,15 +19,23 @@ class PersistenciaPublicacion
         $fecha_pub = $obj->getFecha();
         $acepta_permuta_pub = $obj->getPermuta();
         $categoria_pub = $obj->getCategoria();
-
+        $denuncia_pub = $obj->getDenuncia();
+	
+        //Genera la sentencia a ejecutar
+		//La sql que vale es la primera, pero hay que completar los parametros en el execute
 		
-		$sql = "insert into publicacion (id_usup, nom_pub, precio_pub, stock_pub, descripcion_pub, img01_pub, img02_pub, img03_pub, nuevo_pub, fecha_pub, acepta_permuta_pub, categoria_pub, denuncia_pub) 
-		values (:id_usup,:nom_pub,:precio_pub,:stock_pub,:descripcion_pub,:img01_pub,:img02_pub,:img03_pub,:nuevo_pub,:acepta_permuta_pub,:categoria_pub,0)";
+		$sql = "INSERT INTO `publicacion`(`id_usup`, `nom_pub`, `precio_pub`, `stock_pub`, `descripcion_pub`, `img01_pub`, `img02_pub`, `img03_pub`, `nuevo_pub`, `fecha_pub`, `acepta_permuta_pub`, `categoria_pub`, `denuncia_pub`) 
+		VALUES (:id_usup,:nom_pub,:precio_pub,:stock_pub,:descripcion_pub,:img01_pub,:img02_pub,:img03_pub,:nuevo_pub,:fecha_pub,:acepta_permuta_pub,:categoria_pub,:denuncia_pub)";
 		
 		$result = $conex->prepare($sql);
-		$result->execute(array(":id_usup" => $id_usu,":nom_pub" => $nom_pub,":precio_pub" => $precio_pub,":stock_pub" => $stock_pub,":descripcion_pub " => $descripcion_pub,
-								":img01_pub" => $img01_pub,":img02_pub" => $img02_pub,":img03_pub" => $img03_pub,":nuevo_pub" => $nuevo_pub,":fecha_pub" => $fecha_pub,
-								":acepta_permuta_pub" => $acepta_permuta_pub,":categoria_pub" => $categoria_pub));
+		$result->execute(array(":id_usup" => $id_usu,":nom_pub" => $nom_pub,":precio_pub" => $precio_pub,":stock_pub" => $stock_pub,":descripcion_pub" => $descripcion_pub,":img01_pub" => $img01_pub,
+		":img02_pub" => $img02_pub,":img03_pub" => $img03_pub,":nuevo_pub" => $nuevo_pub,":fecha_pub" => $fecha_pub,":acepta_permuta_pub" => $acepta_permuta_pub,":categoria_pub" => $categoria_pub,":denuncia_pub" => $denuncia_pub));						
+								
+								
+								
+								
+								
+								
         
         
         //Para saber si ocurrió un error
