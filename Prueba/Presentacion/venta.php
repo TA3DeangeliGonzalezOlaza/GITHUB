@@ -3,8 +3,10 @@
 	session_start(); }
 	echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></script>";
 	
-	require_once('../clases/Usuario.class.php');	
+	require_once('../clases/Usuario.class.php');
+	require_once('../clases/Publicacion.class.php');	
 	require_once('../logica/funciones.php');
+
 		
 ?>
 
@@ -94,52 +96,65 @@
 			<div class="container">
 				<section class="main row">
 					<div class="col-md-12">
-						<form class="form-inline">
-							<h2 class="form-signin-heading">Articulo a vender</h2>
-							NOMBRE DEL ARTICULO
-							<input type="text" id="inputNompub" class="form-control" placeholder="Nombre" required="" autofocus="">
-							PRECIO
-							<input type="number" id="inputPrecio" class="form-control" placeholder="Precio" required="" autofocus="">
-							STOCK
-							<input type="number" id="inputstock" class="form-control" placeholder="Stock" required="" autofocus="">
-							Nuevo &nbsp <input type="checkbox" id="inputnuevo" placeholder="Email address" required="" autofocus="" value="nuevo">
-							
-							Permuta &nbsp <input type="checkbox" id="inputnuevo" placeholder="Email address" required="" autofocus="" value="permuta">
-
-							
-								<div class="campos inline">
-									<label for="imagen">IMAGEN PORTADA</label>
-									<input type="file" name="Imagen01" id="inputimg1" />
-
-									<label for="imagen">IMAGEN Opcional</label>
-									<input type="file" name="Imagen02" id="inputimg2" />
-
-									<label for="imagen">IMAGEN Opcional</label>
-									<input type="file" name="Imagen03" id="inputimg3" />
-								</div>						
-							<!--<input type="text" id="inputimg1" class="form-control" placeholder="Imagen01" required="">
-							<input type="text" id="inputimg2" class="form-control" placeholder="Imagen02" required="" autofocus="">							
-							<input type="text" id="inputimg3" class="form-control" placeholder="Imagen03" required="" autofocus=""><br>-->
-
-
-							
-							<select>
-							  <option value="ARTE">ARTE</option>
-							  <option value="TECNOLOGIA">TECNOLOGIA</option>
-							  <option value="MODA">MODA</option>
-							  <option value="HOGAR">HOGAR</option>
-							  <option value="VEHICULOS">VEHICULOS</option>
-							  <option value="MUSICA">MUSICA</option>
-							  <option value="DEPORTE">DEPORTE</option>
-							  <option value="PASATIEMPOS">PASATIEMPOS</option>
-							  <option value="OTRAS">OTRAS</option>							  
-							  </select><br>
-							  
-							  <textarea maxlength="400" class="descripcion" rows="6" cols="150" id="inputdesc" placeholder="descripcion" required="" autofocus=""/></textarea>
-							 
-							<button class="btn btn-lg btn-warning btn-block" type="submit">Publicar</button>
-						</form>
 					
+			<!--FORMULARIO DE ENVIO LINCEEEE -->		
+						<form action="../Logica/pruebasillegaventa.php" method="POST">
+							<form class="form-inline" id="formventa">
+							
+							
+								<input type="date" name="fecha" value="<?php echo date("Y-m-d");?>" readonly="readonly">
+								<input  type="hidden" name="id_usu" id="id_usu" value="<?php echo $id_usu;?>" />
+								
+								<h2 class="form-signin-heading">Articulo a vender</h2>
+								<strong>NOMBRE DEL ARTICULO</strong>
+								<input type="text" id="inputNompub" name="nombre" class="form-control" placeholder="Nombre" required="" autofocus="">
+								<strong>PRECIO</strong>
+								<input type="number" id="inputPrecio" name="precio" class="form-control" placeholder="Precio" required="" autofocus="">
+								<strong>STOCK</strong>
+								<input type="number" id="inputstock" name="stock" class="form-control" placeholder="Stock" required="" autofocus=""> <br>
+								
+								<strong>ESTADO DEL ARTICULO</strong> &nbsp 
+								<select name="estado">
+								  <option value="nuevo">Nuevo</option>
+								  <option value="usado">Usado</option>
+								</select> &nbsp 
+								
+								<strong>Acepta permuta</strong> &nbsp 
+								<select name="permuta">
+								  <option value="permuta">Si</option>
+								  <option value="nopermuta">No</option>
+								</select> <br> <br> <br>
+								
+									<div class="campos inline">
+										<label for="imagen">IMAGEN PORTADA</label>
+										<input type="file" name="Imagen01" id="inputimg1" />
+
+										<label for="imagen">IMAGEN Opcional</label>
+										<input type="file" name="Imagen02" id="inputimg2" />
+
+										<label for="imagen">IMAGEN Opcional</label>
+										<input type="file" name="Imagen03" id="inputimg3" />
+									</div>		<br> <br>				
+
+								<strong>CATEGORIA</strong>
+								<select name="categoria">
+								  <option value="ARTE">ARTE</option>
+								  <option value="TECNOLOGIA">TECNOLOGIA</option>
+								  <option value="MODA">MODA</option>
+								  <option value="HOGAR">HOGAR</option>
+								  <option value="VEHICULOS">VEHICULOS</option>
+								  <option value="MUSICA">MUSICA</option>
+								  <option value="DEPORTE">DEPORTE</option>
+								  <option value="PASATIEMPOS">PASATIEMPOS</option>
+								  <option value="OTRAS">OTROS</option>							  
+								  </select><br><br> <br>
+								  
+								  <textarea maxlength="400" class="descripcion" rows="6" cols="150" id="inputdesc" name="descripcion" placeholder="descripcion" required="" autofocus=""/></textarea>
+								 
+								<button class="btn btn-lg btn-warning btn-block" type="submit">Publicar</button>
+							
+							</form>
+						</form>
 					
 					
 					</div>
