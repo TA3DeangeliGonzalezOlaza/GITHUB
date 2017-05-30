@@ -83,7 +83,7 @@ class PersistenciaPublicacion
    public function consTodos( $conex)
    {
        
-        $sql = "select * from publicacion";
+        $sql = "select * from publicacion,usuario where id_usu= id_usup order by premium DESC";
 		
         $result = $conex->prepare($sql);
 		$result->execute();

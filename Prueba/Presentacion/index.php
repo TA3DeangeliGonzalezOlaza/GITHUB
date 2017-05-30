@@ -94,6 +94,7 @@ require_once('../clases/Publicacion.class.php');
 												<ol>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][11]?></option></li>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
+													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][18]?></option></li>
 												</ol>
 												
 											</div>
