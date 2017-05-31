@@ -6,9 +6,12 @@
 .claseLista {
 list-style-type:none;
 }
-.descripcion {
-	max-width:300;
-	min-width:300;
+
+
+.area {
+	width:600;
+	max-width:500;
+	min-width:500;
 	max-height:30;
 	min-height:30;
 	resize: none;

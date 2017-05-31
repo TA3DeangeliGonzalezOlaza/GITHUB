@@ -3,6 +3,7 @@ session_start();
 $_SESSION["PHPSESSID"]=session_id();
 echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></script>";
 
+
 require_once('../logica/funciones.php');
 require_once('../clases/Publicacion.class.php');
 require_once('../clases/Usuario.class.php');
@@ -28,11 +29,11 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 <body>
 		<div class="container">
 			<nav class="navbar navbar-inverse navbar-fixed-top">
-				<div class="container">
+				  <div class="container">
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="index.php?categoria=Index">PAGINA</a>
+					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="/search.php" method="post">
 								<label for="search_box">
@@ -44,24 +45,31 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 					  
 					  </div>
 					</div>
-						<div id="navbar" class="navbar-collapse collapse">
-						
-							<form class="navbar-form navbar-right">
-							  
-								<!--<div class="form-group">
-								  <input type="text" placeholder="Buscar..." class="form-control">
-								</div>
-								<button type="submit" class="btn btn-danger" >BUSCAR</button>-->
-								<!--<button type="submit" class="btn btn-warning btn-sm" >Ingresar</button>-->
-								<a href="singin.php" class="btn btn-warning btn-sm">Ingresar</a>
-								<a href="Login.php" class="btn btn-warning btn-sm">Registrarse</a>
-				
-						
-				
-			
-							</form>
-						</div>
-				</div>
+					<div id="navbar" class="navbar-collapse collapse">
+					<div class="navbar-brand"><label>Bienvenido <?php echo $_SESSION["LOGIN"];?></label></div>
+					  <form class="navbar-form navbar-right">
+					  
+					  
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+								<img src="../images/engine-icon.png" alt="">
+									<!--Cuenta <b class="caret"></b>-->
+								</a>
+								<ul class="dropdown-menu" style="background:#f0ad4e">
+									<li><a href="#"><b>Mi Cuenta</b></a></li>
+									<li class="divider"></li>
+									<li><a href="#"><b>Cambiar Email</b></a></li>
+									<li><a href="#"><b>Cambiar Password</b></a></li>
+									<li class="divider"></li>
+									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
+								</ul>
+								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>
+							</div>
+					  </form>
+					  
+					</div><!--/.navbar-collapse -->
+				  </div>
+			</nav>
 		</div>
 									<?php
 										
@@ -117,10 +125,10 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 												$cuentac=count($datos_c);
 											?>
 											<table>
-				<?php
-				for ($i=0;$i<$cuentac;$i++)
-				{
-				?>
+												<?php
+												for ($i=0;$i<$cuentac;$i++)
+												{
+												?>
 												
 										<?php $id_com = $datos_c[$i][0]?>
 										<?php $id_usucomenta = $datos_c[$i][1]?>
@@ -128,10 +136,10 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 										<?php $comentario = $datos_c[$i][3]?>
 										<?php $com_denunciado = $datos_c[$i][4]?>
 										<?php $respuesta = $datos_c[$i][5]?>			
-
 								<?php
 								}
-								?>					
+								?>
+									
 									
 
 
@@ -160,14 +168,14 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 							<li>Stock:<?php echo $stock ?></li>
 							<li>Categoria</li>
 							<li><?php if ($permuta == "permuta"){ ?>
-							PERMUTA
+							<button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button>
 							<?php } 
 							if ($permuta == "nopermuta") {?>  
 							No permuta  
 							<?php }?></li>
 							
 							
-							<li>Para Comprar Inicia sesion <a href="singin.php" class="btn btn-warning btn-sm">Ingresar</a></li>
+							<li><button class="btn btn-sm btn-DANGER btn-block" type="submit" style='width:80px; height:30px'>COMPRAR</button></li>
 							
 							
 							
@@ -206,8 +214,8 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 		<div class="jumbotron">
 			<div class="container">
 				<form action="">
-					<textarea name="area" id="" cols="150" rows="3"></textarea><br>
-					Para Comentar Inicia sesion <a href="singin.php" class="btn btn-warning btn-sm">Ingresar</a>
+					<textarea name="area" id="" cols="150" rows="3"></textarea>
+					<button class="btn btn-lg btn-warning btn-block" type="submit" style='width:120px; height:40px'>Comentar</button>
 				</form>
 			</div>
 		</div>
@@ -248,6 +256,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 </html>
 
 								<?php
+									
 								}
 								}
 								?>

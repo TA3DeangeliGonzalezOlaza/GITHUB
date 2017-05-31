@@ -8,15 +8,17 @@ class Comenta
 	private $id_pubcom; // publicacion comentada
 	private $comentario; // comentario
 	private $denunciado_com; // denuncia
+	private $responde_com; // denuncia
 	
       
-    function __construct($idc='',$idu='',$idp='',$com='',$den='')
+    function __construct($idc='',$idu='',$idp='',$com='',$den='',$resp='')
     {
         $this->id_comen= $idc;
         $this->id_usucom= $idu;
 		$this->id_pubcom= $idp;
 		$this->comentario= $com;
 		$this->denunciado_com= $den;
+		$this->responde_com= $resp;
 	}
     
     //Métodos set
@@ -46,6 +48,11 @@ class Comenta
       $this->denunciado_com= $den;
     }
 	
+	public function setResponde($resp)
+    {
+      $this->responde_com= $resp;
+    }
+	
     //Métodos get
     
     public function getIdcomen()
@@ -73,6 +80,10 @@ class Comenta
       return $this->denunciado_com;
     }
 	
+	public function getResponde()
+    {
+      return $this->responde_com;
+    }
      
     //Otros Métodos
     public function alta($conex)

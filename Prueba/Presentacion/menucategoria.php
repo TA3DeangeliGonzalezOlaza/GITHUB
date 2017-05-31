@@ -89,7 +89,7 @@ $categoria= strip_tags(trim($_GET['categoria']));
 											</div>
 											<div class="col-md-3">
 											<strong>
-												<a href="#" value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a>
+												<a href="articulo.php?id_pub=<?php echo $datos_d[$i][0] ?>" value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a>
 											</strong>
 											</div>
 											<div class="col-md-2">

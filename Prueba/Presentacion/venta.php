@@ -171,28 +171,7 @@
 		<div class="jumbotron">
 		<div class="container">
 			<div class="row">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, repellat, sunt, rerum sit ab est consequuntur quo id optio minima repellendus debitis omnis quidem nihil ullam saepe nisi nulla. Similique.
-		
-		<div class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-			<img src="../images/engine-icon.png" alt="">
-				<!--Cuenta <b class="caret"></b>-->
-			</a>
-			<ul class="dropdown-menu" style="background:#f0ad4e">
-				<li><a href="#"><b>Mi Cuenta</b></a></li>
-				<li class="divider"></li>
-				<li><a href="#"><b>Cambiar Email</b></a></li>
-				<li><a href="#"><b>Cambiar Password</b></a></li>
-				<li class="divider"></li>
-				<li><a href="#"><b>Logout</b></a></li>
-			</ul>
-		</div>
-		</div>
 
-										
-
-		
-	
 		</div>
 
 

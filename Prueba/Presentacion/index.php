@@ -96,7 +96,7 @@ require_once('../clases/Publicacion.class.php');
 												<option value="<?php echo $datos_d[$i][0]?>"  >PRECIO $<?php echo $datos_d[$i][3]?></option>
 												</strong>
 											</div>
-											<div class="col-md-4">
+											<div class="col-md-4" id="menu">
 												<ul>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][11]?></option></li>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
@@ -105,9 +105,9 @@ require_once('../clases/Publicacion.class.php');
 												
 											</div>
 									
-								<?php
-								}
-								?>
+										<?php
+										}
+										?>
 								</div>
 							</div>
 						</li>
