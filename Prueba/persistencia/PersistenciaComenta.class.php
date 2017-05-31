@@ -31,34 +31,10 @@ class PersistenciaComenta
        return $resultados;
     }
 
-//HAY QUE TERMINARLA
-   public function comenta($obj,$conex,$IdEsp,$IdSec,$IdUsu,$IdLug,$cant,$preciofinal)
-   {
-        $id_comen=trim($IdUsu);
-		$id_usucom=trim($IdSec);
-		$id_pubcom=trim($IdEsp);
-		$comentario=trim($preciofinal);
-		$denunciado_com=trim($cambiar);
-
-		
-        $sql = "insert into comenta (id_comen,id_usucom,id_pubcom,comentario,denunciado_com) values (:id_comen,:id_usucom,:id_pubcom,:comentario,:denunciado_com)";
-		
-		$sql2="update publicacion set stock_pub= stock_pub-:cantidad where id_pub=:id_pub";
-		
-        $result = $conex->prepare($sql);
-	    $result->execute(array(":id_comen" => $id_comen,":id_usucom" => $id_usucom,":id_pubcom" => $id_pubcom,":comentario"=>$comentario,":denunciado_com"=>$denunciado_com));
-		$result2 = $conex->prepare($sql2);
-	    $result2->execute(array(":id_pub" => $id_pubt,":cantidad"=>$cantidad));
-		//$resultados=$result->fetchAll();
-       
-
-       //return $resultados;
-    }	
-	
 	
    public function consTodosPub($obj, $conex)
    {
-		$id_pub= trim($obj->getIdpub());
+		$id_pub= trim($obj->getIdpubcom());
         $sql = "select * from comenta where id_pubcom=:id_pub";
 		
         $result = $conex->prepare($sql);
@@ -69,7 +45,17 @@ class PersistenciaComenta
        return $resultados;
     }
     
-	
+   public function comenta($obj, $conex)
+   {
+       $id_usucom = $obj->getIdusucom();
+	   $id_pubcom = $obj->getIdpubcom();
+	   $comentario = $obj->getComentario();
+        $sql = "insert into comenta (id_usucom,id_pubcom,comentario) values (:id_usucom,:id_pubcom,:comentario)";
+		
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_usucom" => $id_usucom,":id_pubcom" => $id_pubcom,":comentario" => $comentario));
+
+    }	
 	
 	
  }

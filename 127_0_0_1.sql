@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2017 a las 03:25:29
+-- Tiempo de generación: 31-05-2017 a las 04:52:14
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -43,7 +43,10 @@ CREATE TABLE `comenta` (
 
 INSERT INTO `comenta` (`id_comen`, `id_usucom`, `id_pubcom`, `comentario`, `denunciado_com`, `responde_com`) VALUES
 (1, 9, 12, 'cuanto te mide', 0, ''),
-(2, 9, 12, 'responde cuanto le mide?', 0, '');
+(2, 9, 12, 'responde cuanto le mide?', 0, ''),
+(9, 1, 9, 'hola es un comentario de prueba', 0, ''),
+(10, 1, 9, 'este es otro comentario prueba', 0, ''),
+(11, 1, 14, 'Otra prueba', 0, '');
 
 -- --------------------------------------------------------
 
@@ -232,7 +235,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comenta`
 --
 ALTER TABLE `comenta`
-  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `permuta`
 --

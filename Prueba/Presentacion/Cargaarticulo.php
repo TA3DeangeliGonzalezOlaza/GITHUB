@@ -187,15 +187,15 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 					<div>
 						<div class="row col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas aling-left" id="sidebar">
 						  <div class="list-group"><b>
-						 	<a href="menucategoria.php?categoria=ARTE" class="list-group-item">ARTE</a>
-							<a href="menucategoria.php?categoria=TECNOLOGIA" class="list-group-item">TECNOLOGIA</a>
-							<a href="menucategoria.php?categoria=MODA" class="list-group-item">MODA</a>
-							<a href="menucategoria.php?categoria=HOGAR" class="list-group-item">HOGAR</a>
-							<a href="menucategoria.php?categoria=VEHICULOS" class="list-group-item">VEHICULOS</a>
-							<a href="menucategoria.php?categoria=MUSICA" class="list-group-item">MUSICA</a>
-							<a href="menucategoria.php?categoria=DEPORTE" class="list-group-item">DEPORTE</a>
-							<a href="menucategoria.php?categoria=PASATIEMPOS" class="list-group-item">PASATIEMPOS</a>
-							<a href="menucategoria.php?categoria=OTROS" class="list-group-item">OTROS</a>
+						 	<a href="cargamenucategoria.php?categoria=ARTE" class="list-group-item">ARTE</a>
+							<a href="cargamenucategoria.php?categoria=TECNOLOGIA" class="list-group-item">TECNOLOGIA</a>
+							<a href="cargamenucategoria.php?categoria=MODA" class="list-group-item">MODA</a>
+							<a href="cargamenucategoria.php?categoria=HOGAR" class="list-group-item">HOGAR</a>
+							<a href="cargamenucategoria.php?categoria=VEHICULOS" class="list-group-item">VEHICULOS</a>
+							<a href="cargamenucategoria.php?categoria=MUSICA" class="list-group-item">MUSICA</a>
+							<a href="cargamenucategoria.php?categoria=DEPORTE" class="list-group-item">DEPORTE</a>
+							<a href="cargamenucategoria.php?categoria=PASATIEMPOS" class="list-group-item">PASATIEMPOS</a>
+							<a href="cargamenucategoria.php?categoria=OTROS" class="list-group-item">OTROS</a>
 							</b>
 						  </div>
 						</div>
@@ -205,7 +205,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 			<div class="jumbotron">
 				<div class="container">
 					<form action="">
-						<textarea name="area" id="" cols="150" rows="3"><?php echo $descripcion ?></textarea>
+						<textarea name="descrip" id="" cols="150" rows="3"><?php echo $descripcion ?></textarea>
 					</form>
 				</div>
 			</div>
@@ -213,8 +213,10 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 			
 		<div class="jumbotron">
 			<div class="container">
-				<form action="">
-					<textarea name="area" id="" cols="150" rows="3"></textarea>
+				<form action="../Logica/procesacomentario.php" method="POST">
+				<input  type="hidden" name="usuario" value= "<?php echo $_SESSION["ID"]; ?>" />
+				<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
+					<textarea name="comenta" id="" cols="150" rows="3"></textarea>
 					<button class="btn btn-lg btn-warning btn-block" type="submit" style='width:120px; height:40px'>Comentar</button>
 				</form>
 			</div>
@@ -224,16 +226,20 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 		<div class="jumbotron">
 
 			<div class="container">
-				<div class="row">
+				<div class="row" >
 				<?php
 				for ($i=0;$i<$cuentac;$i++)
 				{
 				?>
-					<div>
+				<div class="panel panel-default">
+					<div class="panel-body">
 						<ul>
-							<li><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][3]?></option></li>
+							<li><strong>Comentario : </strong><br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][3]?></option></li>
+							<li>Respuesta : <br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][5]?></option></li>
 						</ul>
+						<button class="btn btn-sm btn-danger btn-block" type="submit" style='width:75px; height:30px'>Denunciar</button>
 					</div>
+				</div>
 				<?php
 				}
 				?>	

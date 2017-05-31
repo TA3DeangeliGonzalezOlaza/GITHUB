@@ -28,12 +28,12 @@ class Comenta
       $this->id_comen= $idc;
     }
     
-    public function setIdusu($idu)
+    public function setIdusucom($idu)
     {
       $this->id_usucom= $idu;
 	}
 	
-	public function setIdpub($idp)
+	public function setIdpubcom($idp)
     {
       $this->id_pubcom= $idp;
     }
@@ -43,7 +43,7 @@ class Comenta
       $this->comentario= $com;
     }
 	
-	public function setDenuncia($den)
+	public function setDenunciacom($den)
     {
       $this->denunciado_com= $den;
     }
@@ -60,12 +60,12 @@ class Comenta
       return $this->id_comen;
     }
     
-    public function getIdusu()
+    public function getIdusucom()
     {
       return $this->id_usucom;
     }
 	
-	public function getIdpub()
+	public function getIdpubcom()
     {
       return $this->id_pubcom;
     }
@@ -75,12 +75,12 @@ class Comenta
       return $this->comentario;
     }
 	    
-    public function getDenuncia()
+    public function getDenunciacom()
     {
       return $this->denunciado_com;
     }
 	
-	public function getResponde()
+	public function getRespondecom()
     {
       return $this->responde_com;
     }
@@ -89,7 +89,7 @@ class Comenta
     public function alta($conex)
     {
         $pu=new PersistenciaComenta;
-        return ($pu->agregar($this, $conex));
+        return ($pu->comenta($this, $conex));
     }
     
    

@@ -221,11 +221,14 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 				for ($i=0;$i<$cuentac;$i++)
 				{
 				?>
-					<div>
+				<div class="panel panel-default">
+					<div class="panel-body">
 						<ul>
-							<li><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][3]?></option></li>
+							<li><strong>Comentario : </strong><br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][3]?></option></li>
+							<li>Respuesta : <br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][5]?></option></li>
 						</ul>
 					</div>
+				</div>
 				<?php
 				}
 				?>	
