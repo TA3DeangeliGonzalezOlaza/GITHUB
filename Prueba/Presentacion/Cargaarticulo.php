@@ -72,7 +72,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 			</nav>
 		</div>
 									<?php
-										
+										$fechaactual = date("Y-m-d");
 										$conex = conectar();
 										$d = new Publicacion($id_pub);
 										$datos_d=$d->consultaUno($conex);
@@ -135,7 +135,10 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 										<?php $id_pub_comentada = $datos_c[$i][2]?>
 										<?php $comentario = $datos_c[$i][3]?>
 										<?php $com_denunciado = $datos_c[$i][4]?>
-										<?php $respuesta = $datos_c[$i][5]?>			
+										<?php $respuesta = $datos_c[$i][5]?>
+										
+
+										
 								<?php
 								}
 								?>
@@ -151,38 +154,43 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 		</div>
 		<div class="jumbotron">
 				<div class="container">
-					<div class="row col-md-4">
-					imagen
-					
-					</div>
-					<div class="row col-md-3">
-						<ul>
-							<li><h2>$<?php echo $precio ?></h2></li>
-							<li>Estado: <?php echo $estado ?></li>
-							<li><input type="number" min="1" class=""></li>
-						</ul>
-					</div>
-					
-					<div class="row col-md-3">
-						<ul>
-							<li>Stock:<?php echo $stock ?></li>
-							<li>Categoria</li>
-							<li><?php if ($permuta == "permuta"){ ?>
-							<button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button>
-							<?php } 
-							if ($permuta == "nopermuta") {?>  
-							No permuta  
-							<?php }?></li>
+					<form action="../Logica/procesacompra.php" method="POST">
+						<div class="row col-md-4">
+						imagen
+						
+						</div>
+						<div class="row col-md-3">
+							<ul>
+								<li><h2>$<?php echo $precio ?></h2></li>
+								<li>Estado: <?php echo $estado ?></li>
+								<li><input type="number" min="1" class="" name="cantidad" value="1"></li>
+							</ul>
+						</div>
+						
+						<div class="row col-md-3">
+							<ul>
+								<li>Stock :<?php echo $stock ?></li>
+								<li>Categoria :<?php echo $categoria ?></li>
+								<li><?php if ($permuta == "permuta"){ ?>
+								<button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button>
+								<?php } 
+								if ($permuta == "nopermuta") {?>  
+								No permuta  
+								<?php }?></li>
+								
+
+								<input  type="hidden" name="usuario" value= "<?php echo $_SESSION["ID"]; ?>" />
+								<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
+								<input  type="hidden" name="fechaactual" value= "<?php echo $fechaactual; ?>" />
+								<input  type="hidden" name="precio" value= "<?php echo $precio; ?>" />
+								<li><button class="btn btn-sm btn-DANGER btn-block" type="submit" style='width:80px; height:30px'>COMPRAR</button></li>
+							</ul>
+						</div>
+					</form>
 							
 							
-							<li><button class="btn btn-sm btn-DANGER btn-block" type="submit" style='width:80px; height:30px'>COMPRAR</button></li>
-							
-							
-							
-							
-							
-						</ul>
-					</div>
+								
+						
 					
 					<div>
 						<div class="row col-xs-6 col-sm-3 col-md-2 sidebar-offcanvas aling-left" id="sidebar">

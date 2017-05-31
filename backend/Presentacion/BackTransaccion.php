@@ -79,6 +79,7 @@ require_once('../clases/Transaccion.class.php');
 														<th>Cantidad</th>
 														<th>Calificacion</th>
 														<th>Pago de comision</th>
+														<th>Monto de comision</th>
 														<th></th>
 														<th></th>
 
@@ -99,11 +100,12 @@ require_once('../clases/Transaccion.class.php');
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][0]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][1]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a></td>
-															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][3]?></a></td>
+															<td><a value="<?php echo $datos_d[$i][0]?>"  >$<?php echo $datos_d[$i][3]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][4]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][5]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][6]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][7]?></a></td>
+															<td><a value="<?php echo $datos_d[$i][0]?>"  >$<?php echo $datos_d[$i][8]?></a></td>
 															<td><a href="singin.php" class="btn btn-warning btn-sm">Modificar</a></td>
 															<td><a href="Login.php" class="btn btn-warning btn-sm">Sansionar</a></td>
 														

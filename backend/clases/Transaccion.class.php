@@ -11,8 +11,9 @@ class Transaccion
 	private $cantidad; 
 	private $calificaciont; 
 	private $pago_comision;
+	private $comision_monto;
       
-    function __construct($idt='',$idu='',$idp='',$pref='',$fec='',$cant='',$cal='',$pag='')
+    function __construct($idt='',$idu='',$idp='',$pref='',$fec='',$cant='',$cal='',$pag='',$com='')
     {
         $this->id_trans= $idt;
         $this->id_usut= $idu;
@@ -22,6 +23,7 @@ class Transaccion
 		$this->cantidad= $cant;
 		$this->calificaciont= $cal;
 		$this->pago_comision= $pag;
+		$this->comision_monto= $com;
 	}
     
     //Métodos set
@@ -66,6 +68,11 @@ class Transaccion
       $this->pago_comision= $pag;
     }
 	
+		public function setComision($com)
+    {
+      $this->comision_monto= $com;
+    }
+	
 	
     //Métodos get
     
@@ -107,6 +114,11 @@ class Transaccion
 	    public function getPago()
     {
       return $this->pago_comision;
+    }
+	
+		public function getComision()
+    {
+      return $this->comision_monto;
     }
      
     //Otros Métodos
