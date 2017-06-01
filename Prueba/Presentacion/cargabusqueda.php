@@ -41,7 +41,7 @@ $busqueda=strip_tags($_POST['keywords']);
 					  </div>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
-					<div class="navbar-brand"><label>Bienvenido <?php echo $_SESSION["LOGIN"];?></label></div>
+					<div class="navbar-brand"><label>Bienvenido <?php echo $_SESSION["LOGIN"];?> Resultado de "<?php echo $busqueda ?>"</label></div>
 					  <form class="navbar-form navbar-right">
 					  
 					  

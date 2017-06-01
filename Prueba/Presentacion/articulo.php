@@ -34,7 +34,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 					  </button>
 					  <a class="navbar-brand" href="index.php?categoria=Index">PAGINA</a>
 					  <div class="navbar-brand">
-							<form class="forma-busqueda cf" action="/search.php" method="post">
+							<form class="forma-busqueda cf" action="busqueda.php" method="post">
 								<label for="search_box">
 								<span> </span>
 								</label>

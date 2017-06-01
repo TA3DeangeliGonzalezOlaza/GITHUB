@@ -35,7 +35,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 					  </button>
 					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
 					  <div class="navbar-brand">
-							<form class="forma-busqueda cf" action="/search.php" method="post">
+							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
 								<label for="search_box">
 								<span> </span>
 								</label>
@@ -150,6 +150,9 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 		<div class="jumbotron">
 			<div class="container text-center">
 			<h1 class="text-danger"><?php echo $nom_pub ?></h1>
+			<form action="../logica/procesadenunciapublicacion.php" method="POST">
+			<button name="id_pub" class="btn btn-sm btn-danger btn-block" type="submit" style='width:150px; height:30px' value="<?php echo $id_pub;?>">Denunciar Publicacion</button>
+			</form>
 			</div>
 		</div>
 		<div class="jumbotron">

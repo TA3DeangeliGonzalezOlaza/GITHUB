@@ -194,7 +194,20 @@ class PersistenciaPublicacion
     }
 	
 	
-	
+	public function denunPub($obj, $conex)
+   {
+		
+	    $id_pub = $obj->getIdPublicacion();
+
+		$sql = "Update `publicacion` Set denuncia_pub = 1 where id_pub=:id_pub";
+		
+		$result = $conex->prepare($sql);
+		$result->execute(array(":id_pub" => $id_pub));
+		
+			
+		
+       return $result;
+    }	
 	
 	
 	

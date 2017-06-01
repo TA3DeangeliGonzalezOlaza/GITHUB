@@ -55,13 +55,6 @@
 					  </button>
 					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
 					  <div class="navbar-brand">
-							<form class="forma-busqueda cf" action="/search.php" method="post">
-								<label for="search_box">
-								<span> </span>
-								</label>
-								<input name="keywords" id="search_box" type="text" placeholder="" >
-								<input type="hidden" name="action" value="do_search" class="boton44"/>
-							</form>
 					  
 					  </div>
 					</div>
