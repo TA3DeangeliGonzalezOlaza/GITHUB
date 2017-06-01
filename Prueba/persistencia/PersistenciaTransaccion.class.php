@@ -42,10 +42,15 @@ class PersistenciaTransaccion
 		$comision_monto= trim($obj->getComision());
 		
         $sql = "insert into transaccion (id_usut,id_pubt,precio_finalt,fechat,cantidad,comision_monto) values (:id_usut,:id_pubt,:precio_finalt,:fechat,:cantidad,:comision_monto)";
+		$sql2 = "UPDATE `publicacion` SET stock_pub= stock_pub-:cantidad WHERE id_pub=:id_pubt";
 		
         $result = $conex->prepare($sql);
+		
 	    $result->execute(array(":id_usut" => $id_usut,":id_pubt" => $id_pubt,":precio_finalt" => $precio_finalt,":fechat"=>$fechat,
 		":cantidad"=>$cantidad,":comision_monto"=>$comision_monto));
+		
+		$result2 = $conex->prepare($sql2);		
+		$result2->execute(array(":cantidad" => $cantidad,":id_pubt" => $id_pubt));
 
     }	
 	
