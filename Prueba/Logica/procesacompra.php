@@ -10,6 +10,7 @@ $fecha=strip_tags($_POST['fechaactual']);
 $precio=strip_tags($_POST['precio']);
 $cantidad=strip_tags($_POST['cantidad']);
 
+
 $preciofinal=$precio*$cantidad;
 $comision=$preciofinal*0.05;
 

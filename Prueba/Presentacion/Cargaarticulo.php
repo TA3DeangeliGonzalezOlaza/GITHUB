@@ -183,7 +183,28 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
 								<input  type="hidden" name="fechaactual" value= "<?php echo $fechaactual; ?>" />
 								<input  type="hidden" name="precio" value= "<?php echo $precio; ?>" />
+								
+								<?php
+								if (!($_SESSION["ID"]==$id_usup)){?>
+								
+								
 								<li><button class="btn btn-sm btn-DANGER btn-block" type="submit" style='width:80px; height:30px'>COMPRAR</button></li>
+								
+								
+								<?php } ?>
+								
+								<?php
+								if ($_SESSION["ID"]==$id_usup){?>
+								
+								
+								No puedes comprar tu misma publicacion
+								
+								
+								<?php } ?>
+								
+								
+								
+								
 							</ul>
 						</div>
 					</form>
@@ -225,7 +246,28 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 				<input  type="hidden" name="usuario" value= "<?php echo $_SESSION["ID"]; ?>" />
 				<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
 					<textarea name="comenta" id="" cols="150" rows="3"></textarea>
-					<button class="btn btn-lg btn-warning btn-block" type="submit" style='width:120px; height:40px'>Comentar</button>
+								<?php
+								if (!($_SESSION["ID"]==$id_usup)){?>
+								
+								
+								<li><button class="btn btn-lg btn-warning btn-block" type="submit" style='width:120px; height:40px'>Comentar</button></li>
+								
+								
+								<?php } ?>
+								
+								<?php
+								if ($_SESSION["ID"]==$id_usup){?>
+								
+								
+								<br>No puedes comentar tu propia publicacion
+								
+								
+								<?php } ?>
+					
+					
+					
+					
+					
 				</form>
 			</div>
 		</div>
