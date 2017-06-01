@@ -298,25 +298,30 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 		<div class="jumbotron">
 
 			<div class="container">
-				<div class="row" >
-				<?php
-				for ($i=0;$i<$cuentac;$i++)
-				{
-				?>
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<ul>
-							<li><strong>Comentario : </strong><br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][3]?></option></li>
-							<li>Respuesta : <br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][5]?></option></li>
-						</ul>
-						<button class="btn btn-sm btn-danger btn-block" type="submit" style='width:75px; height:30px'>Denunciar</button>
-					</div>
-				</div>
-				<?php
-				}
-				?>	
-					
-				</div>
+				<form action="../Logica/procesadenunciacomentario.php" method="POST">
+					<div class="row" >
+					<?php
+					for ($i=0;$i<$cuentac;$i++)
+					{
+					?>
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<ul>
+									<li name="id_comentario"><?php echo $datos_c[$i][0]?></li>
+										<li><strong>Comentario : </strong><br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][3]?></option></li><br>
+										<li>Respuesta : <br><option value="<?php echo $datos_c[$i][0]?>"  ><?php echo $datos_c[$i][5]?></option></li>
+									</ul>
+									<button name="id_comentario" class="btn btn-sm btn-danger btn-block" type="submit" style='width:75px; height:30px' value="<?php echo $datos_c[$i][0]?>">Denunciar</button>
+								</div>
+							</div>
+							<input  type="hidden" name="id_pub" value= "<?php echo $id_pub; ?>" />
+					<?php
+					}
+					?>	
+								
+							</div>
+					</form>
+				</form>
 			</div>
 		</div>
 

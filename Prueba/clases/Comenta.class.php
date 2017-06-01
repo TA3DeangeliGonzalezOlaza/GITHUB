@@ -113,10 +113,10 @@ class Comenta
       return $datos;
     }
     
-	public function consultaUno($conex,$IdLug)
+	public function consultaUno($conex)
     {
       $pu=new PersistenciaComenta;
-      $datos= $pu->consUno($this,$conex,$IdLug);
+      $datos= $pu->consUno($this,$conex);
       return $datos;
     }
 	
@@ -126,6 +126,12 @@ class Comenta
       $pu=new PersistenciaComenta;
       $datos= $pu->consTodosPub($this,$conex);
       return $datos;
+    }
+	
+	    public function DenunciaComentario($conex)
+    {
+      $pu=new PersistenciaComenta;
+      return($pu->denuncom($this, $conex));
     }
     
 	

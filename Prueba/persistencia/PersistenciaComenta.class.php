@@ -55,7 +55,19 @@ class PersistenciaComenta
         $result = $conex->prepare($sql);
 		$result->execute(array(":id_usucom" => $id_usucom,":id_pubcom" => $id_pubcom,":comentario" => $comentario));
 
-    }	
+    }
+
+
+   public function denuncom($obj, $conex)
+   {
+       $id_comen = $obj->getIdcomen();
+	   $id_pubcom = $obj->getIdpubcom();
+        $sql = "Update `comenta` Set denunciado_com=1 where id_comen=:id_comen and id_pubcom=:id_pubcom";
+				
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_comen" => $id_comen,":id_pubcom" => $id_pubcom));
+
+    }		
 	
 	
  }

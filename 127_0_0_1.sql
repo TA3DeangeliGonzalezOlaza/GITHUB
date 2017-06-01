@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2017 a las 03:41:06
+-- Tiempo de generación: 01-06-2017 a las 05:09:49
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -42,11 +42,12 @@ CREATE TABLE `comenta` (
 --
 
 INSERT INTO `comenta` (`id_comen`, `id_usucom`, `id_pubcom`, `comentario`, `denunciado_com`, `responde_com`) VALUES
-(1, 9, 12, 'cuanto te mide', 0, ''),
-(2, 9, 12, 'responde cuanto le mide?', 0, ''),
-(9, 1, 9, 'hola es un comentario de prueba', 0, ''),
+(1, 9, 12, 'cuanto te mide', 1, ''),
+(2, 9, 12, 'responde cuanto le mide?', 1, ''),
+(9, 1, 9, 'hola es un comentario de prueba', 1, ''),
 (10, 1, 9, 'este es otro comentario prueba', 0, ''),
-(11, 1, 14, 'Otra prueba', 0, '');
+(11, 1, 14, 'Otra prueba', 1, ''),
+(13, 1, 14, 'lindo para hablar por chat', 0, '');
 
 -- --------------------------------------------------------
 
@@ -121,9 +122,9 @@ INSERT INTO `publicacion` (`id_pub`, `id_usup`, `nom_pub`, `precio_pub`, `stock_
 (9, 1, 'perro', 200, 5, 'descripcion local', '', '', '', 'nuevo', '0000-00-00', 'Permuta', 'Otros', 0),
 (10, 1, 'Gato', 300, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'Permuta', 'Otros', 0),
 (11, 1, 'dragon', 500, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'Permuta', 'Otros', 0),
-(12, 2, 'sodape', 10, 1, 'Negra y grande', '', '', '', 'usado', '0000-00-00', 'permuta', 'otros', 0),
-(13, 9, 'el grone', 2, 4, '12313', '', '', '', 'nuevo', '2017-05-30', 'permuta', 'ARTE', 0),
-(14, 2, 'Prueba articulo', 123, 233, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0);
+(12, 2, 'sodape', 10, 0, 'Negra y grande', '', '', '', 'usado', '0000-00-00', 'permuta', 'otros', 0),
+(13, 9, 'el grone', 2, 3, '12313', '', '', '', 'nuevo', '2017-05-30', 'permuta', 'ARTE', 0),
+(14, 2, 'Prueba articulo', 123, 230, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0);
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,11 @@ INSERT INTO `transaccion` (`id_trans`, `id_usut`, `id_pubt`, `precio_finalt`, `f
 (15, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
 (16, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
 (17, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
-(18, 1, 13, 2, '2017-06-01', 1, NULL, 0, 0);
+(18, 1, 13, 2, '2017-06-01', 1, NULL, 0, 0),
+(19, 1, 13, 2, '2017-06-01', 1, NULL, 0, 0),
+(20, 1, 14, 369, '2017-06-01', 3, NULL, 0, 18),
+(21, 1, 12, 10, '2017-06-01', 1, NULL, 0, 1),
+(22, 1, 12, 50, '2017-06-01', 5, NULL, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -246,7 +251,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comenta`
 --
 ALTER TABLE `comenta`
-  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `permuta`
 --
@@ -266,7 +271,7 @@ ALTER TABLE `publicacion`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -464,7 +469,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
+('root', '[{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
 
 -- --------------------------------------------------------
 
