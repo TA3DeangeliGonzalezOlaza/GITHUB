@@ -172,7 +172,29 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<li>Stock :<?php echo $stock ?></li>
 								<li>Categoria :<?php echo $categoria ?></li>
 								<li><?php if ($permuta == "permuta"){ ?>
-								<button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button>
+								
+																<?php
+								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")) {?>
+								
+								
+								<li><button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button></li>
+								
+								
+								<?php } ?>
+								
+								<?php
+								if ($_SESSION["ID"]==$id_usup){?>
+								
+								
+								No puedes Permutar tu misma publicacion
+								
+								
+								<?php } ?>
+								
+
+								
+								
+								
 								<?php } 
 								if ($permuta == "nopermuta") {?>  
 								No permuta  
@@ -185,7 +207,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<input  type="hidden" name="precio" value= "<?php echo $precio; ?>" />
 								
 								<?php
-								if (!($_SESSION["ID"]==$id_usup)){?>
+								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")) {?>
 								
 								
 								<li><button class="btn btn-sm btn-DANGER btn-block" type="submit" style='width:80px; height:30px'>COMPRAR</button></li>
