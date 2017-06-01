@@ -7,6 +7,7 @@ echo "<script type='text/javascript' src='../jscript/funcionesGenerales.js'></sc
 require_once('../logica/funciones.php');
 require_once('../clases/Publicacion.class.php');	
  
+$busqueda=strip_tags($_POST['keywords']);
  
 
 ?>
@@ -45,6 +46,7 @@ require_once('../clases/Publicacion.class.php');
 					<div id="navbar" class="navbar-collapse collapse">
 					
 					  <form class="navbar-form navbar-right">
+
 						<a href="singin.php" class="btn btn-warning btn-sm">Ingresar</a>
 						<a href="Login.php" class="btn btn-warning btn-sm">Registrarse</a>
 		
@@ -67,11 +69,12 @@ require_once('../clases/Publicacion.class.php');
 							<div class="container">
 								<div class="row">
 									<?php
-										
+
 										$conex = conectar();
-										$d = new Publicacion();
-										$datos_d=$d->consultaTodos($conex);
-										$cuenta=count($datos_d);
+										$d = new Publicacion('','',$busqueda);
+										$datos_d=$d->BuscarPublicacion($conex);
+										$cuenta=count($datos_d);										
+										
 									?>
 									<?php
 										for ($i=0;$i<$cuenta;$i++)

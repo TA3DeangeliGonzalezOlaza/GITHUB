@@ -28,7 +28,7 @@ require_once('../clases/Publicacion.class.php');
 					  </button>
 					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
 					  <div class="navbar-brand">
-							<form class="forma-busqueda cf" action="/search.php" method="post">
+							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
 								<label for="search_box">
 								<span> </span>
 								</label>

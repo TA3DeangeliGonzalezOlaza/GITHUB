@@ -179,7 +179,19 @@ class PersistenciaPublicacion
        return $resultados;
     }
 	
-	
+	    
+    public function buscPub($obj, $conex)
+   {
+        $nom_pub= trim($obj->getNombre());   
+        $sql = "select * from publicacion,usuario where id_usu= id_usup and nom_pub like '%' :nom_pub '%' order by premium DESC";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":nom_pub" => $nom_pub));
+		$resultados=$result->fetchAll();
+
+
+       return $resultados;
+    }
 	
 	
 	
