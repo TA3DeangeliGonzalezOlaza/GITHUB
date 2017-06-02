@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2017 a las 05:09:49
+-- Tiempo de generación: 02-06-2017 a las 01:53:22
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -42,12 +42,10 @@ CREATE TABLE `comenta` (
 --
 
 INSERT INTO `comenta` (`id_comen`, `id_usucom`, `id_pubcom`, `comentario`, `denunciado_com`, `responde_com`) VALUES
-(1, 9, 12, 'cuanto te mide', 1, ''),
-(2, 9, 12, 'responde cuanto le mide?', 1, ''),
-(9, 1, 9, 'hola es un comentario de prueba', 1, ''),
-(10, 1, 9, 'este es otro comentario prueba', 0, ''),
 (11, 1, 14, 'Otra prueba', 1, ''),
-(13, 1, 14, 'lindo para hablar por chat', 0, '');
+(13, 1, 14, 'lindo para hablar por chat', 0, ''),
+(15, 1, 14, 'hola\r\n', 0, ''),
+(16, 1, 12, 'y peluda?', 1, '');
 
 -- --------------------------------------------------------
 
@@ -89,7 +87,7 @@ CREATE TABLE `persona` (
 INSERT INTO `persona` (`id_per`, `ci_per`, `nick_per`, `password_per`, `nom1_per`, `nom2_per`, `ape1_per`, `ape2_per`, `email_per`, `tel_per`, `dir_per`) VALUES
 (1, 11111111, 'fabri', 'fabri', 'fabri', 'fabri', 'olaza', 'olaza', 'mail', 14521, 'direccion'),
 (2, 11111111, 'pichu', 'pichu', 'pi', 'ka', 'chu', 'pokemon', 'pikachu@picapica.com', 99090909, 'isla pokemon'),
-(6, 11111111, 'dfg', 'dfg', 'dfg', 'dfg', 'dfg', 'dfg', 'dfg@dfg.bom', 2147483647, 'dfg');
+(11, 11111111, 'andres', 'andres', 'andres', 'andres', 'Deangeli', 'Deangeli', 'andres@bla.com', 95555555, 'direccion');
 
 -- --------------------------------------------------------
 
@@ -123,8 +121,8 @@ INSERT INTO `publicacion` (`id_pub`, `id_usup`, `nom_pub`, `precio_pub`, `stock_
 (10, 1, 'Gato', 300, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'Permuta', 'Otros', 0),
 (11, 1, 'dragon', 500, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'Permuta', 'Otros', 0),
 (12, 2, 'sodape', 10, 0, 'Negra y grande', '', '', '', 'usado', '0000-00-00', 'permuta', 'otros', 0),
-(13, 9, 'el grone', 2, 3, '12313', '', '', '', 'nuevo', '2017-05-30', 'permuta', 'ARTE', 0),
-(14, 2, 'Prueba articulo', 123, 230, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0);
+(14, 2, 'Prueba articulo', 123, 227, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0),
+(15, 1, 'rodri', 2, 1, 'ta divino', '', '', '', 'usado', '2017-06-02', 'permuta', 'MODA', 0);
 
 -- --------------------------------------------------------
 
@@ -152,24 +150,20 @@ INSERT INTO `transaccion` (`id_trans`, `id_usut`, `id_pubt`, `precio_finalt`, `f
 (1, 2, 11, 500, '0000-00-00', 1, 0, 0, 0),
 (2, 2, 11, 500, '0000-00-00', 1, 0, 0, 0),
 (3, 2, 11, 500, '0000-00-00', 1, 0, 0, 0),
-(4, 2, 9, 500, '0000-00-00', 1, 0, 0, 0),
-(5, 2, 9, 500, '0000-00-00', 1, 0, 0, 0),
 (6, 2, 10, 500, '0000-00-00', 1, 0, 0, 0),
 (7, 1, 12, 10, '0000-00-00', 5, 0, 0, 0),
 (9, 1, 14, 615, '2017-05-31', 5, NULL, 0, 31),
 (10, 1, 12, 50, '2017-05-31', 5, NULL, 0, 3),
-(11, 1, 9, 200, '2017-06-01', 1, NULL, 0, 10),
 (12, 1, 12, 10, '2017-06-01', 1, NULL, 0, 1),
 (13, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
 (14, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
 (15, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
 (16, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
 (17, 1, 14, 123, '2017-06-01', 1, NULL, 0, 6),
-(18, 1, 13, 2, '2017-06-01', 1, NULL, 0, 0),
-(19, 1, 13, 2, '2017-06-01', 1, NULL, 0, 0),
 (20, 1, 14, 369, '2017-06-01', 3, NULL, 0, 18),
 (21, 1, 12, 10, '2017-06-01', 1, NULL, 0, 1),
-(22, 1, 12, 50, '2017-06-01', 5, NULL, 0, 3);
+(22, 1, 12, 50, '2017-06-01', 5, NULL, 0, 3),
+(23, 1, 14, 369, '2017-06-02', 3, NULL, 0, 18);
 
 -- --------------------------------------------------------
 
@@ -193,7 +187,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usu`, `reputacion_usu`, `suspendido`, `rol`, `premium`, `id_personau`) VALUES
 (1, 5, 0, 'admin', 0, 1),
 (2, 5, 0, 'admin', 1, 2),
-(9, 0, 0, 'user', 0, 6);
+(11, 0, 0, 'user', 0, 11);
 
 --
 -- Índices para tablas volcadas
@@ -251,7 +245,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comenta`
 --
 ALTER TABLE `comenta`
-  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `permuta`
 --
@@ -261,22 +255,22 @@ ALTER TABLE `permuta`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_per` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_per` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_pub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id usuario', AUTO_INCREMENT=10;
+  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id usuario', AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --
@@ -469,7 +463,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
+('root', '[{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"}]');
 
 -- --------------------------------------------------------
 
@@ -576,7 +570,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2017-05-12 17:11:20', '{\"lang\":\"es\",\"collation_connection\":\"utf8mb4_unicode_ci\"}');
+('root', '2017-06-01 23:04:04', '{\"lang\":\"es\",\"collation_connection\":\"utf8mb4_unicode_ci\"}');
 
 -- --------------------------------------------------------
 
