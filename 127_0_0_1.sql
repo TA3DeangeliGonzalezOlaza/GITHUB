@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2017 a las 01:53:22
+-- Tiempo de generación: 02-06-2017 a las 04:20:28
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -45,7 +45,8 @@ INSERT INTO `comenta` (`id_comen`, `id_usucom`, `id_pubcom`, `comentario`, `denu
 (11, 1, 14, 'Otra prueba', 1, ''),
 (13, 1, 14, 'lindo para hablar por chat', 0, ''),
 (15, 1, 14, 'hola\r\n', 0, ''),
-(16, 1, 12, 'y peluda?', 1, '');
+(16, 1, 12, 'y peluda?', 1, ''),
+(17, 11, 9, 'cuanto me haces por dos?', 0, '');
 
 -- --------------------------------------------------------
 
@@ -117,10 +118,10 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`id_pub`, `id_usup`, `nom_pub`, `precio_pub`, `stock_pub`, `descripcion_pub`, `img01_pub`, `img02_pub`, `img03_pub`, `nuevo_pub`, `fecha_pub`, `acepta_permuta_pub`, `categoria_pub`, `denuncia_pub`) VALUES
-(9, 1, 'perro', 200, 5, 'descripcion local', '', '', '', 'nuevo', '0000-00-00', 'Permuta', 'Otros', 0),
-(10, 1, 'Gato', 300, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'Permuta', 'Otros', 0),
-(11, 1, 'dragon', 500, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'Permuta', 'Otros', 0),
-(12, 2, 'sodape', 10, 0, 'Negra y grande', '', '', '', 'usado', '0000-00-00', 'permuta', 'otros', 0),
+(9, 1, 'perro', 200, 3, 'descripcion local', '', '', '', 'nuevo', '0000-00-00', 'permuta', 'Otros', 0),
+(10, 1, 'Gato', 300, 3, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'permuta', 'Otros', 0),
+(11, 1, 'dragon', 500, 5, 'descripcion local', '', '', '', 'usado', '0000-00-00', 'permuta', 'Otros', 0),
+(12, 2, 'sodape', 10, 0, 'Negra y grande', '', '', '', 'usado', '0000-00-00', 'permuta', 'otros', 1),
 (14, 2, 'Prueba articulo', 123, 227, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0),
 (15, 1, 'rodri', 2, 1, 'ta divino', '', '', '', 'usado', '2017-06-02', 'permuta', 'MODA', 0);
 
@@ -163,7 +164,10 @@ INSERT INTO `transaccion` (`id_trans`, `id_usut`, `id_pubt`, `precio_finalt`, `f
 (20, 1, 14, 369, '2017-06-01', 3, NULL, 0, 18),
 (21, 1, 12, 10, '2017-06-01', 1, NULL, 0, 1),
 (22, 1, 12, 50, '2017-06-01', 5, NULL, 0, 3),
-(23, 1, 14, 369, '2017-06-02', 3, NULL, 0, 18);
+(23, 1, 14, 369, '2017-06-02', 3, NULL, 0, 18),
+(27, 11, 9, 200, '2017-06-02', 1, NULL, 0, 10),
+(28, 11, 9, 200, '2017-06-02', 1, NULL, 0, 10),
+(29, 11, 10, 600, '2017-06-02', 2, NULL, 0, 30);
 
 -- --------------------------------------------------------
 
@@ -245,7 +249,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comenta`
 --
 ALTER TABLE `comenta`
-  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_comen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `permuta`
 --
@@ -265,7 +269,7 @@ ALTER TABLE `publicacion`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -463,7 +467,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"}]');
+('root', '[{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
 
 -- --------------------------------------------------------
 
@@ -570,7 +574,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2017-06-01 23:04:04', '{\"lang\":\"es\",\"collation_connection\":\"utf8mb4_unicode_ci\"}');
+('root', '2017-05-12 17:11:20', '{\"lang\":\"es\",\"collation_connection\":\"utf8mb4_unicode_ci\"}');
 
 -- --------------------------------------------------------
 

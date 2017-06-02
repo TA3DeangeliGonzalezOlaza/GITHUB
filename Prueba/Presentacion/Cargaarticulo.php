@@ -208,6 +208,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
 								<input  type="hidden" name="fechaactual" value= "<?php echo $fechaactual; ?>" />
 								<input  type="hidden" name="precio" value= "<?php echo $precio; ?>" />
+								<input  type="hidden" name="nombrepub" value= "<?php echo $nom_pub; ?>" />
 								
 								<?php
 								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")) {?>
