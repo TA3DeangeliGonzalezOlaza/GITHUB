@@ -86,11 +86,11 @@ class PersistenciaPersona
     
     public function consUno($obj, $conex)
    {
-        $id_usu= trim($obj->getId());   
-        $sql = "select * from persona where id_persona=:id_persona";
+        $id_per= trim($obj->getId());   
+        $sql = "select * from persona where id_per=:id_per";
 		
         $result = $conex->prepare($sql);
-	    $result->execute(array(":id_persona" => $id_usu));
+	    $result->execute(array(":id_per" => $id_per));
 		$resultados=$result->fetchAll();
         //Obtiene el registro de la tabla Usuario 
 

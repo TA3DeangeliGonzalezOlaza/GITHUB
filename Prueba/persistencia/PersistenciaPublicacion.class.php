@@ -209,7 +209,19 @@ class PersistenciaPublicacion
        return $result;
     }	
 	
-	
+    
+    public function consPubUsu($obj, $conex)
+   {
+        $id_usup= trim($obj->getIdusuario());   
+        $sql = "select * from publicacion where id_usup=:id_usup";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usup" => $id_usup));
+		$resultados=$result->fetchAll();
+        //Obtiene el registro de la tabla Usuario 
+
+       return $resultados;
+    }	
 	
 	
 	

@@ -129,6 +129,16 @@ class Usuario
       $datos= $pu->traeUsu($this,$conex);
       return $datos;
     }
+	
+	
+	    public function datosUsuario($conex)
+    {
+      $pu=new PersistenciaUsuario;
+      $datos= $pu->datosUsu($this,$conex);
+      return $datos;
+    }
+	
+	
     //Devuelve true si el Login y el Password coinciden
   //  public function coincideLoginPassword($conex)
  //   {

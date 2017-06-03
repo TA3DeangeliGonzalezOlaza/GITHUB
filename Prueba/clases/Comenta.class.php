@@ -133,6 +133,15 @@ class Comenta
       $pu=new PersistenciaComenta;
       return($pu->denuncom($this, $conex));
     }
+	
+	public function consultaComentariosdeUsuario($conex)
+    {
+      $pu=new PersistenciaComenta;
+      $datos= $pu->consComUsu($this,$conex);
+      return $datos;
+    }	
+	
+	
     
 	
     //Devuelve true si el Login y el Password coinciden

@@ -250,7 +250,16 @@ class Publicacion
       $datos= $pu->denunPub($this,$conex);
       return $datos;
     }
-		
+	
+	public function consultaPublicacionesdeUsuario($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->consPubUsu($this,$conex);
+      return $datos;
+    }
+
+
+	
   
     //Devuelve true si el Login y el Password coinciden
   //  public function coincideLoginPassword($conex)

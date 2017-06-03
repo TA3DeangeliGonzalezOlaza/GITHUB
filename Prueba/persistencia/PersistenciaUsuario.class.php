@@ -120,6 +120,17 @@ class PersistenciaUsuario
        return $resultados;
     }
 	
+	    public function datosUsu($obj, $conex)
+   {
+        $id_personau= trim($obj->getIdpersona());   
+        $sql = "select * from usuario where id_personau=:id_personau";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_personau" => $id_personau));
+		$resultados=$result->fetchAll();
+       return $resultados;
+    }
+	
 	
 
  }

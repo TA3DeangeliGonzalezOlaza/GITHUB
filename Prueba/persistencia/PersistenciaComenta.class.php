@@ -69,6 +69,20 @@ class PersistenciaComenta
 
     }		
 	
+	   public function consComUsu($obj, $conex)
+   {
+        $id_usucom =($obj->getIdusucom());   
+        $sql = "select * from comenta where id_usucom=:id_usucom order by denunciado_com desc";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usucom" => $id_usucom));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
+	
+	
 	
  }
 

@@ -49,7 +49,7 @@ require_once('../clases/Publicacion.class.php');
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
+									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li class="divider"></li>
 									<li><a href="#"><b>Cambiar Email</b></a></li>
 									<li><a href="#"><b>Cambiar Password</b></a></li>

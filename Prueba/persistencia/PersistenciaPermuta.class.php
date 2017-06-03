@@ -56,6 +56,6 @@ class PersistenciaPermuta
        //return $resultados;
     }	
 	
- }
+ 
 
 ?>
