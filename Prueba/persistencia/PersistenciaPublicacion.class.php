@@ -223,8 +223,40 @@ class PersistenciaPublicacion
        return $resultados;
     }	
 	
+
+
+    public function consPreg($obj, $conex)
+   {
+        $id_usup= trim($obj->getIdusuario());   
+        $sql = "select id_comen, comentario from comenta, publicacion where id_pub=id_pubcom and id_usup=:id_usup";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usup" => $id_usup));
+		$resultados=$result->fetchAll();
+        //Obtiene el registro de la tabla Usuario 
+
+       return $resultados;
+    
+    }
 	
-	
+    public function consVent($obj, $conex)
+   {
+        $id_usup= trim($obj->getIdusuario());   
+        $sql = "select * from transaccion, publicacion where id_pub=id_pubt and id_usup=:id_usup";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usup" => $id_usup));
+		$resultados=$result->fetchAll();
+        //Obtiene el registro de la tabla Usuario 
+
+       return $resultados;
+    
+    }	
+
+
+
+
+
 	
  }
 

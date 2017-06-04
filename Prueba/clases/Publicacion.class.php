@@ -259,6 +259,24 @@ class Publicacion
     }
 
 
+	public function consultaPreguntas($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->consPreg($this,$conex);
+      return $datos;
+    }
+
+	public function consultaVentas($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->consVent($this,$conex);
+      return $datos;
+    }
+	
+
+	
+		
+	
 	
   
     //Devuelve true si el Login y el Password coinciden

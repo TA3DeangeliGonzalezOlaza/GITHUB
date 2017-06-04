@@ -171,6 +171,12 @@ class Transaccion
     }
 	
 	
+	public function consultaCompras($conex)
+    {
+      $pu=new PersistenciaTransaccion;
+      $datos= $pu->consComp($this,$conex);
+      return $datos;
+    }	
 
 	
 	//public function compraEntrada($conex,$IdEsp,$IdSec,$IdUsu,$IdLug,$cant,$preciofinal)

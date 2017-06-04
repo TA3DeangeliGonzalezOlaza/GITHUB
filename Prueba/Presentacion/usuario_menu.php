@@ -282,7 +282,7 @@ Datos usuario
 		
 		
 		
-	Mis comentarios	
+	Mis Preguntas	
 		
 <!--Trae Mis Comentarios -->
 						
@@ -357,7 +357,238 @@ Datos usuario
 			</div>
 		</div>	
 					
+
+
+		
+		
+	Mis Publicaciones Preguntadas	
+		
+<!--Trae Mis Respuestas -->
+						
+
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+														<th>ID comentario</th>
+														<th>ID Usuario comento</th>
+
+														
+
+													</tr>										
+													<?php
+													
+														$conex = conectar();
+														$e = new Publicacion('',$id_usu);
+														$datos_e=$e->consultaPreguntas($conex);
+														$cuentae=count($datos_e);
+
+													?>
+													
+												<?php
+												for ($i=0;$i<$cuentae;$i++)
+												{
+												?>
+												
+												
+															<?php $id_comenpub = $datos_e[$i][0]?>
+															<?php $comentario_pub = $datos_e[$i][1]?>
+												
+												
+													<tr>
+													
+															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $id_comenpub ;?></a></td>
+															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $comentario_pub ;?></a></td>
+														
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+						
+					</ol>
 					
+					
+					</div>
+					
+				</section>
+			</div>
+		</div>	
+
+
+
+
+	Mis Ventas	
+		
+<!--Trae Mis Ventas -->
+						
+
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+														<th>ID Transaccion</th>
+														<th>ID Usuario comprador</th>
+														<th>ID Publicacion Vendida</th>
+														<th>Precio Final</th>
+														<th>Fecha</th>
+														<th>Cantidad</th>
+														<th>Calificacion</th>
+														<th>Se pago comision?</th>
+														<th>Monto de comision</th>
+													
+														
+
+													</tr>										
+													<?php
+													
+														$conex = conectar();
+														$v = new Publicacion('',$id_usu);
+														$datos_v=$v->consultaVentas($conex);
+														$cuentav=count($datos_v);
+
+													?>
+													
+												<?php
+												for ($i=0;$i<$cuentav;$i++)
+												{
+												?>
+												
+												
+															<?php $id_trans = $datos_v[$i][0]?>
+															<?php $id_usut = $datos_v[$i][1]?>
+															<?php $id_pubt = $datos_v[$i][2]?>
+															<?php $precio_finalt = $datos_v[$i][3]?>
+															<?php $fechat = $datos_v[$i][4]?>
+															<?php $cantidad = $datos_v[$i][5]?>
+															<?php $calificaciont = $datos_v[$i][6]?>
+															<?php $pago_comision = $datos_v[$i][7]?>
+															<?php $comision_monto = $datos_v[$i][8]?>
+												
+												
+													<tr>
+													
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_trans ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_usut ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_pubt ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_finalt ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fechat ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $calificaciont ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $pago_comision ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $comision_monto ;?></a></td>
+														
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+						
+					</ol>
+					
+					
+					</div>
+					
+				</section>
+			</div>
+		</div>	
+
+
+
+	Mis COMPRAS	
+		
+<!--Trae Mis Compras -->
+						
+
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+														<th>ID Transaccion</th>
+														<th>ID Usuario comprador</th>
+														<th>ID Publicacion Vendida</th>
+														<th>Precio Final</th>
+														<th>Fecha</th>
+														<th>Cantidad</th>
+														<th>Calificacion</th>
+
+													
+														
+
+													</tr>										
+													<?php
+													
+														$conex = conectar();
+														$t = new Transaccion('',$id_usu);
+														$datos_t=$t->consultaCompras($conex);
+														$cuentat=count($datos_t);
+
+													?>
+													
+												<?php
+												for ($i=0;$i<$cuentat;$i++)
+												{
+												?>
+												
+												
+															<?php $id_trans = $datos_t[$i][0]?>
+															<?php $id_usut = $datos_t[$i][1]?>
+															<?php $id_pubt = $datos_t[$i][2]?>
+															<?php $precio_finalt = $datos_t[$i][3]?>
+															<?php $fechat = $datos_t[$i][4]?>
+															<?php $cantidad = $datos_t[$i][5]?>
+															<?php $calificaciont = $datos_t[$i][6]?>
+												
+												
+													<tr>
+													
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $id_trans ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $id_usut ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $id_pubt ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  >$&nbsp<?php echo $precio_finalt ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $fechat ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $calificaciont ;?></a></td>
+
+														
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+						
+					</ol>
+					
+					
+					</div>
+					
+				</section>
+			</div>
+		</div>	
+
+
+		
 					
 <!--Trae Transacciones -->
 							

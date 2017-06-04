@@ -81,6 +81,26 @@ ORDER BY `cantidad`  DESC LIMIT 10; ";
 
        return $resultados;
     }
+	
+	
+	    public function consComp($obj, $conex)
+   {
+        $id_usut= trim($obj->getIdusuario());   
+        $sql = "select * from transaccion where id_usut=:id_usut";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usut" => $id_usut));
+		$resultados=$result->fetchAll();
+        //Obtiene el registro de la tabla Usuario 
+
+       return $resultados;
+    
+    }	
+	
+	
+	
+	
+	
 		
  }
 
