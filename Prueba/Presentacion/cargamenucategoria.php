@@ -105,7 +105,7 @@ $categoria= strip_tags(trim($_GET['categoria']));
 												<ul>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][11]?></option></li>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
-													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][18]?></option></li>
+													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][19]?></option></li>
 												</ul>
 												
 											</div>

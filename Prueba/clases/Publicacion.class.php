@@ -17,11 +17,12 @@ class Publicacion
 	private $acepta_permuta_pub; // si acepta permuta
 	private $categoria_pub; // categoria
 	private $denuncia_pub; // si esta denunciado
+	private $activa; // si esta denunciado
 
 	
       
     function __construct($id='',$usu='',$nom='',$pre='',$sto='',$des='',$im1='',$im2='',$im3='',$nue=''
-	,$fec='',$acp='',$cat='',$den='')
+	,$fec='',$acp='',$cat='',$den='',$act='')
     {
         $this->id_pub= $id;
         $this->id_usu= $usu;
@@ -37,6 +38,8 @@ class Publicacion
 		$this->acepta_permuta_pub= $acp;
 		$this->categoria_pub= $cat;
 		$this->denuncia_pub= $den;
+		$this->activa= $act;
+	
 	
 		
        
@@ -113,6 +116,11 @@ class Publicacion
     {
       $this->denuncia_pub= $den;
     }	
+	
+	public function setActiva($act)
+    {
+      $this->activa= $act;
+    }
 
     //Métodos get
     
@@ -184,6 +192,11 @@ class Publicacion
 	public function getDenuncia()
     {
       return $this->denuncia_pub;
+    }
+	
+	public function getActiva()
+    {
+      return $this->activa;
     }
    
      

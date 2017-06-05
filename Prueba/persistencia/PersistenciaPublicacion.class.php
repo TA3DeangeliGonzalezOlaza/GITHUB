@@ -20,12 +20,13 @@ class PersistenciaPublicacion
         $acepta_permuta_pub = $obj->getPermuta();
         $categoria_pub = $obj->getCategoria();
         $denuncia_pub = $obj->getDenuncia();
+		$activa = $obj->getActiva();
 	
         //Genera la sentencia a ejecutar
 		//La sql que vale es la primera, pero hay que completar los parametros en el execute
 		
-		$sql = "INSERT INTO `publicacion`(`id_usup`, `nom_pub`, `precio_pub`, `stock_pub`, `descripcion_pub`, `img01_pub`, `img02_pub`, `img03_pub`, `nuevo_pub`, `fecha_pub`, `acepta_permuta_pub`, `categoria_pub`, `denuncia_pub`) 
-		VALUES (:id_usup,:nom_pub,:precio_pub,:stock_pub,:descripcion_pub,:img01_pub,:img02_pub,:img03_pub,:nuevo_pub,:fecha_pub,:acepta_permuta_pub,:categoria_pub,:denuncia_pub)";
+		$sql = "INSERT INTO `publicacion`(`id_usup`, `nom_pub`, `precio_pub`, `stock_pub`, `descripcion_pub`, `img01_pub`, `img02_pub`, `img03_pub`, `nuevo_pub`, `fecha_pub`, `acepta_permuta_pub`, `categoria_pub`, `denuncia_pub`, `activa` ) 
+		VALUES (:id_usup,:nom_pub,:precio_pub,:stock_pub,:descripcion_pub,:img01_pub,:img02_pub,:img03_pub,:nuevo_pub,:fecha_pub,:acepta_permuta_pub,:categoria_pub,:denuncia_pub,'si')";
 		
 		$result = $conex->prepare($sql);
 		$result->execute(array(":id_usup" => $id_usu,":nom_pub" => $nom_pub,":precio_pub" => $precio_pub,":stock_pub" => $stock_pub,":descripcion_pub" => $descripcion_pub,":img01_pub" => $img01_pub,
@@ -83,7 +84,7 @@ class PersistenciaPublicacion
    public function consTodos( $conex)
    {
        
-        $sql = "select * from publicacion,usuario where id_usu= id_usup order by premium DESC";
+        $sql = "select * from publicacion,usuario where id_usu= id_usup and activa='si' order by premium DESC";
 		
         $result = $conex->prepare($sql);
 		$result->execute();
@@ -228,7 +229,7 @@ class PersistenciaPublicacion
     public function consPreg($obj, $conex)
    {
         $id_usup= trim($obj->getIdusuario());   
-        $sql = "select id_comen, comentario from comenta, publicacion where id_pub=id_pubcom and id_usup=:id_usup";
+        $sql = "select id_comen, nom_pub, comentario, responde_com from comenta, publicacion where id_pub=id_pubcom and id_usup=:id_usup";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":id_usup" => $id_usup));

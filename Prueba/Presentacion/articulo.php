@@ -88,6 +88,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 									<?php $permuta = $datos_d[$i][11]?>
 									<?php $categoria = $datos_d[$i][12]?>
 									<?php $denunciado = $datos_d[$i][13]?>
+									<?php $activo = $datos_d[$i][14]?>
 									
 									
 									<?php
@@ -139,6 +140,14 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 		<div class="jumbotron">
 			<div class="container text-center">
 			<h1 class="text-danger"><?php echo $nom_pub ?></h1>
+			<?php
+			if ($activo=="no"){?>
+			<H2>FINALIZADA</H2>
+
+			<?php
+			}
+			
+			?>
 			</div>
 		</div>
 		<div class="jumbotron">
@@ -159,7 +168,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 						<ul>
 							<li>Stock:<?php echo $stock ?></li>
 							<li>Categoria</li>
-							<li><?php if ($permuta == "permuta"){ ?>
+							<li><?php if ($permuta == "permuta"&&$activo =="si"){ ?>
 							PERMUTA
 							<?php } 
 							if ($permuta == "nopermuta") {?>  

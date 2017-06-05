@@ -76,6 +76,7 @@ require_once('../clases/Transaccion.class.php');
 														<th># ID Publicacion Comentada</th>
 														<th>Comentario</th>
 														<th>Denunciado</th>
+														<th>Respuesta</th>
 														<th></th>
 														<th></th>
 
@@ -98,8 +99,8 @@ require_once('../clases/Transaccion.class.php');
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][3]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][4]?></a></td>
-															<td><a href="singin.php" class="btn btn-warning btn-sm">Modificar</a></td>
-															<td><a href="Login.php" class="btn btn-warning btn-sm">Sansionar</a></td>
+															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][5]?></a></td>
+															<td><a href="Login.php" class="btn btn-warning btn-sm">Eliminar</a></td>
 														
 
 													</tr>

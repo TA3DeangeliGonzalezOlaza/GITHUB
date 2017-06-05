@@ -86,6 +86,7 @@ require_once('../clases/Transaccion.class.php');
 														<th>Acepta Permuta</th>
 														<th>Categoria</th>
 														<th>Denuncia</th>
+														<th>Activo</th>
 														
 
 													</tr>										
@@ -116,6 +117,7 @@ require_once('../clases/Transaccion.class.php');
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][11]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][12]?></a></td>
 															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][13]?></a></td>
+															<td><a value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][14]?></a></td>
 															<td><a href="singin.php" class="btn btn-warning btn-sm">Modificar</a></td>
 															<td><a href="Login.php" class="btn btn-warning btn-sm">Sansionar</a></td>
 														

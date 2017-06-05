@@ -96,6 +96,8 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 									<?php $permuta = $datos_d[$i][11]?>
 									<?php $categoria = $datos_d[$i][12]?>
 									<?php $denunciado = $datos_d[$i][13]?>
+									<?php $activo = $datos_d[$i][14]?>
+									
 									
 									
 									<?php
@@ -151,8 +153,20 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 			<div class="container text-center">
 			<h1 class="text-danger"><?php echo $nom_pub ?></h1>
 			<form action="../logica/procesadenunciapublicacion.php" method="POST">
+			
 			<button name="id_pub" class="btn btn-sm btn-danger btn-block" type="submit" style='width:150px; height:30px' value="<?php echo $id_pub;?>">Denunciar Publicacion</button>
+						
 			</form>
+			<?php
+			if ($activo=="no"){?>
+			<H2>FINALIZADA</H2>
+
+			<?php
+			}
+			
+			?>
+			
+			
 			</div>
 		</div>
 		<div class="jumbotron">
@@ -174,10 +188,11 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 							<ul>
 								<li>Stock :<?php echo $stock ?></li>
 								<li>Categoria :<?php echo $categoria ?></li>
+								
 								<li><?php if ($permuta == "permuta"){ ?>
 								
 																<?php
-								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")) {?>
+								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")&&$activo =="si") {?>
 								
 								
 								<li><button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button></li>
@@ -211,7 +226,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<input  type="hidden" name="nombrepub" value= "<?php echo $nom_pub; ?>" />
 								
 								<?php
-								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")) {?>
+								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")&&$activo =="si") {?>
 								
 								
 								<li><button class="btn btn-sm btn-DANGER btn-block" type="submit" style='width:80px; height:30px'>COMPRAR</button></li>
@@ -227,6 +242,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								
 								
 								<?php } ?>
+								
 								
 								
 								
@@ -273,7 +289,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 				<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
 					<textarea name="comenta" id="" cols="150" rows="3"></textarea>
 								<?php
-								if (!($_SESSION["ID"]==$id_usup)){?>
+								if (!($_SESSION["ID"]==$id_usup)&&$activo =="si"){?>
 								
 								
 								<li><button class="btn btn-lg btn-warning btn-block" type="submit" style='width:120px; height:40px'>Comentar</button></li>

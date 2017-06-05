@@ -201,6 +201,7 @@ Datos usuario
 														<th>Acepta Permuta</th>
 														<th>Categoria</th>
 														<th>Denuncia</th>
+														<th>Activa</th>
 														
 
 													</tr>										
@@ -233,6 +234,7 @@ Datos usuario
 															<?php $acepta_permuta_pub = $datos_p[$i][11]?>
 															<?php $categoria_pub = $datos_p[$i][12]?>
 															<?php $denuncia_pub = $datos_p[$i][13]?>
+															<?php $activa = $datos_p[$i][14]?>
 				
 												
 												
@@ -252,8 +254,9 @@ Datos usuario
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $acepta_permuta_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $categoria_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $denuncia_pub ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $activa ;?></a></td>
 															<td><a href="singin.php" class="btn btn-warning btn-sm">Modificar</a></td>
-															<td><a href="Login.php" class="btn btn-warning btn-sm">Sansionar</a></td>
+															<td><a href="Login.php" class="btn btn-danger btn-sm">Finalizar</a></td>
 														
 
 													</tr>
@@ -361,7 +364,7 @@ Datos usuario
 
 		
 		
-	Mis Publicaciones Preguntadas	
+	Mis Respuestas	
 		
 <!--Trae Mis Respuestas -->
 						
@@ -374,7 +377,10 @@ Datos usuario
 										<table class="table">
 													<tr>
 														<th>ID comentario</th>
-														<th>ID Usuario comento</th>
+														<th>Publicacion</th>
+														<th>Comentario</th>
+														<th>Respuesta</th>
+														
 
 														
 
@@ -395,13 +401,31 @@ Datos usuario
 												
 												
 															<?php $id_comenpub = $datos_e[$i][0]?>
-															<?php $comentario_pub = $datos_e[$i][1]?>
+															<?php $publicacion = $datos_e[$i][1]?>
+															<?php $comentario_pub = $datos_e[$i][2]?>
+															<?php $respuesta = $datos_e[$i][3]?>
 												
 												
 													<tr>
 													
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $id_comenpub ;?></a></td>
+															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $publicacion ;?></a></td>
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $comentario_pub ;?></a></td>
+															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $respuesta ;?></a></td>
+															
+															<?php
+															if (empty($respuesta)){
+															?>
+															<td><a href="singin.php" class="btn btn-warning btn-sm">Responder</a></td>
+															<?php
+															}
+															else {
+															?>	
+															<td>Respondida</td>
+															<?php	
+															}
+															?>
+															
 														
 
 													</tr>
