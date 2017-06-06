@@ -286,10 +286,21 @@ class Publicacion
       return $datos;
     }
 	
-
+	public function ModificaPub($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->modPub($this,$conex);
+      return $datos;
+    }
 	
 		
-	
+	public function FinalizaPub($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->finPub($this,$conex);
+      return $datos;
+    }
+		
 	
   
     //Devuelve true si el Login y el Password coinciden

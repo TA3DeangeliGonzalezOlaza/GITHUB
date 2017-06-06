@@ -56,10 +56,8 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
+									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
 									<li class="divider"></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
@@ -138,6 +136,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 										<?php $comentario = $datos_c[$i][3]?>
 										<?php $com_denunciado = $datos_c[$i][4]?>
 										<?php $respuesta = $datos_c[$i][5]?>
+										<?php $respondido = $datos_c[$i][6]?>
 										
 
 										

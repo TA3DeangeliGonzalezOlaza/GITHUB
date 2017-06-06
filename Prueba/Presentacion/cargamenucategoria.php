@@ -31,7 +31,7 @@ $categoria= strip_tags(trim($_GET['categoria']));
 					  </button>
 					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
 					  <div class="navbar-brand">
-							<form class="forma-busqueda cf" action="/search.php" method="post">
+							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
 								<label for="search_box">
 								<span> </span>
 								</label>
@@ -52,11 +52,7 @@ $categoria= strip_tags(trim($_GET['categoria']));
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
-									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
-									<li class="divider"></li>
+									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
 								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>

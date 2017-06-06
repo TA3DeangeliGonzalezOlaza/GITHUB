@@ -50,10 +50,6 @@ require_once('../clases/Publicacion.class.php');
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
 									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
-									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
-									<li class="divider"></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
 								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>

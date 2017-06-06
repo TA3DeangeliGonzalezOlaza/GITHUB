@@ -229,7 +229,7 @@ class PersistenciaPublicacion
     public function consPreg($obj, $conex)
    {
         $id_usup= trim($obj->getIdusuario());   
-        $sql = "select id_comen, nom_pub, comentario, responde_com from comenta, publicacion where id_pub=id_pubcom and id_usup=:id_usup";
+        $sql = "select id_comen, nom_pub, comentario, responde_com, respondido from comenta, publicacion where id_pub=id_pubcom and id_usup=:id_usup order by respondido ASC";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":id_usup" => $id_usup));
@@ -255,8 +255,45 @@ class PersistenciaPublicacion
     }	
 
 
+   public function modPub($obj, $conex)
+   {
+       $id_pub = $obj->getIdPublicacion();
+	   $id_usup = $obj->getIdusuario();
+	   $nom_pub = $obj->getNombre();
+	   $precio_pub = $obj->getPrecio();
+	   $stock_pub = $obj->getStock();
+	   $descripcion_pub = $obj->getDescripcion();
+	   $img01_pub = $obj->getImagen1();
+	   $img02_pub = $obj->getImagen2();
+	   $img03_pub = $obj->getImagen3();
+	   $nuevo_pub = $obj->getNuevo();
+	   $acepta_permuta_pub = $obj->getPermuta();
+	   $categoria_pub = $obj->getCategoria();
+	
+		   
+        $sql = "UPDATE `publicacion` SET `nom_pub` = :nom_pub, `precio_pub` = :precio_pub, `stock_pub` = :stock_pub, `descripcion_pub` = :descripcion_pub, `img01_pub` = :img01_pub, `img02_pub` = :img02_pub, `img03_pub` = :img03_pub, `nuevo_pub` = :nuevo_pub, `acepta_permuta_pub` = :acepta_permuta_pub, `categoria_pub` = :categoria_pub,`activa` = 'si' WHERE `publicacion`.`id_pub` = :id_pub AND `publicacion`.`id_usup` = :id_usup";
+				
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_pub" => $id_pub,":id_usup" => $id_usup,":nom_pub" => $nom_pub,":precio_pub" => $precio_pub,":stock_pub" => $stock_pub,":descripcion_pub" => $descripcion_pub,":img01_pub" => $img01_pub,":img02_pub" => $img02_pub,":img03_pub" => $img03_pub,":nuevo_pub" => $nuevo_pub,":acepta_permuta_pub" => $acepta_permuta_pub,":categoria_pub" => $categoria_pub));
 
+    }		
+	
+	
+   public function finPub($obj, $conex)
+   {
+       $id_pub = $obj->getIdPublicacion();
+	   $id_usup = $obj->getIdusuario();
+	
+		   
+        $sql = "UPDATE `publicacion` SET `activa` = 'no' WHERE `publicacion`.`id_pub` = :id_pub AND `publicacion`.`id_usup` = :id_usup";
+				
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_pub" => $id_pub,":id_usup" => $id_usup));
 
+    }		
+		
+	
+	
 
 	
  }

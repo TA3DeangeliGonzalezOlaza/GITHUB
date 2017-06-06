@@ -58,10 +58,8 @@ require_once('../clases/Permuta.class.php');
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
+									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
 									<li class="divider"></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
@@ -140,6 +138,7 @@ Datos usuario
 				
 					<div class="row">
 						<div class="col-md-3">
+
 								<?php
 									$conex = conectar();
 									$u = new Usuario('','','','','',$id_per);
@@ -176,26 +175,26 @@ Datos usuario
 							}
 							?>	
 					</div>
+
 				Publicaciones	
 <!--Trae Publicaciones -->
 						
 
-		<div class="jumbotron">
-			<div class="container-fluid">
+	<div class="jumbotron-fluid">
+		<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body">
 				<section class="main row">
 					<div class="col-md-12">
 					<ol class="pre-scrollable">
 										<table class="table">
 													<tr>
-														<th># ID Publicacion</th>
-														<th># ID Usuario</th>
+
 														<th>Nombre</th>
 														<th>Precio</th>
 														<th>Stock</th>
 														<th>Descripcion</th>
 														<th>Imagen Portada</th>
-														<th>Imagen extra #1</th>
-														<th>Imagen extra #2</th>
 														<th>Estado</th>
 														<th>Fechad de publicacion</th>
 														<th>Acepta Permuta</th>
@@ -239,24 +238,43 @@ Datos usuario
 												
 												
 													<tr>
-													
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_pub ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_usup ;?></a></td>
+															<input  type="hidden" name="id_usu" id="id_usu" value="<?php echo $id_usu;?>" />
+															<input  type="hidden" name="id_pub" id="id_pub" value="<?php echo $id_pub;?>" />
+															<input  type="hidden" name="img2pub" id="img2pub" value="<?php echo $img02_pub;?>" />
+															<input  type="hidden" name="img3pub" id="img3pub" value="<?php echo $img03_pub;?>" />
+															
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nom_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $precio_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $stock_pub ;?></a></td>
 									 <td class="pre-scrollable"><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $descripcion_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $img01_pub ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $img02_pub ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $img03_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nuevo_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $fecha_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $acepta_permuta_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $categoria_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $denuncia_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $activa ;?></a></td>
-															<td><a href="singin.php" class="btn btn-warning btn-sm">Modificar</a></td>
-															<td><a href="Login.php" class="btn btn-danger btn-sm">Finalizar</a></td>
+															
+															<form action="modificaventa.php" method="POST">
+															
+															<input  type="hidden" name="idpub" value= "<?php echo $id_pub; ?>" />
+															<input  type="hidden" name="nombrepub" value= "<?php echo $nom_pub; ?>" />
+															<input  type="hidden" name="preciopub" value= "<?php echo $precio_pub; ?>" />
+															<input  type="hidden" name="stockpub" value= "<?php echo $stock_pub; ?>" />
+															<input  type="hidden" name="descpub" value= "<?php echo $descripcion_pub; ?>" />
+															<input  type="hidden" name="img1pub" value= "<?php echo $img01_pub; ?>" />
+															<input  type="hidden" name="img2pub" value= "<?php echo $img02_pub; ?>" />
+															<input  type="hidden" name="img3pub" value= "<?php echo $img03_pub; ?>" />
+															<input  type="hidden" name="estado" value= "<?php echo $nuevo_pub; ?>" />
+															<input  type="hidden" name="permuta" value= "<?php echo $acepta_permuta_pub; ?>" />
+															<input  type="hidden" name="categoria" value= "<?php echo $categoria_pub; ?>" />
+
+															
+															
+																<td><button class="btn btn-sm btn-warning btn-block" type="submit">Modificar</button></td>
+	
+															</form>
+
 														
 
 													</tr>
@@ -280,6 +298,8 @@ Datos usuario
 					
 				</section>
 			</div>
+			</div>
+			</div>
 		</div>
 
 		
@@ -290,19 +310,20 @@ Datos usuario
 <!--Trae Mis Comentarios -->
 						
 
-		<div class="jumbotron">
+		<div class="jumbotron-fluid">
 			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body">
 				<section class="main row">
 					<div class="col-md-12">
 					<ol class="pre-scrollable">
 										<table class="table">
 													<tr>
-														<th>ID comentario</th>
-														<th>ID Usuario comento</th>
-														<th>ID publicacion comentada</th>
+														<th>N° comentario</th>
 														<th>Comentario</th>
 														<th>Denunciado?</th>
 														<th>Respuesta</th>
+														<th>Respondido?</th>
 
 														
 
@@ -328,6 +349,8 @@ Datos usuario
 															<?php $comentario = $datos_p[$i][3]?>
 															<?php $denunciado_com = $datos_p[$i][4]?>
 															<?php $responde_com = $datos_p[$i][5]?>
+															<?php $respondido = $datos_p[$i][6]?>
+
 
 				
 												
@@ -335,11 +358,11 @@ Datos usuario
 													<tr>
 													
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_comen ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_usucom ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_pubcom ;?></a></td>
 									<td class="pre-scrollable"><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $comentario ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $denunciado_com ;?></a></td>
 									<td class="pre-scrollable"><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $responde_com ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $respondido ;?></a></td>	
+															<td><a href="Cargaarticulo.php?id_pub=<?php echo $id_pubcom; ?>">IR A PUBLICACION</a></td>					
 														
 
 													</tr>
@@ -357,6 +380,8 @@ Datos usuario
 					</div>
 					
 				</section>
+			</div>
+			</div>
 			</div>
 		</div>	
 					
@@ -380,6 +405,7 @@ Datos usuario
 														<th>Publicacion</th>
 														<th>Comentario</th>
 														<th>Respuesta</th>
+														<th>Respondido?</th>
 														
 
 														
@@ -404,6 +430,7 @@ Datos usuario
 															<?php $publicacion = $datos_e[$i][1]?>
 															<?php $comentario_pub = $datos_e[$i][2]?>
 															<?php $respuesta = $datos_e[$i][3]?>
+															<?php $respondido = $datos_e[$i][4]?>
 												
 												
 													<tr>
@@ -412,6 +439,7 @@ Datos usuario
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $publicacion ;?></a></td>
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $comentario_pub ;?></a></td>
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $respuesta ;?></a></td>
+															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $respondido ;?></a></td>
 															
 															<?php
 															if (empty($respuesta)){

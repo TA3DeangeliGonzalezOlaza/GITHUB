@@ -51,10 +51,8 @@ $busqueda=strip_tags($_POST['keywords']);
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
+									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
 									<li class="divider"></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
@@ -104,7 +102,7 @@ $busqueda=strip_tags($_POST['keywords']);
 												<ul>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][11]?></option></li>
 													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
-													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][18]?></option></li>
+													<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][19]?></option></li>
 												</ul>
 												
 											</div>
