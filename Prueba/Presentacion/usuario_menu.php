@@ -394,14 +394,16 @@ Datos usuario
 <!--Trae Mis Respuestas -->
 						
 
-		<div class="jumbotron">
+		<div class="jumbotron-fluid">
 			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body">
 				<section class="main row">
 					<div class="col-md-12">
 					<ol class="pre-scrollable">
 										<table class="table">
 													<tr>
-														<th>ID comentario</th>
+														<th>N° comentario</th>
 														<th>Publicacion</th>
 														<th>Comentario</th>
 														<th>Respuesta</th>
@@ -444,7 +446,16 @@ Datos usuario
 															<?php
 															if (empty($respuesta)){
 															?>
-															<td><a href="singin.php" class="btn btn-warning btn-sm">Responder</a></td>
+															<form action="RespuestaEmergente.php" method="POST">
+															
+
+															<input  type="hidden" name="id_comen" value= "<?php echo $id_comenpub; ?>" />
+															<input  type="hidden" name="comentario" value= "<?php echo $comentario_pub; ?>" />
+	
+															
+															
+															<td><button class="btn btn-sm btn-warning btn-block" type="submit">Responder</button></td>
+															</form>
 															<?php
 															}
 															else {
@@ -472,6 +483,8 @@ Datos usuario
 					
 				</section>
 			</div>
+			</div>
+			</div>
 		</div>	
 
 
@@ -482,8 +495,10 @@ Datos usuario
 <!--Trae Mis Ventas -->
 						
 
-		<div class="jumbotron">
+		<div class="jumbotron-fluid">
 			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body"			
 				<section class="main row">
 					<div class="col-md-12">
 					<ol class="pre-scrollable">
@@ -539,7 +554,7 @@ Datos usuario
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $calificaciont ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $pago_comision ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $comision_monto ;?></a></td>
-														
+
 
 													</tr>
 															
@@ -557,6 +572,8 @@ Datos usuario
 					
 				</section>
 			</div>
+			</div>
+			</div>
 		</div>	
 
 
@@ -566,8 +583,10 @@ Datos usuario
 <!--Trae Mis Compras -->
 						
 
-		<div class="jumbotron">
+		<div class="jumbotron-fluid">
 			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body"	
 				<section class="main row">
 					<div class="col-md-12">
 					<ol class="pre-scrollable">
@@ -618,8 +637,14 @@ Datos usuario
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $fechat ;?></a></td>
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $calificaciont ;?></a></td>
-
-														
+															<form action="CalificacionEmergente.php" method="POST">
+															
+															<input  type="hidden" name="id_trans" value= "<?php echo $id_trans; ?>" />
+															<input  type="hidden" name="id_usut" value= "<?php echo $id_usut; ?>" />
+															<input  type="hidden" name="id_pubt" value= "<?php echo $id_pubt; ?>" />															
+															
+															<td><button class="btn btn-sm btn-warning btn-block" type="submit">CALIFICAR</button></td>
+															</form>
 
 													</tr>
 															
@@ -636,6 +661,8 @@ Datos usuario
 					</div>
 					
 				</section>
+			</div>
+			</div>
 			</div>
 		</div>	
 

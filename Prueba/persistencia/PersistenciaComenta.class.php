@@ -82,7 +82,17 @@ class PersistenciaComenta
        return $resultados;
     }
 	
-	
+	   public function respon($obj, $conex)
+   {
+        $id_comen =($obj->getIdcomen());
+        $responde_com =($obj->getRespondecom());
+ 		
+        $sql = "UPDATE `comenta` SET `responde_com` = :responde_com, `respondido` = '1' WHERE `comenta`.`id_comen` = :id_comen";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_comen" => $id_comen,":responde_com" => $responde_com));
+
+    }	
 	
  }
 

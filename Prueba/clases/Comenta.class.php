@@ -153,7 +153,12 @@ class Comenta
       return $datos;
     }	
 	
-	
+	public function responde($conex)
+    {
+      $pu=new PersistenciaComenta;
+      $datos= $pu->respon($this,$conex);
+      return $datos;
+    }
     
 	
     //Devuelve true si el Login y el Password coinciden
