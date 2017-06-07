@@ -198,6 +198,20 @@ class Persona
       $datos= $pu->consTipo($this,$conex);
       return $datos;
     }
+	
+	public function CambiaPass($conex)
+    {
+      $pu=new PersistenciaPersona;
+      $datos= $pu->campass($this,$conex);
+      return $datos;
+    }
+	
+	public function CambiaDatos($conex)
+    {
+      $pu=new PersistenciaPersona;
+      $datos= $pu->camdat($this,$conex);
+      return $datos;
+    }
 }
 
 ?>

@@ -729,7 +729,7 @@ require_once('../clases/Permuta.class.php');
 															
 															
 															
-															<form action="CalificacionEmergente.php" method="POST">
+												<form action="CalificacionEmergente.php" method="POST">
 															
 															<input  type="hidden" name="id_trans" value= "<?php echo $id_trans; ?>" />
 															<input  type="hidden" name="id_usut" value= "<?php echo $id_usut; ?>" />
@@ -740,7 +740,7 @@ require_once('../clases/Permuta.class.php');
 															
 															?>
 															<td><button class="btn btn-sm btn-warning btn-block" type="submit">CALIFICAR</button></td>
-															</form>
+												</form>
 															
 															<?php
 															}
@@ -888,7 +888,7 @@ require_once('../clases/Permuta.class.php');
 		</div>
 
 
-				<h2>Datos personales -EN PROCESO-</h2>	
+				<h2>Datos personales</h2>	
 <!--Trae Datos -->
 
 	<div class="jumbotron-fluid">
@@ -904,7 +904,6 @@ require_once('../clases/Permuta.class.php');
 														<th>id persona</th>
 														<th>cedula</th>
 														<th>nick</th>
-														<th>password</th>
 														<th>nombre1</th>
 														<th>nombre2</th>
 														<th>apellido1</th>
@@ -950,20 +949,41 @@ require_once('../clases/Permuta.class.php');
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $ci_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nick_per ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $password_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nom1_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nom2_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $ape1_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $ape2_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $email_per ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $tel_per ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $dir_per ;?></a></td>
-															
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $dir_per ;?></a></td></br>
+
+													</tr>
+													
+													
+																												
 									
 														
+						</form>				
+															
+											<form action="CambiaDatosEmergente.php" method="POST">
+															
+															<input  type="hidden" name="id_per" value= "<?php echo $id_per; ?>" />
+															<input  type="hidden" name="nick_per" value= "<?php echo $nick_per; ?>" />
+															<input  type="hidden" name="nom1_per" value= "<?php echo $nom1_per; ?>" />
+															<input  type="hidden" name="nom2_per" value= "<?php echo $nom2_per; ?>" />
+															<input  type="hidden" name="ape1_per" value= "<?php echo $ape1_per; ?>" />
+															<input  type="hidden" name="ape2_per" value= "<?php echo $ape2_per; ?>" />
+															<input  type="hidden" name="email_per" value= "<?php echo $email_per; ?>" />
+															<input  type="hidden" name="tel_per" value= "<?php echo $tel_per; ?>" />
+															<input  type="hidden" name="dir_per" value= "<?php echo $dir_per; ?>" />
+
+
 															
 															
-															<form action="" method="POST">
+																<td><button class="btn btn-sm btn-warning btn-block" type="submit">Cambiar Datos</button></td>
+	
+											</form>
+											<form action="CambiaPassEmergente.php" method="POST">
 															
 															<input  type="hidden" name="id_per" value= "<?php echo $id_per; ?>" />
 															<input  type="hidden" name="nick_per" value= "<?php echo $nick_per; ?>" />
@@ -979,13 +999,11 @@ require_once('../clases/Permuta.class.php');
 
 															
 															
-																<td><button class="btn btn-sm btn-warning btn-block" type="submit">Modificar</button></td>
+																<td><button class="btn btn-sm btn-warning btn-block" type="submit">Cambiar Password</button></td>
 	
-															</form>
-
-														
-
-													</tr>
+											</form>
+													
+													
 															
 													
 												<?php
@@ -993,7 +1011,7 @@ require_once('../clases/Permuta.class.php');
 												?>	
 										</table>
 
-									TU REPUTACION: 
+									<h3>TU REPUTACION:</h3> 
 
 									<?php
 									if ($puntajetotal <= "-5"){

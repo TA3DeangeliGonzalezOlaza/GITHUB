@@ -159,6 +159,42 @@ class PersistenciaPersona
 		return $result;
     }
 
+	
+	public function campass($obj, $conex)
+   {
+        $id_per =($obj->getId());
+        $nick_per =($obj->getNick());
+		$password_per =($obj->getPassword());
+ 		
+        $sql = "UPDATE `persona` SET `password_per` = :password_per WHERE `persona`.`id_per` = :id_per;";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_per" => $id_per, ":password_per" => $password_per));
+
+    }
+	
+	
+	public function camdat($obj, $conex)
+   {
+        $id_per =($obj->getId());
+        $nick_per =($obj->getNick());
+		$nom1 =($obj->getNombre1());
+		$nom2 =($obj->getNombre2());
+        $ape1 =($obj->getApellido1());
+		$ape2 =($obj->getApellido2());
+		$mail =($obj->getCorreo());
+        $tel =($obj->getTelefono());
+		$dir =($obj->getDireccion());
+ 		
+        $sql = "UPDATE `persona` SET `nick_per` = :nick_per, `nom1_per` = :nom1, `nom2_per` = :nom2, `ape1_per` = :ape1, `ape2_per` = :ape2, `email_per` = :mail, `tel_per` = :tel, `dir_per` = :dir WHERE `persona`.`id_per` = :id_per;";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_per" => $id_per, ":nick_per" => $nick_per, ":nom1" => $nom1, ":nom2" => $nom2, ":ape1" => $ape1, ":ape2" => $ape2, ":mail" => $mail, ":tel" => $tel, ":dir" => $dir));
+
+    }	
+	
+	
+	
  }
 
 ?>
