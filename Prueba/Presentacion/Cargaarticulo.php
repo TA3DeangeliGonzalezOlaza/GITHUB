@@ -57,8 +57,6 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
 									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
-									<li class="divider"></li>
-									<li class="divider"></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
 								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>
@@ -188,34 +186,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<li>Stock :<?php echo $stock ?></li>
 								<li>Categoria :<?php echo $categoria ?></li>
 								
-								<li><?php if ($permuta == "permuta"){ ?>
 								
-																<?php
-								if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")&&$activo =="si") {?>
-								
-								
-								<li><button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button></li>
-								
-								
-								<?php } ?>
-								
-								<?php
-								if ($_SESSION["ID"]==$id_usup){?>
-								
-								
-								No puedes Permutar tu misma publicacion
-								
-								
-								<?php } ?>
-								
-
-								
-								
-								
-								<?php } 
-								if ($permuta == "nopermuta") {?>  
-								No permuta  
-								<?php }?></li>
 								
 
 								<input  type="hidden" name="usuario" value= "<?php echo $_SESSION["ID"]; ?>" />
@@ -243,12 +214,47 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								<?php } ?>
 								
 								
-								
-								
-								
+							</form>	
+			<!--PERMUTA   -->	
+							<form action="../logica/procesapermuta.php" method="POST">
+							
+							
+								<input  type="hidden" name="usuario" value= "<?php echo $_SESSION["ID"]; ?>" />
+								<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
+								<input  type="hidden" name="fechaactual" value= "<?php echo $fechaactual; ?>" />
+								<input  type="hidden" name="nombrepub" value= "<?php echo $nom_pub; ?>" />
+							
+								<li><?php if ($permuta == "permuta"){ ?>
+									
+																	<?php
+									if (!($_SESSION["ID"]==$id_usup)&&($stock >"0")&&$activo =="si") {?>
+									
+									
+									<li><button class="btn btn-sm btn-warning btn-block" type="submit" style='width:80px; height:30px'>PERMUTA</button></li>
+									
+									
+									<?php } ?>
+									
+										<?php
+										if ($_SESSION["ID"]==$id_usup){?>
+										
+										
+										No puedes Permutar tu misma publicacion
+										
+										
+										<?php } ?>
+									
+									
+									<?php } 
+									if ($permuta == "nopermuta") {?>  
+									No permuta  
+									<?php }?></li>
+							</form>	
+							
 							</ul>
+							
 						</div>
-					</form>
+					
 							
 							
 								

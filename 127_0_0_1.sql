@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2017 a las 19:05:49
+-- Tiempo de generación: 07-06-2017 a las 21:50:25
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -61,7 +61,10 @@ CREATE TABLE `permuta` (
   `id_permuta` int(11) NOT NULL,
   `id_pub1` int(11) NOT NULL,
   `id_pub2` int(11) NOT NULL,
-  `fechap` date DEFAULT NULL
+  `fechap` date DEFAULT NULL,
+  `solicita_permuta` int(11) NOT NULL,
+  `permutar` int(11) NOT NULL,
+  `permuta_concretada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -125,7 +128,7 @@ INSERT INTO `publicacion` (`id_pub`, `id_usup`, `nom_pub`, `precio_pub`, `stock_
 (9, 1, 'perro grande', 200, 3, 'descripcion local', '', '', '', 'nuevo', '2017-06-05', 'permuta', 'OTROS', 0, 'si'),
 (10, 1, 'Gato', 300, 2, 'descripcion local', '', '', '', 'usado', '2017-06-05', 'permuta', 'OTROS', 0, 'si'),
 (11, 1, 'dragon grande', 450, 12, 'prueba modificacion', '', '', '', 'nuevo', '2017-06-04', 'permuta', 'OTROS', 0, 'si'),
-(12, 2, 'OSO PELUDO', 10, 11, 'Negro y grande y peludo', '', '', '', 'usado', '2017-06-02', 'permuta', 'OTROS', 1, 'si'),
+(12, 2, 'OSO PELUDO', 10, 10, 'Negro y grande y peludo', '', '', '', 'usado', '2017-06-02', 'permuta', 'OTROS', 1, 'si'),
 (14, 2, 'Prueba articulo', 123, 227, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0, 'si'),
 (15, 1, 'rodri', 2, 1, 'ta divino', '', '', '', 'usado', '2017-06-02', 'permuta', 'MODA', 0, 'no'),
 (16, 1, 'prueba activa', 233, 34, 'una prueba si ingresa este articulo', '', '', '', 'nuevo', '2017-06-05', 'nopermuta', 'VEHICULOS', 0, 'si'),
@@ -177,7 +180,8 @@ INSERT INTO `transaccion` (`id_trans`, `id_usut`, `id_pubt`, `precio_finalt`, `f
 (28, 11, 9, 200, '2017-06-02', 1, 0, 0, 10, '', 0),
 (29, 11, 10, 600, '2017-06-02', 2, 0, 0, 30, '', 0),
 (30, 1, 12, 10, '2017-06-06', 1, 0, 0, 1, '', 0),
-(31, 2, 10, 300, '2017-06-07', 1, 1, 0, 15, 'muy bueno', 1);
+(31, 2, 10, 300, '2017-06-07', 1, 1, 0, 15, 'muy bueno', 1),
+(32, 1, 12, 10, '2017-06-07', 1, 0, 0, 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -279,7 +283,7 @@ ALTER TABLE `publicacion`
 -- AUTO_INCREMENT de la tabla `transaccion`
 --
 ALTER TABLE `transaccion`
-  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
@@ -477,7 +481,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{"db":"e-comerce","table":"persona"},{"db":"e-comerce","table":"transaccion"},{"db":"e-comerce","table":"comenta"},{"db":"e-comerce","table":"publicacion"},{"db":"e-comerce","table":"permuta"},{"db":"e-comerce","table":"usuario"},{"db":"programacion","table":"esp_sec"},{"db":"programacion","table":"sector"},{"db":"programacion","table":"lugar"},{"db":"programacion","table":"espectaculo"}]');
+('root', '[{"db":"e-comerce","table":"permuta"},{"db":"e-comerce","table":"persona"},{"db":"e-comerce","table":"transaccion"},{"db":"e-comerce","table":"comenta"},{"db":"e-comerce","table":"publicacion"},{"db":"e-comerce","table":"usuario"},{"db":"programacion","table":"esp_sec"},{"db":"programacion","table":"sector"},{"db":"programacion","table":"lugar"},{"db":"programacion","table":"espectaculo"}]');
 
 -- --------------------------------------------------------
 

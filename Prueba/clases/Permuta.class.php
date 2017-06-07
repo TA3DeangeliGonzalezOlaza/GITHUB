@@ -7,14 +7,20 @@ class Permuta
     private $id_pub1; // id publicacion 1
 	private $id_pub2; // id publicacion 2
     private $fechap; // fecha
+	private $solicita_permuta; // fecha
+	private $permutar; // fecha
+	private $permuta_concretada; // fecha
 
       
-    function __construct($id='',$idp1='',$idp2='',$fec='')
+    function __construct($id='',$idp1='',$idp2='',$fec='',$solper='',$permu='',$permucon='')
     {
         $this->id_permuta= $id;
         $this->id_pub1= $idp1;
 		$this->id_pub2= $idp2;
         $this->fechap= $fec;
+		$this->solicita_permuta= $solper;
+		$this->permutar= $permu;
+		$this->permuta_concretada= $permucon;
        
     }
     
@@ -39,6 +45,21 @@ class Permuta
     {
       $this->fechap= $fec;
     }
+	
+    public function setSolper($solper)
+    {
+      $this->solicita_permuta= $solper;
+    }
+    
+	public function setPermutar($permu)
+    {
+      $this->permutar= $permu;
+    }
+    
+    public function setPermucon($permucon)
+    {
+      $this->permuta_concretada= $permucon;
+    }
     
 
     //Métodos get
@@ -61,6 +82,21 @@ class Permuta
     public function getFecha()
     {
       return $this->fechap;
+    }
+	
+	public function getSolper()
+    {
+      return $this->solicita_permuta;
+    }
+    
+	public function getPermutar()
+    {
+      return $this->permutar;
+    }
+    
+    public function getPermucon()
+    {
+      return $this->permuta_concretada;
     }
      
     //Otros Métodos
