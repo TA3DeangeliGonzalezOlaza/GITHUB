@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2017 a las 03:43:13
+-- Tiempo de generación: 07-06-2017 a las 05:36:41
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -159,15 +159,15 @@ INSERT INTO `transaccion` (`id_trans`, `id_usut`, `id_pubt`, `precio_finalt`, `f
 (1, 2, 11, 500, '0000-00-00', 1, -1, 0, 0, 'una porqueria ', 1),
 (2, 2, 11, 500, '0000-00-00', 1, 1, 0, 0, 'muy bueno', 1),
 (3, 2, 11, 500, '0000-00-00', 1, 0, 0, 0, '', 0),
-(6, 2, 10, 500, '0000-00-00', 1, 0, 0, 0, '', 0),
+(6, 2, 10, 500, '0000-00-00', 1, 1, 0, 0, 'excelente', 1),
 (7, 1, 12, 10, '0000-00-00', 5, -1, 0, 0, 'una cagada era blanco, chico y pelado', 1),
-(9, 1, 14, 615, '2017-05-31', 5, 0, 0, 31, '', 0),
-(10, 1, 12, 50, '2017-05-31', 5, 0, 0, 3, '', 0),
-(12, 1, 12, 10, '2017-06-01', 1, 0, 0, 1, '', 0),
-(13, 1, 14, 123, '2017-06-01', 1, 0, 0, 6, '', 0),
-(14, 1, 14, 123, '2017-06-01', 1, 0, 0, 6, '', 0),
-(15, 1, 14, 123, '2017-06-01', 1, 0, 0, 6, '', 0),
-(16, 1, 14, 123, '2017-06-01', 1, 0, 0, 6, '', 0),
+(9, 1, 14, 615, '2017-05-31', 5, 1, 0, 31, 'muy bueno', 1),
+(10, 1, 12, 50, '2017-05-31', 5, 1, 0, 3, 'excelente', 1),
+(12, 1, 12, 10, '2017-06-01', 1, 1, 0, 1, 'muy loco', 1),
+(13, 1, 14, 123, '2017-06-01', 1, 1, 0, 6, 'excelente', 1),
+(14, 1, 14, 123, '2017-06-01', 1, 1, 0, 6, 'buenisimo', 1),
+(15, 1, 14, 123, '2017-06-01', 1, 1, 0, 6, 'muy bueno', 1),
+(16, 1, 14, 123, '2017-06-01', 1, 1, 0, 6, 'muy bueno', 1),
 (17, 1, 14, 123, '2017-06-01', 1, 0, 0, 6, '', 0),
 (20, 1, 14, 369, '2017-06-01', 3, 0, 0, 18, '', 0),
 (21, 1, 12, 10, '2017-06-01', 1, 0, 0, 1, '', 0),
@@ -177,7 +177,7 @@ INSERT INTO `transaccion` (`id_trans`, `id_usut`, `id_pubt`, `precio_finalt`, `f
 (28, 11, 9, 200, '2017-06-02', 1, 0, 0, 10, '', 0),
 (29, 11, 10, 600, '2017-06-02', 2, 0, 0, 30, '', 0),
 (30, 1, 12, 10, '2017-06-06', 1, 0, 0, 1, '', 0),
-(31, 2, 10, 300, '2017-06-07', 1, 0, 0, 15, '', 0);
+(31, 2, 10, 300, '2017-06-07', 1, 1, 0, 15, 'muy bueno', 1);
 
 -- --------------------------------------------------------
 
@@ -199,8 +199,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usu`, `reputacion_usu`, `suspendido`, `rol`, `premium`, `id_personau`) VALUES
-(1, 5, 0, 'admin', 0, 1),
-(2, 5, 0, 'admin', 1, 2),
+(1, 0, 0, 'admin', 0, 1),
+(2, 0, 0, 'admin', 1, 2),
 (11, 0, 0, 'user', 0, 11);
 
 --
@@ -477,7 +477,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
+('root', '[{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
 
 -- --------------------------------------------------------
 

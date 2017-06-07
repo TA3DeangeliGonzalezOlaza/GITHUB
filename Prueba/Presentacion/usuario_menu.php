@@ -15,7 +15,7 @@ require_once('../clases/Permuta.class.php');
     
 
 ?>
-
+<?php $puntajetotal = "0" ?>
 
 <!doctype html>
 <html lang="en">
@@ -85,9 +85,9 @@ require_once('../clases/Permuta.class.php');
 			<div class="container">
 				<div class="sector">
 					<div class="main-row">
-						<div class="col-md-3">
+						<div class="col-md-10">
 						
-<!--Trae persona -->	Datos persona		
+<!--Trae persona -->	<h2 class="text-center">MENU USUARIO</h2>		
 						
 						<?php
 						for ($i=0;$i<$cuenta;$i++)
@@ -106,24 +106,7 @@ require_once('../clases/Permuta.class.php');
 																	<?php $tel_per = $datos_d[$i][9]?>
 																	<?php $dir_per = $datos_d[$i][10]?>
 
-																
-																
-																
-																
-																<ul>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >id persona :<?php echo $id_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >cedula :<?php echo $ci_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >nick :<?php echo $nick_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >password :<?php echo $password_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >nombre1 :<?php echo $nom1_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >nombre2 :<?php echo $nom2_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >apellido1 :<?php echo $ape1_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >apellido2 :<?php echo $ape2_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >email :<?php echo $email_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >telefono :<?php echo $tel_per ;?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  >direccion :<?php echo $dir_per ;?></option></li>
 
-																</ul>
 						</div>
 					</div>
 					
@@ -131,7 +114,7 @@ require_once('../clases/Permuta.class.php');
 						}
 						?>	
 
-Datos usuario						
+				
 					
 <!--Trae Usuario-->
 				
@@ -158,23 +141,16 @@ Datos usuario
 																	<?php $premium = $datos_u[$i][4]?>
 																	<?php $id_personau = $datos_u[$i][5]?>
 
-																
-																
-																<ul>
-																	<li><option value="<?php echo $datos_u[$i][0]?>"  >id usuario :<?php echo $id_usu ;?></option></li>
-																	<li><option value="<?php echo $datos_u[$i][0]?>"  >reputacion :<?php echo $reputacion_usu ;?></option></li>
-																	<li><option value="<?php echo $datos_u[$i][0]?>"  >suspendido :<?php echo $suspendido ;?></option></li>
-																	<li><option value="<?php echo $datos_u[$i][0]?>"  >rol :<?php echo $rol ;?></option></li>
-																	<li><option value="<?php echo $datos_u[$i][0]?>"  >premium :<?php echo $premium ;?></option></li>
-																	<li><option value="<?php echo $datos_u[$i][0]?>"  >id personau :<?php echo $id_personau ;?></option></li>
 
-
-																</ul>
 						</div>
 							<?php
 							}
 							?>	
 					</div>
+					
+					
+					
+					
 
 				<h2>Publicaciones</h2>	
 <!--Trae Publicaciones -->
@@ -628,6 +604,7 @@ Datos usuario
 															}
 															?>
 															
+															<?php $puntajetotal = $puntajetotal + $calificaciont;?>
 
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $pago_comision ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $comision_monto ;?></a></td>
@@ -797,7 +774,7 @@ Datos usuario
 
 		
 					
-	<h2>Mis PERMUTAS</h2>	
+	<h2>Mis PERMUTAS -EN PROCESO-</h2>	
 		
 <!--Trae Mis Permutas -->
 						
@@ -908,7 +885,412 @@ Datos usuario
 			</div>
 			</div>
 			</div>
-		</div>	
+		</div>
+
+
+				<h2>Datos personales -EN PROCESO-</h2>	
+<!--Trae Datos -->
+
+	<div class="jumbotron-fluid">
+		<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body">
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+
+														<th>id persona</th>
+														<th>cedula</th>
+														<th>nick</th>
+														<th>password</th>
+														<th>nombre1</th>
+														<th>nombre2</th>
+														<th>apellido1</th>
+														<th>apellido2</th>
+														<th>email</th>
+														<th>telefono</th>
+														<th>direccion</th>
+														
+
+													</tr>										
+													<?php
+														$conex = conectar();
+														$d = new Persona($_SESSION["ID"]);
+														$datos_d=$d->consultaUno($conex);
+														$cuenta=count($datos_d);
+													?>
+													
+													<?php
+													for ($i=0;$i<$cuenta;$i++)
+													{
+													?>
+																
+																	<?php $id_per = $datos_d[$i][0]?>
+																	<?php $ci_per = $datos_d[$i][1]?>
+																	<?php $nick_per = $datos_d[$i][2]?>
+																	<?php $password_per = $datos_d[$i][3]?>
+																	<?php $nom1_per = $datos_d[$i][4]?>
+																	<?php $nom2_per = $datos_d[$i][5]?>
+																	<?php $ape1_per = $datos_d[$i][6]?>
+																	<?php $ape2_per = $datos_d[$i][7]?>
+																	<?php $email_per = $datos_d[$i][8]?>
+																	<?php $tel_per = $datos_d[$i][9]?>
+																	<?php $dir_per = $datos_d[$i][10]?>
+				
+
+												
+													<tr>
+															<input  type="hidden" name="id_usu" id="id_usu" value="<?php echo $id_usu;?>" />
+															<input  type="hidden" name="id_pub" id="id_pub" value="<?php echo $id_pub;?>" />
+															<input  type="hidden" name="img2pub" id="img2pub" value="<?php echo $img02_pub;?>" />
+															<input  type="hidden" name="img3pub" id="img3pub" value="<?php echo $img03_pub;?>" />
+															
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $id_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $ci_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nick_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $password_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nom1_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $nom2_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $ape1_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $ape2_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $email_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $tel_per ;?></a></td>
+															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $dir_per ;?></a></td>
+															
+									
+														
+															
+															
+															<form action="" method="POST">
+															
+															<input  type="hidden" name="id_per" value= "<?php echo $id_per; ?>" />
+															<input  type="hidden" name="nick_per" value= "<?php echo $nick_per; ?>" />
+															<input  type="hidden" name="password_per" value= "<?php echo $password_per; ?>" />
+															<input  type="hidden" name="nom1_per" value= "<?php echo $nom1_per; ?>" />
+															<input  type="hidden" name="nom2_per" value= "<?php echo $nom2_per; ?>" />
+															<input  type="hidden" name="ape1_per" value= "<?php echo $ape1_per; ?>" />
+															<input  type="hidden" name="ape2_per" value= "<?php echo $ape2_per; ?>" />
+															<input  type="hidden" name="email_per" value= "<?php echo $email_per; ?>" />
+															<input  type="hidden" name="tel_per" value= "<?php echo $tel_per; ?>" />
+															<input  type="hidden" name="dir_per" value= "<?php echo $dir_per; ?>" />
+
+
+															
+															
+																<td><button class="btn btn-sm btn-warning btn-block" type="submit">Modificar</button></td>
+	
+															</form>
+
+														
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+									TU REPUTACION: 
+
+									<?php
+									if ($puntajetotal <= "-5"){
+									?>
+									
+				
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default" style="background-color: #DF3928">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>
+									
+
+									
+								<?php
+								if ($puntajetotal == "-4"){
+								?>
+									
+			
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default" style="background-color: #DF7E28">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>
+									
+								<?php
+								if ($puntajetotal == "-3"){
+								?>
+									
+				
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default" style="background-color: #DFB828">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>
+
+								<?php
+								if ($puntajetotal == "-2"){
+								?>
+									
+					
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default" style="background-color: #D4DF28">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>
+						
+								<?php
+								if ($puntajetotal == "-1"){
+								?>
+									
+		
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default" style="background-color: #9FDF28">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>						
+						
+						
+								<?php
+								if ($puntajetotal == "0"){
+								?>
+									
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default" style="background-color: #28DF39">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>						
+						
+						
+						
+								<?php
+								if ($puntajetotal == "1"){
+								?>
+									
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default" style="background-color: #28DF9F">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>						
+						
+						
+								<?php
+								if ($puntajetotal == "2"){
+								?>
+									
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default" style="background-color: #28DFC3">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>						
+						
+								<?php
+								if ($puntajetotal == "3"){
+								?>
+									
+			
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default" style="background-color: #28D4DF">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>
+
+								<?php
+								if ($puntajetotal == "4"){
+								?>
+									
+	
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default" style="background-color: #28B0DF">4</button>
+											<button type="button" class="btn btn-default">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>						
+						
+								<?php
+								if ($puntajetotal >= "5"){
+								?>
+									
+
+										<div class="btn-toolbar" role="toolbar">
+										  <div class="btn-group">
+											<button type="button" class="btn btn-default">-5</button>
+											<button type="button" class="btn btn-default">-4</button>
+											<button type="button" class="btn btn-default">-3</button>
+											<button type="button" class="btn btn-default">-2</button>
+											<button type="button" class="btn btn-default">-1</button>
+											<button type="button" class="btn btn-default">0</button>
+											<button type="button" class="btn btn-default">1</button>
+											<button type="button" class="btn btn-default">2</button>
+											<button type="button" class="btn btn-default">3</button>
+											<button type="button" class="btn btn-default">4</button>
+											<button type="button" class="btn btn-default" style="background-color: #2868DF">5</button>
+											
+										  </div>
+								<?php
+									}
+									?>						
+						
+						
+						
+						
+					</ol>
+					
+					
+					</div>
+					
+				</section>
+			</div>
+			</div>
+			</div>
+		</div>
+
+			</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		
 
 
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
