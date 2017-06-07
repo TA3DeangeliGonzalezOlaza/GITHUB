@@ -292,7 +292,19 @@ class PersistenciaPublicacion
 
     }		
 		
-	
+    public function bucUna($obj, $conex)
+   {
+        $id_pub= trim($obj->getIdPublicacion());   
+        $sql = "select nom_pub from publicacion where id_pub=:id_pub";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_pub" => $id_pub));
+		$resultados=$result->fetchAll();
+        //Obtiene el registro de la tabla Usuario 
+
+       return $resultados;
+    
+    }		
 	
 
 	

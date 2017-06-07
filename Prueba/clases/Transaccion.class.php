@@ -12,8 +12,10 @@ class Transaccion
 	private $calificaciont; 
 	private $pago_comision;
 	private $comision_monto;
+	private $comentariot;
+	private $califico;
       
-    function __construct($idt='',$idu='',$idp='',$pref='',$fec='',$cant='',$cal='',$pag='',$com='')
+    function __construct($idt='',$idu='',$idp='',$pref='',$fec='',$cant='',$cal='',$pag='',$com='',$coment='',$calif='')
     {
         $this->id_trans= $idt;
         $this->id_usut= $idu;
@@ -24,6 +26,8 @@ class Transaccion
 		$this->calificaciont= $cal;
 		$this->pago_comision= $pag;
 		$this->comision_monto= $com;
+		$this->comentariot= $coment;
+		$this->califico= $calif;
 	}
     
     //Métodos set
@@ -73,6 +77,15 @@ class Transaccion
       $this->comision_monto= $com;
     }
 	
+		public function setComentariot($coment)
+    {
+      $this->comentariot= $coment;
+    }
+	
+		public function setCalifico($calif)
+    {
+      $this->califico= $calif;
+    }
 	
     //Métodos get
     
@@ -119,6 +132,16 @@ class Transaccion
 		public function getComision()
     {
       return $this->comision_monto;
+    }
+	
+		public function getComentariot()
+    {
+      return $this->comentariot;
+    }
+	
+		public function getCalifico()
+    {
+      return $this->califico;
     }
      
     //Otros Métodos
@@ -178,6 +201,13 @@ class Transaccion
       return $datos;
     }	
 
+	public function Califica($conex)
+    {
+      $pu=new PersistenciaTransaccion;
+      $datos= $pu->califi($this,$conex);
+      return $datos;
+    }		
+	
 	
 	//public function compraEntrada($conex,$IdEsp,$IdSec,$IdUsu,$IdLug,$cant,$preciofinal)
   //  {

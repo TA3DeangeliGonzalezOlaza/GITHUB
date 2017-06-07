@@ -176,9 +176,8 @@ Datos usuario
 							?>	
 					</div>
 
-				Publicaciones	
+				<h2>Publicaciones</h2>	
 <!--Trae Publicaciones -->
-						
 
 	<div class="jumbotron-fluid">
 		<div class="container-fluid">
@@ -253,7 +252,23 @@ Datos usuario
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $acepta_permuta_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $categoria_pub ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $denuncia_pub ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $activa ;?></a></td>
+															<?php
+															if ($activa=="si"){
+															?>
+															<td><span title="Activa" class="glyphicon glyphicon-ok "></span></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($activa=="no"){
+															?>
+															<td><span title="Finalizada" class="glyphicon glyphicon-remove"></span></a></td>
+															<?php
+															}
+															?>
+															
+														
+															
 															
 															<form action="modificaventa.php" method="POST">
 															
@@ -305,7 +320,7 @@ Datos usuario
 		
 		
 		
-	Mis Preguntas	
+	<h2>Mis Preguntas</h2>	
 		
 <!--Trae Mis Comentarios -->
 						
@@ -361,7 +376,25 @@ Datos usuario
 									<td class="pre-scrollable"><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $comentario ;?></a></td>
 															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $denunciado_com ;?></a></td>
 									<td class="pre-scrollable"><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $responde_com ;?></a></td>
-															<td><a value="<?php echo $datos_p[$i][0]?>"  ><?php echo $respondido ;?></a></td>	
+									
+									
+															<?php
+															if ($respondido=="1"){
+															?>
+															<td><span title="Respondieron" class="glyphicon glyphicon-comment "></span></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($respondido=="0"){
+															?>
+															<td><span title="No respondieron aun" class="glyphicon glyphicon-remove"></span></a></td>
+															<?php
+															}
+															?>
+									
+									
+															
 															<td><a href="Cargaarticulo.php?id_pub=<?php echo $id_pubcom; ?>">IR A PUBLICACION</a></td>					
 														
 
@@ -389,7 +422,7 @@ Datos usuario
 
 		
 		
-	Mis Respuestas	
+	<h2>Mis Respuestas</h2>	
 		
 <!--Trae Mis Respuestas -->
 						
@@ -439,9 +472,26 @@ Datos usuario
 													
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $id_comenpub ;?></a></td>
 															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $publicacion ;?></a></td>
-															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $comentario_pub ;?></a></td>
-															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $respuesta ;?></a></td>
-															<td><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $respondido ;?></a></td>
+															<td class="pre-scrollable"><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $comentario_pub ;?></a></td>
+															<td class="pre-scrollable"><a value="<?php echo $datos_e[$i][0]?>"  ><?php echo $respuesta ;?></a></td>
+															
+															
+															<?php
+															if ($respondido=="1"){
+															?>
+															<td><span title="Respondiste" class="glyphicon glyphicon-comment "></span></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($respondido=="0"){
+															?>
+															<td><span title="No respondiste" class="glyphicon glyphicon-remove"></span></a></td>
+															<?php
+															}
+															?>
+															
+
 															
 															<?php
 															if (empty($respuesta)){
@@ -490,7 +540,7 @@ Datos usuario
 
 
 
-	Mis Ventas	
+	<h2>Mis Ventas</h2>	
 		
 <!--Trae Mis Ventas -->
 						
@@ -504,9 +554,10 @@ Datos usuario
 					<ol class="pre-scrollable">
 										<table class="table">
 													<tr>
-														<th>ID Transaccion</th>
-														<th>ID Usuario comprador</th>
-														<th>ID Publicacion Vendida</th>
+														<th>N° Transaccion</th>
+														<th>N° Usuario comprador</th>
+														<th>N° Publicacion Vendida</th>
+														<th>Publicacion</th>
 														<th>Precio Final</th>
 														<th>Fecha</th>
 														<th>Cantidad</th>
@@ -541,6 +592,7 @@ Datos usuario
 															<?php $calificaciont = $datos_v[$i][6]?>
 															<?php $pago_comision = $datos_v[$i][7]?>
 															<?php $comision_monto = $datos_v[$i][8]?>
+															<?php $nom_pubv = $datos_v[$i][13]?>
 												
 												
 													<tr>
@@ -548,10 +600,35 @@ Datos usuario
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_trans ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_usut ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_pubt ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nom_pubv ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_finalt ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fechat ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $calificaciont ;?></a></td>
+															
+															
+															<?php
+															if ($calificaciont=="1"){
+															?>
+															<td><span title="positivo" class="glyphicon glyphicon-plus "></span></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($calificaciont=="0"){
+															?>
+															<td><span title="neutro" class="glyphicon glyphicon-pause"></span></a></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($calificaciont=="-1"){
+															?>
+															<td><span title="negativo" class="glyphicon glyphicon-minus"></span></a></td>
+															<?php
+															}
+															?>
+															
+
 															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $pago_comision ;?></a></td>
 															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $comision_monto ;?></a></td>
 
@@ -578,7 +655,7 @@ Datos usuario
 
 
 
-	Mis COMPRAS	
+	<h2>Mis COMPRAS</h2>	
 		
 <!--Trae Mis Compras -->
 						
@@ -592,9 +669,9 @@ Datos usuario
 					<ol class="pre-scrollable">
 										<table class="table">
 													<tr>
-														<th>ID Transaccion</th>
-														<th>ID Usuario comprador</th>
-														<th>ID Publicacion Vendida</th>
+														<th>N° Transaccion</th>
+														<th>Tu N° de Usuario</th>
+														<th>Nombre Publicacion</th>
 														<th>Precio Final</th>
 														<th>Fecha</th>
 														<th>Cantidad</th>
@@ -626,25 +703,76 @@ Datos usuario
 															<?php $fechat = $datos_t[$i][4]?>
 															<?php $cantidad = $datos_t[$i][5]?>
 															<?php $calificaciont = $datos_t[$i][6]?>
+															<?php $comentariot = $datos_t[$i][9]?>
+															<?php $califico = $datos_t[$i][10]?>
+															<?php $nom_pubt = $datos_t[$i][13]?>
 												
 												
 													<tr>
 													
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $id_trans ;?></a></td>
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $id_usut ;?></a></td>
-															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $id_pubt ;?></a></td>
+															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $nom_pubt ;?></a></td>
 															<td><a value="<?php echo $datos_t[$i][0]?>"  >$&nbsp<?php echo $precio_finalt ;?></a></td>
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $fechat ;?></a></td>
 															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
-															<td><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $calificaciont ;?></a></td>
+															
+															
+															<?php
+															if ($calificaciont=="1"){
+															?>
+															<td><span title="positivo" class="glyphicon glyphicon-plus "></span></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($calificaciont=="0"){
+															?>
+															<td><span title="neutro" class="glyphicon glyphicon-pause"></span></a></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($calificaciont=="-1"){
+															?>
+															<td><span title="negativo" class="glyphicon glyphicon-minus"></span></a></td>
+															<?php
+															}
+															?>
+															
+											
+															
+															
+															
+															
+															<td class="pre-scrollable"><a value="<?php echo $datos_t[$i][0]?>"  ><?php echo $comentariot ;?></a></td>
+															
+															
+															
+															
+															
+															
 															<form action="CalificacionEmergente.php" method="POST">
 															
 															<input  type="hidden" name="id_trans" value= "<?php echo $id_trans; ?>" />
 															<input  type="hidden" name="id_usut" value= "<?php echo $id_usut; ?>" />
 															<input  type="hidden" name="id_pubt" value= "<?php echo $id_pubt; ?>" />															
 															
+															<?php if ($califico=="0")
+															{
+															
+															?>
 															<td><button class="btn btn-sm btn-warning btn-block" type="submit">CALIFICAR</button></td>
 															</form>
+															
+															<?php
+															}
+															if ($califico=="1") {
+															?>
+															<td>Calificada</td>
+															<?php
+															}
+															?>
 
 													</tr>
 															
@@ -669,78 +797,118 @@ Datos usuario
 
 		
 					
-<!--Trae Transacciones -->
-							
-					<div class="row">
-						<div class="col-md-3">
-								<?php
-									$conex = conectar();
-									$d = new Persona($_SESSION["ID"]);
-									$datos_d=$d->consultaUno($conex);
-									$cuenta=count($datos_d);
-								?>
-									
-						<?php
-						for ($i=0;$i<$cuenta;$i++)
-						{
-						?>
-																<ul>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][0]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][1]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][3]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][4]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][5]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][6]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][7]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][8]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][10]?></option></li>
+	<h2>Mis PERMUTAS</h2>	
+		
+<!--Trae Mis Permutas -->
+						
 
-																</ul>
-						</div>
-							<?php
-							}
-							?>	
-					</div>							
+		<div class="jumbotron-fluid">
+			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body"			
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+														<th>N° Transaccion</th>
+														<th>N° Usuario comprador</th>
+														<th>N° Publicacion Vendida</th>
+														<th>Publicacion</th>
+														<th>Precio Final</th>
+														<th>Fecha</th>
+														<th>Cantidad</th>
+														<th>Calificacion</th>
+														<th>Se pago comision?</th>
+														<th>Monto de comision</th>
+													
+														
 
-<!--Trae Permutas -->
-							
-					<div class="row">
-						<div class="col-md-3">
-								<?php
-									$conex = conectar();
-									$d = new Persona($_SESSION["ID"]);
-									$datos_d=$d->consultaUno($conex);
-									$cuenta=count($datos_d);
-								?>
-									
-						<?php
-						for ($i=0;$i<$cuenta;$i++)
-						{
-						?>
-																<ul>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][0]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][1]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][2]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][3]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][4]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][5]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][6]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][7]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][8]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][9]?></option></li>
-																	<li><option value="<?php echo $datos_d[$i][0]?>"  ><?php echo $datos_d[$i][10]?></option></li>
+													</tr>										
+													<?php
+													
+														$conex = conectar();
+														$v = new Publicacion('',$id_usu);
+														$datos_v=$v->consultaVentas($conex);
+														$cuentav=count($datos_v);
 
-																</ul>
-						</div>
-							<?php
-							}
-							?>	
-					</div>						
-				</div>
+													?>
+													
+												<?php
+												for ($i=0;$i<$cuentav;$i++)
+												{
+												?>
+												
+												
+															<?php $id_trans = $datos_v[$i][0]?>
+															<?php $id_usut = $datos_v[$i][1]?>
+															<?php $id_pubt = $datos_v[$i][2]?>
+															<?php $precio_finalt = $datos_v[$i][3]?>
+															<?php $fechat = $datos_v[$i][4]?>
+															<?php $cantidad = $datos_v[$i][5]?>
+															<?php $calificaciont = $datos_v[$i][6]?>
+															<?php $pago_comision = $datos_v[$i][7]?>
+															<?php $comision_monto = $datos_v[$i][8]?>
+															<?php $nom_pubv = $datos_v[$i][13]?>
+												
+												
+													<tr>
+													
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_trans ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_usut ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_pubt ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nom_pubv ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_finalt ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fechat ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
+															
+															
+															<?php
+															if ($calificaciont=="1"){
+															?>
+															<td><span title="positivo" class="glyphicon glyphicon-plus "></span></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($calificaciont=="0"){
+															?>
+															<td><span title="neutro" class="glyphicon glyphicon-pause"></span></a></td>
+															<?php
+															}
+															?>
+															<?php
+															if ($calificaciont=="-1"){
+															?>
+															<td><span title="negativo" class="glyphicon glyphicon-minus"></span></a></td>
+															<?php
+															}
+															?>
+															
+
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $pago_comision ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $comision_monto ;?></a></td>
+
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+						
+					</ol>
+					
+					
+					</div>
+					
+				</section>
 			</div>
-		</div>
+			</div>
+			</div>
+		</div>	
 
 
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

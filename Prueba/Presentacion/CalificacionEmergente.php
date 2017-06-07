@@ -51,17 +51,22 @@ $id_pubt=strip_tags($_POST['id_pubt']);
            </div>
            <div class="modal-body">
 
-			   <form action="../logica/procesarespuesta.php" method="POST">
+			   <form action="../logica/procesacalificacion.php" method="POST">
 				<input  type="hidden" name="id_trans" value= "<?php echo $id_trans; ?>" />
 				<input  type="hidden" name="id_usut" value= "<?php echo $id_usut; ?>" />
 				<input  type="hidden" name="id_pubt" value= "<?php echo $id_pubt; ?>" />
 				
 				<div class="btn-toolbar" role="toolbar">
 				  <div class="btn-group">
-					<button type="button" class="btn btn-default btn-danger" value="-1">Negativo</button>
-					<button type="button" class="btn btn-default btn-warning" value="0">Neutral</button>
-					<button type="button" class="btn btn-default btn-success" value="1">Positivo</button>
-					
+				<strong>CALIFICACION </strong>&nbsp
+					<select name="calificacion" id="calificacion">
+					<option value="-1">Negativa</option>
+					<option value="0" selected>Neutra</option>
+					<option value="1">Positiva</option>
+					</select>
+					<br><br>
+					<strong>COMENTARIO </strong><br>
+					<textarea name="comentario" id="" cols="60" rows="5" placeholder="deja tu comentario..."></textarea>
 				  </div><br><br>
 				
 				

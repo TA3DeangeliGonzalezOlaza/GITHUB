@@ -300,7 +300,15 @@ class Publicacion
       $datos= $pu->finPub($this,$conex);
       return $datos;
     }
-		
+	
+	public function BuscaUna($conex)
+    {
+      $pu=new PersistenciaPublicacion;
+      $datos= $pu->bucUna($this,$conex);
+      return $datos;
+    }
+
+	
 	
   
     //Devuelve true si el Login y el Password coinciden

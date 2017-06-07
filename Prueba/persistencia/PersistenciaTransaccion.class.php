@@ -86,7 +86,7 @@ ORDER BY `cantidad`  DESC LIMIT 10; ";
 	    public function consComp($obj, $conex)
    {
         $id_usut= trim($obj->getIdusuario());   
-        $sql = "select * from transaccion where id_usut=:id_usut";
+        $sql = "select * from transaccion , publicacion where id_usut=:id_usut and id_pubt = id_pub order by califico ASC";
 		
         $result = $conex->prepare($sql);
 	    $result->execute(array(":id_usut" => $id_usut));
@@ -97,7 +97,20 @@ ORDER BY `cantidad`  DESC LIMIT 10; ";
     
     }	
 	
-	
+	   public function califi($obj, $conex)
+   {
+        $id_trans =($obj->getIdtransaccion());
+        $id_usut =($obj->getIdusuario());
+		$id_pubt =($obj->getIdpublicacion());
+		$calificaciont =($obj->getCalificacion());
+		$comentariot =($obj->getComentariot());
+ 		
+        $sql = "UPDATE `transaccion` SET `calificaciont` = :calificaciont, `comentariot` = :comentariot, `califico` = '1' WHERE `transaccion`.`id_trans` = :id_trans AND `transaccion`.`id_usut` = :id_usut AND `transaccion`.`id_pubt` = :id_pubt;";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_trans" => $id_trans,":id_usut" => $id_usut,":id_pubt" => $id_pubt,":calificaciont" => $calificaciont,":comentariot" => $comentariot));
+
+    }		
 	
 	
 	
