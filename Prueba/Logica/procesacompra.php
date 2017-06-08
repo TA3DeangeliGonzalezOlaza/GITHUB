@@ -38,9 +38,9 @@ $comision=$preciofinal*0.05;
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
+					  <a class="navbar-brand" href="../presentacion/cargamenu.php">VendoYA.com</a>
 					  <div class="navbar-brand">
-							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
+							<form class="forma-busqueda cf" action="../presentacion/cargabusqueda.php" method="post">
 								<label for="search_box">
 								<span> </span>
 								</label>
@@ -61,14 +61,10 @@ $comision=$preciofinal*0.05;
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="#"><b>Mi Cuenta</b></a></li>
-									<li class="divider"></li>
-									<li><a href="#"><b>Cambiar Email</b></a></li>
-									<li><a href="#"><b>Cambiar Password</b></a></li>
-									<li class="divider"></li>
+									<li><a href="../presentacion/usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
-								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>
+								<a href="../presentacion/venta.php" class="btn btn-warning btn-sm">VENDER</a>
 
 							</div>
 					  </form>

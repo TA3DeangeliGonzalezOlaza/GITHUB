@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2017 a las 21:50:25
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Tiempo de generación: 08-06-2017 a las 06:14:32
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -48,7 +48,7 @@ INSERT INTO `comenta` (`id_comen`, `id_usucom`, `id_pubcom`, `comentario`, `denu
 (15, 1, 14, 'hola\r\n', 0, '', 0),
 (16, 1, 12, 'y peluda?', 1, 'si re peluda', 1),
 (17, 11, 9, 'cuanto me haces por dos?', 0, '		  te los regalo no me dejan dormir\r\n				   ', 1),
-(18, 2, 9, 'prueba si comentario queda en "no"', 0, '', 0),
+(18, 2, 9, 'prueba si comentario queda en \"no\"', 0, '', 0),
 (19, 1, 14, 'Un comentario para probar un select', 0, '		  \r\n				   Responder', 1);
 
 -- --------------------------------------------------------
@@ -64,8 +64,21 @@ CREATE TABLE `permuta` (
   `fechap` date DEFAULT NULL,
   `solicita_permuta` int(11) NOT NULL,
   `permutar` int(11) NOT NULL,
-  `permuta_concretada` int(11) NOT NULL
+  `permuta_concretada` int(11) NOT NULL,
+  `id_ususolper` int(11) NOT NULL,
+  `id_usurecper` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `permuta`
+--
+
+INSERT INTO `permuta` (`id_permuta`, `id_pub1`, `id_pub2`, `fechap`, `solicita_permuta`, `permutar`, `permuta_concretada`, `id_ususolper`, `id_usurecper`) VALUES
+(11, 12, 16, '2017-06-08', 1, 0, 0, 1, 2),
+(12, 12, 16, '2017-06-08', 1, 1, 0, 1, 2),
+(13, 11, 17, '2017-06-08', 1, 1, 1, 2, 1),
+(14, 9, 14, '2017-06-08', 1, 0, 0, 2, 1),
+(15, 9, 14, '2017-06-08', 1, 1, 0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -125,14 +138,14 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`id_pub`, `id_usup`, `nom_pub`, `precio_pub`, `stock_pub`, `descripcion_pub`, `img01_pub`, `img02_pub`, `img03_pub`, `nuevo_pub`, `fecha_pub`, `acepta_permuta_pub`, `categoria_pub`, `denuncia_pub`, `activa`) VALUES
-(9, 1, 'perro grande', 200, 3, 'descripcion local', '', '', '', 'nuevo', '2017-06-05', 'permuta', 'OTROS', 0, 'si'),
+(9, 1, 'perro grande', 200, 1, 'descripcion local', '', '', '', 'nuevo', '2017-06-05', 'permuta', 'OTROS', 0, 'si'),
 (10, 1, 'Gato', 300, 2, 'descripcion local', '', '', '', 'usado', '2017-06-05', 'permuta', 'OTROS', 0, 'si'),
-(11, 1, 'dragon grande', 450, 12, 'prueba modificacion', '', '', '', 'nuevo', '2017-06-04', 'permuta', 'OTROS', 0, 'si'),
+(11, 1, 'dragon grande', 450, 11, 'prueba modificacion', '', '', '', 'nuevo', '2017-06-04', 'permuta', 'OTROS', 0, 'si'),
 (12, 2, 'OSO PELUDO', 10, 10, 'Negro y grande y peludo', '', '', '', 'usado', '2017-06-02', 'permuta', 'OTROS', 1, 'si'),
-(14, 2, 'Prueba articulo', 123, 227, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0, 'si'),
+(14, 2, 'Prueba articulo', 123, 225, 'Prueba para ver si queda premium', '', '', '', 'nuevo', '2017-05-30', 'nopermuta', 'MODA', 0, 'si'),
 (15, 1, 'rodri', 2, 1, 'ta divino', '', '', '', 'usado', '2017-06-02', 'permuta', 'MODA', 0, 'no'),
-(16, 1, 'prueba activa', 233, 34, 'una prueba si ingresa este articulo', '', '', '', 'nuevo', '2017-06-05', 'nopermuta', 'VEHICULOS', 0, 'si'),
-(17, 2, 'prueba sobre calificacion.', 344, 123, 'una prueba para verificar ciertas cosas', '', '', '', 'usado', '2017-06-06', 'nopermuta', 'MODA', 0, 'si');
+(16, 1, 'prueba activa', 233, 26, 'una prueba si ingresa este articulo', '', '', '', 'nuevo', '2017-06-05', 'nopermuta', 'VEHICULOS', 0, 'si'),
+(17, 2, 'prueba sobre calificacion.', 344, 122, 'una prueba para verificar ciertas cosas', '', '', '', 'usado', '2017-06-06', 'nopermuta', 'MODA', 0, 'si');
 
 -- --------------------------------------------------------
 
@@ -268,7 +281,7 @@ ALTER TABLE `comenta`
 -- AUTO_INCREMENT de la tabla `permuta`
 --
 ALTER TABLE `permuta`
-  MODIFY `id_permuta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permuta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
@@ -397,7 +410,7 @@ CREATE TABLE `pma__designer_settings` (
 --
 
 INSERT INTO `pma__designer_settings` (`username`, `settings_data`) VALUES
-('root', '{"angular_direct":"direct","snap_to_grid":"off","relation_lines":"true"}');
+('root', '{\"angular_direct\":\"direct\",\"snap_to_grid\":\"off\",\"relation_lines\":\"true\"}');
 
 -- --------------------------------------------------------
 
@@ -481,7 +494,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{"db":"e-comerce","table":"permuta"},{"db":"e-comerce","table":"persona"},{"db":"e-comerce","table":"transaccion"},{"db":"e-comerce","table":"comenta"},{"db":"e-comerce","table":"publicacion"},{"db":"e-comerce","table":"usuario"},{"db":"programacion","table":"esp_sec"},{"db":"programacion","table":"sector"},{"db":"programacion","table":"lugar"},{"db":"programacion","table":"espectaculo"}]');
+('root', '[{\"db\":\"e-comerce\",\"table\":\"permuta\"},{\"db\":\"e-comerce\",\"table\":\"persona\"},{\"db\":\"e-comerce\",\"table\":\"usuario\"},{\"db\":\"e-comerce\",\"table\":\"publicacion\"},{\"db\":\"e-comerce\",\"table\":\"transaccion\"},{\"db\":\"e-comerce\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"persona\"},{\"db\":\"e-commercer\",\"table\":\"permuta\"},{\"db\":\"e-commercer\",\"table\":\"comenta\"},{\"db\":\"e-commercer\",\"table\":\"PERMUTA\"}]');
 
 -- --------------------------------------------------------
 
@@ -588,7 +601,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2016-10-28 16:46:41', '{"lang":"es","collation_connection":"utf8mb4_unicode_ci"}');
+('root', '2017-05-12 17:11:20', '{\"lang\":\"es\",\"collation_connection\":\"utf8mb4_unicode_ci\"}');
 
 -- --------------------------------------------------------
 
@@ -771,349 +784,6 @@ ALTER TABLE `pma__pdf_pages`
 --
 ALTER TABLE `pma__savedsearches`
   MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;--
--- Base de datos: `programacion`
---
-CREATE DATABASE IF NOT EXISTS `programacion` DEFAULT CHARACTER SET utf32 COLLATE utf32_general_ci;
-USE `programacion`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoria`
---
-
-CREATE TABLE `categoria` (
-  `id_cat` int(11) NOT NULL,
-  `tipo_cat` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `categoria` (`id_cat`, `tipo_cat`) VALUES
-(1, 'cine'),
-(2, 'teatro'),
-(3, 'danza'),
-(4, 'musica');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `esp_sec`
---
-
-CREATE TABLE `esp_sec` (
-  `id_esp_sec` int(11) NOT NULL,
-  `id_esp` int(11) NOT NULL,
-  `id_sec` int(11) NOT NULL,
-  `precio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `esp_sec`
---
-
-INSERT INTO `esp_sec` (`id_esp_sec`, `id_esp`, `id_sec`, `precio`) VALUES
-(4, 2, 1, 100),
-(5, 2, 2, 100),
-(6, 2, 3, 150),
-(7, 3, 4, 200),
-(8, 3, 5, 200),
-(9, 3, 6, 400),
-(10, 4, 1, 100),
-(11, 4, 2, 100),
-(12, 4, 3, 150),
-(13, 5, 6, 200),
-(14, 5, 7, 250);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `espectaculo`
---
-
-CREATE TABLE `espectaculo` (
-  `id_esp` int(11) NOT NULL,
-  `nom_esp` varchar(30) NOT NULL,
-  `des_esp` varchar(120) NOT NULL,
-  `img_esp` varchar(30) NOT NULL,
-  `id_lug` int(11) NOT NULL,
-  `id_cat` int(11) NOT NULL,
-  `fec_esp` date NOT NULL,
-  `entradas_disp` int(11) NOT NULL,
-  `activo_esp` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `espectaculo`
---
-
-INSERT INTO `espectaculo` (`id_esp`, `nom_esp`, `des_esp`, `img_esp`, `id_lug`, `id_cat`, `fec_esp`, `entradas_disp`, `activo_esp`) VALUES
-(2, 'Batman 2', 'pelicula de batman', 'imgbat2.jpg', 1, 1, '2016-10-10', 128, 'si'),
-(3, 'ballet ruso', 'rusos disfrazados de osos amanerados bailando', 'balrus.jpg', 2, 3, '2016-11-05', 496, 'si'),
-(4, 'Terminator', 'Descripcion de la pelicula', 'termi.jpg', 1, 1, '2016-09-13', 150, 'si'),
-(5, 'Rock', 'Descripcion de la Rock', 'rock.jpg', 3, 4, '2016-10-22', 1000, 'si');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `lugar`
---
-
-CREATE TABLE `lugar` (
-  `id_lug` int(11) NOT NULL,
-  `nom_lug` varchar(30) NOT NULL,
-  `dir_lug` varchar(30) NOT NULL,
-  `activo_lug` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `lugar`
---
-
-INSERT INTO `lugar` (`id_lug`, `nom_lug`, `dir_lug`, `activo_lug`) VALUES
-(1, 'movie', 'mtv shopping', 'si'),
-(2, 'teatro solis', 'bs.aires 11000', 'si'),
-(3, 'teatro de verano', 'rambla pte.wilson', 'si'),
-(4, 'auditorio del sodre', 'andes esq. mercedes 11100', 'si');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `sector`
---
-
-CREATE TABLE `sector` (
-  `id_sec` int(11) NOT NULL,
-  `id_lug` int(11) NOT NULL,
-  `nom_sec` varchar(30) NOT NULL,
-  `activo_sec` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `sector`
---
-
-INSERT INTO `sector` (`id_sec`, `id_lug`, `nom_sec`, `activo_sec`) VALUES
-(1, 1, 'sala1', 'si'),
-(2, 1, 'sala2', 'si'),
-(3, 1, 'sala3', 'si'),
-(4, 2, 'plateaA', 'si'),
-(5, 2, 'plateaB', 'si'),
-(6, 2, 'palco', 'si'),
-(7, 3, 'plateaA', 'si'),
-(8, 3, 'plateaB', 'si'),
-(9, 4, 'sectorA', 'si'),
-(10, 4, 'sectorB', 'si');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usu_agre`
---
-
-CREATE TABLE `usu_agre` (
-  `id_usu_agr` int(11) NOT NULL,
-  `id_usu` int(11) NOT NULL,
-  `id_sec` int(11) NOT NULL,
-  `id_esp` int(11) NOT NULL,
-  `cantEnt` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `usu_agre`
---
-
-INSERT INTO `usu_agre` (`id_usu_agr`, `id_usu`, `id_sec`, `id_esp`, `cantEnt`) VALUES
-(1, 10, 1, 2, 100),
-(2, 10, 1, 2, 100),
-(3, 10, 1, 2, 100),
-(4, 10, 1, 2, 100),
-(5, 10, 1, 2, 100),
-(6, 10, 1, 2, 100),
-(7, 10, 1, 2, 100),
-(8, 10, 1, 2, 100),
-(9, 10, 1, 2, 100),
-(10, 10, 3, 2, 1),
-(11, 10, 1, 2, 1),
-(12, 10, 1, 2, 3),
-(13, 10, 1, 2, 1),
-(14, 10, 1, 2, 1),
-(15, 10, 1, 2, 1),
-(16, 10, 1, 2, 1),
-(17, 10, 1, 2, 1),
-(18, 10, 1, 2, 1),
-(21, 10, 6, 3, 4),
-(22, 10, 1, 2, 3),
-(23, 10, 1, 2, 1),
-(24, 8, 1, 2, 1),
-(25, 8, 1, 2, 4),
-(26, 8, 2, 2, 2),
-(27, 8, 1, 2, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id_usu` int(11) NOT NULL,
-  `ci_usu` int(11) NOT NULL,
-  `nom_usu` varchar(30) NOT NULL,
-  `ape_usu` varchar(30) NOT NULL,
-  `correo_usu` varchar(30) NOT NULL,
-  `cel_usu` int(11) NOT NULL,
-  `tipo_usu` varchar(30) NOT NULL,
-  `login_usu` varchar(20) NOT NULL,
-  `pass_usu` varchar(16) NOT NULL,
-  `num_tarj` varchar(30) NOT NULL,
-  `cod_tarj` int(3) NOT NULL,
-  `fec_ven_tar` date NOT NULL,
-  `activo_usu` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id_usu`, `ci_usu`, `nom_usu`, `ape_usu`, `correo_usu`, `cel_usu`, `tipo_usu`, `login_usu`, `pass_usu`, `num_tarj`, `cod_tarj`, `fec_ven_tar`, `activo_usu`) VALUES
-(1, 42655891, 'pablo', 'real', 'pabloreal@gmail.com', 94123456, 'admin', 'admin', 'admin', '2147483647', 576, '2004-05-18', 'si'),
-(2, 52344321, 'candela', 'suarez', 'candelasuarez@gmail.com', 96876543, 'Usuario', 'cande', 'cande', '2147483647', 195, '0000-00-00', 'si'),
-(3, 28214329, 'antonio', 'pacheco', 'antoniopacheco@gmail.com', 94189155, 'Usuario', 'tony', 'tony', '2147483647', 777, '2018-05-10', 'si'),
-(4, 11111111, 'cacho', 'cacho', 'cacho@cacho.com', 99999999, 'Usuario', 'cacho', 'cacho', '2147483647', 123, '2016-12-01', 'no'),
-(5, 11111111, 'cato', 'cato', 'cato@cato.com', 95456393, 'Usuario', 'cato', 'cato', '1234567812345678', 987, '2005-11-11', 'si'),
-(6, 11111111, 'Perro', 'Perro', 'perro@perro.com', 99999999, 'Usuario', 'Perro', 'Perro', '3214654798746541', 654, '0000-00-00', 'si'),
-(7, 11111111, 'andres', 'deangeli', 'come@poronga.com', 456123789, 'Usuario', 'andres', 'adnres', '654564697897987', 3213, '2121-01-23', ''),
-(8, 11111111, 'Fabrizio', 'Olaza', 'perro@gato.com', 94967574, 'Usuario', 'fabri', 'fabri', '1234656498760345', 234, '2016-11-03', 'si'),
-(10, 11111111, 'gato', 'gato', 'gato@gato.com', 99123123, 'Usuario', 'gato', 'gato', '1234656498760345', 654, '2016-11-09', 'si');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `categoria`
---
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`id_cat`);
-
---
--- Indices de la tabla `esp_sec`
---
-ALTER TABLE `esp_sec`
-  ADD PRIMARY KEY (`id_esp_sec`,`id_esp`,`id_sec`),
-  ADD KEY `id_esp` (`id_esp`),
-  ADD KEY `id_sec` (`id_sec`);
-
---
--- Indices de la tabla `espectaculo`
---
-ALTER TABLE `espectaculo`
-  ADD PRIMARY KEY (`id_esp`,`id_lug`,`id_cat`),
-  ADD KEY `id_lug` (`id_lug`),
-  ADD KEY `id_cat` (`id_cat`);
-
---
--- Indices de la tabla `lugar`
---
-ALTER TABLE `lugar`
-  ADD PRIMARY KEY (`id_lug`);
-
---
--- Indices de la tabla `sector`
---
-ALTER TABLE `sector`
-  ADD PRIMARY KEY (`id_sec`,`id_lug`),
-  ADD KEY `id_lug` (`id_lug`);
-
---
--- Indices de la tabla `usu_agre`
---
-ALTER TABLE `usu_agre`
-  ADD PRIMARY KEY (`id_usu_agr`,`id_usu`,`id_sec`,`id_esp`),
-  ADD KEY `id_usu` (`id_usu`),
-  ADD KEY `id_sec` (`id_sec`),
-  ADD KEY `id_esp` (`id_esp`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usu`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `categoria`
---
-ALTER TABLE `categoria`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `esp_sec`
---
-ALTER TABLE `esp_sec`
-  MODIFY `id_esp_sec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT de la tabla `espectaculo`
---
-ALTER TABLE `espectaculo`
-  MODIFY `id_esp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `lugar`
---
-ALTER TABLE `lugar`
-  MODIFY `id_lug` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `sector`
---
-ALTER TABLE `sector`
-  MODIFY `id_sec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT de la tabla `usu_agre`
---
-ALTER TABLE `usu_agre`
-  MODIFY `id_usu_agr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `esp_sec`
---
-ALTER TABLE `esp_sec`
-  ADD CONSTRAINT `esp_sec_ibfk_1` FOREIGN KEY (`id_esp`) REFERENCES `espectaculo` (`id_esp`),
-  ADD CONSTRAINT `esp_sec_ibfk_2` FOREIGN KEY (`id_sec`) REFERENCES `sector` (`id_sec`);
-
---
--- Filtros para la tabla `espectaculo`
---
-ALTER TABLE `espectaculo`
-  ADD CONSTRAINT `espectaculo_ibfk_1` FOREIGN KEY (`id_lug`) REFERENCES `lugar` (`id_lug`),
-  ADD CONSTRAINT `espectaculo_ibfk_2` FOREIGN KEY (`id_cat`) REFERENCES `categoria` (`id_cat`);
-
---
--- Filtros para la tabla `sector`
---
-ALTER TABLE `sector`
-  ADD CONSTRAINT `sector_ibfk_1` FOREIGN KEY (`id_lug`) REFERENCES `lugar` (`id_lug`);
-
---
--- Filtros para la tabla `usu_agre`
---
-ALTER TABLE `usu_agre`
-  ADD CONSTRAINT `usu_agre_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuario` (`id_usu`),
-  ADD CONSTRAINT `usu_agre_ibfk_2` FOREIGN KEY (`id_sec`) REFERENCES `sector` (`id_sec`),
-  ADD CONSTRAINT `usu_agre_ibfk_3` FOREIGN KEY (`id_esp`) REFERENCES `espectaculo` (`id_esp`);
---
 -- Base de datos: `test`
 --
 CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;

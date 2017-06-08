@@ -10,11 +10,11 @@ $id_permuta=strip_tags($_POST['id_permuta']);
 
 $conex = conectar();
 $d = new Permuta($id_permuta);
-$datos_d=$d->Permutar($conex);
+$datos_d=$d->CancelaPermutar($conex);
 
 	?>
 				 <script type="text/javascript">
 		 
-						window.alert("LA PERMUTA HA SIDO CONCRETADA");
+						window.alert("LA PERMUTA HA SIDO CANCELADA");
 						location.href="../presentacion/usuario_menu.php";
 				</script>

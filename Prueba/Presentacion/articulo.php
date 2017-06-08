@@ -32,7 +32,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="index.php?categoria=Index">PAGINA</a>
+					  <a class="navbar-brand" href="index.php?categoria=Index">VendoYA.com</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="busqueda.php" method="post">
 								<label for="search_box">

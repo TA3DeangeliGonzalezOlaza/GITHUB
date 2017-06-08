@@ -35,7 +35,7 @@ require_once('../clases/Permuta.class.php');
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
+					  <a class="navbar-brand" href="cargamenu.php">VendoYA.com</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
 								<label for="search_box">
@@ -774,7 +774,7 @@ require_once('../clases/Permuta.class.php');
 
 		
 					
-	<h2>Mis PERMUTAS -EN PROCESO-</h2>	
+	<h2>SOLICITUDES DE PERMUTAS RECIBIDAS-</h2>	
 		
 <!--Trae Mis Permutas -->
 						
@@ -788,16 +788,13 @@ require_once('../clases/Permuta.class.php');
 					<ol class="pre-scrollable">
 										<table class="table">
 													<tr>
-														<th>N° Transaccion</th>
-														<th>N° Usuario comprador</th>
-														<th>N° Publicacion Vendida</th>
-														<th>Publicacion</th>
-														<th>Precio Final</th>
+														<th>Imagen</th>
+														<th>Tu Publicacion</th>
+														<th>Precio</th>
+														<th>Estado</th>
 														<th>Fecha</th>
-														<th>Cantidad</th>
-														<th>Calificacion</th>
-														<th>Se pago comision?</th>
-														<th>Monto de comision</th>
+														<th>Publicacion Ofertada</th>
+														
 													
 														
 
@@ -805,8 +802,8 @@ require_once('../clases/Permuta.class.php');
 													<?php
 													
 														$conex = conectar();
-														$v = new Publicacion('',$id_usu);
-														$datos_v=$v->consultaVentas($conex);
+														$v = new Permuta('','','','','','','','',$_SESSION["ID"]);
+														$datos_v=$v->ConsultaPermutaRecibida($conex);
 														$cuentav=count($datos_v);
 
 													?>
@@ -817,54 +814,159 @@ require_once('../clases/Permuta.class.php');
 												?>
 												
 												
-															<?php $id_trans = $datos_v[$i][0]?>
-															<?php $id_usut = $datos_v[$i][1]?>
-															<?php $id_pubt = $datos_v[$i][2]?>
-															<?php $precio_finalt = $datos_v[$i][3]?>
-															<?php $fechat = $datos_v[$i][4]?>
-															<?php $cantidad = $datos_v[$i][5]?>
-															<?php $calificaciont = $datos_v[$i][6]?>
-															<?php $pago_comision = $datos_v[$i][7]?>
-															<?php $comision_monto = $datos_v[$i][8]?>
-															<?php $nom_pubv = $datos_v[$i][13]?>
+															<?php $id_permuta = $datos_v[$i][0]?>
+															<?php $id_pub1 = $datos_v[$i][1]?>
+															<?php $id_pub2 = $datos_v[$i][2]?>
+															<?php $fecha = $datos_v[$i][3]?>
+															<?php $sol_permu = $datos_v[$i][4]?>
+															<?php $permutar = $datos_v[$i][5]?>
+															<?php $per_concretada = $datos_v[$i][6]?>
+															<?php $id_ususolper = $datos_v[$i][7]?>
+															<?php $id_usurecper = $datos_v[$i][8]?>
+															<?php $id_pub = $datos_v[$i][9]?>
+															<?php $id_usup = $datos_v[$i][10]?>
+															<?php $nom_pub = $datos_v[$i][11]?>
+															<?php $precio_pub = $datos_v[$i][12]?>
+															<?php $stock_pub = $datos_v[$i][13]?>
+															<?php $descripcion_pub = $datos_v[$i][14]?>
+															<?php $img01_pub = $datos_v[$i][15]?>
+															<?php $img02_pub = $datos_v[$i][16]?>
+															<?php $img03_pub = $datos_v[$i][17]?>
+															<?php $nuevo_pub = $datos_v[$i][18]?>
+															<?php $fecha_pub = $datos_v[$i][19]?>
+															<?php $acepta_permuta_pub = $datos_v[$i][20]?>
+															<?php $categoria_pub = $datos_v[$i][21]?>
+															<?php $denuncia_pub = $datos_v[$i][22]?>
+															<?php $activa = $datos_v[$i][23]?>
 												
 												
 													<tr>
 													
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_trans ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_usut ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $id_pubt ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nom_pubv ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_finalt ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fechat ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $cantidad ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $img01_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nom_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nuevo_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fecha_pub ;?></a></td>
+															<td><a href="Cargaarticulo.php?id_pub=<?php echo $id_pub2; ?>">IR A PUBLICACION</a></td>
 															
+												</form>			
+												<form action="../logica/procesapermutacancelada.php" method="POST">
 															
-															<?php
-															if ($calificaciont=="1"){
-															?>
-															<td><span title="positivo" class="glyphicon glyphicon-plus "></span></td>
-															<?php
-															}
-															?>
-															<?php
-															if ($calificaciont=="0"){
-															?>
-															<td><span title="neutro" class="glyphicon glyphicon-pause"></span></a></td>
-															<?php
-															}
-															?>
-															<?php
-															if ($calificaciont=="-1"){
-															?>
-															<td><span title="negativo" class="glyphicon glyphicon-minus"></span></a></td>
-															<?php
-															}
-															?>
-															
+															<input  type="hidden" name="id_permuta" value= "<?php echo $id_permuta; ?>" />
 
-															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $pago_comision ;?></a></td>
-															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $comision_monto ;?></a></td>
+																<td><button class="btn btn-sm btn-danger btn-block" type="submit">CANCELAR</button></td>
+												</form>															
+															
+															
+												<form action="../logica/procesapermuta.php" method="POST">
+															
+															<input  type="hidden" name="id_permuta" value= "<?php echo $id_permuta; ?>" />
+
+																<td><button class="btn btn-sm btn-warning btn-block" type="submit">PERMUTAR</button></td>
+												</form>
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+						
+					</ol>
+					
+					
+					</div>
+					
+				</section>
+			</div>
+			</div>
+			</div>
+		</div>
+<h2>SOLICITUDES PERMUTA ENVIADAS-</h2>	
+		
+<!--Trae Mis Permutas -->
+						
+
+		<div class="jumbotron-fluid">
+			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body"			
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+														<th>Imagen</th>
+														<th>Tu Publicacion</th>
+														<th>Precio</th>
+														<th>Estado</th>
+														<th>Fecha</th>
+														<th>Publicacion Ofertada</th>
+														
+													
+														
+
+													</tr>										
+													<?php
+													
+														$conex = conectar();
+														$v = new Permuta('','','','','','','',$_SESSION["ID"]);
+														$datos_v=$v->ConsultaPermutaSolicitada($conex);
+														$cuentav=count($datos_v);
+
+													?>
+													
+												<?php
+												for ($i=0;$i<$cuentav;$i++)
+												{
+												?>
+												
+												
+															<?php $id_permuta = $datos_v[$i][0]?>
+															<?php $id_pub1 = $datos_v[$i][1]?>
+															<?php $id_pub2 = $datos_v[$i][2]?>
+															<?php $fecha = $datos_v[$i][3]?>
+															<?php $sol_permu = $datos_v[$i][4]?>
+															<?php $permutar = $datos_v[$i][5]?>
+															<?php $per_concretada = $datos_v[$i][6]?>
+															<?php $id_ususolper = $datos_v[$i][7]?>
+															<?php $id_usurecper = $datos_v[$i][8]?>
+															<?php $id_pub = $datos_v[$i][9]?>
+															<?php $id_usup = $datos_v[$i][10]?>
+															<?php $nom_pub = $datos_v[$i][11]?>
+															<?php $precio_pub = $datos_v[$i][12]?>
+															<?php $stock_pub = $datos_v[$i][13]?>
+															<?php $descripcion_pub = $datos_v[$i][14]?>
+															<?php $img01_pub = $datos_v[$i][15]?>
+															<?php $img02_pub = $datos_v[$i][16]?>
+															<?php $img03_pub = $datos_v[$i][17]?>
+															<?php $nuevo_pub = $datos_v[$i][18]?>
+															<?php $fecha_pub = $datos_v[$i][19]?>
+															<?php $acepta_permuta_pub = $datos_v[$i][20]?>
+															<?php $categoria_pub = $datos_v[$i][21]?>
+															<?php $denuncia_pub = $datos_v[$i][22]?>
+															<?php $activa = $datos_v[$i][23]?>
+												
+												
+													<tr>
+													
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $img01_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nom_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nuevo_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fecha_pub ;?></a></td>
+															<td><a href="Cargaarticulo.php?id_pub=<?php echo $id_pub1; ?>">IR A PUBLICACION</a></td>
+															
+												</form>			
+												<form action="../logica/procesapermutacancelada.php" method="POST">
+															
+															<input  type="hidden" name="id_permuta" value= "<?php echo $id_permuta; ?>" />
+
+																<td><button class="btn btn-sm btn-danger btn-block" type="submit">CANCELAR</button></td>
+												</form>															
+															
 
 
 													</tr>
@@ -887,7 +989,139 @@ require_once('../clases/Permuta.class.php');
 			</div>
 		</div>
 
+		
+<h2>PERMUTA CONCRETADAS-</h2>	
+		
+<!--Trae Mis Permutas -->
+						
 
+		<div class="jumbotron-fluid">
+			<div class="container-fluid">
+			<div class="panel panel-default">
+			<div class="panel-body"			
+				<section class="main row">
+					<div class="col-md-12">
+					<ol class="pre-scrollable">
+										<table class="table">
+													<tr>
+														<th>Imagen</th>
+														<th>Tu Publicacion</th>
+														<th>Precio</th>
+														<th>Estado</th>
+														<th>Fecha</th>
+														<th>Publicacion Ofertada</th>
+														
+													
+														
+
+													</tr>										
+													<?php
+													
+														$conex = conectar();
+														$v = new Permuta('','','','','','','',$_SESSION["ID"]);
+														$datos_v=$v->ConsultaPermutaConcretadas($conex);
+														$cuentav=count($datos_v);
+
+													?>
+													
+												<?php
+												for ($i=0;$i<$cuentav;$i++)
+												{
+												?>
+												
+												
+															<?php $id_permuta = $datos_v[$i][0]?>
+															<?php $id_pub1 = $datos_v[$i][1]?>
+															<?php $id_pub2 = $datos_v[$i][2]?>
+															<?php $fecha = $datos_v[$i][3]?>
+															<?php $sol_permu = $datos_v[$i][4]?>
+															<?php $permutar = $datos_v[$i][5]?>
+															<?php $per_concretada = $datos_v[$i][6]?>
+															<?php $id_ususolper = $datos_v[$i][7]?>
+															<?php $id_usurecper = $datos_v[$i][8]?>
+															<?php $id_pub = $datos_v[$i][9]?>
+															<?php $id_usup = $datos_v[$i][10]?>
+															<?php $nom_pub = $datos_v[$i][11]?>
+															<?php $precio_pub = $datos_v[$i][12]?>
+															<?php $stock_pub = $datos_v[$i][13]?>
+															<?php $descripcion_pub = $datos_v[$i][14]?>
+															<?php $img01_pub = $datos_v[$i][15]?>
+															<?php $img02_pub = $datos_v[$i][16]?>
+															<?php $img03_pub = $datos_v[$i][17]?>
+															<?php $nuevo_pub = $datos_v[$i][18]?>
+															<?php $fecha_pub = $datos_v[$i][19]?>
+															<?php $acepta_permuta_pub = $datos_v[$i][20]?>
+															<?php $categoria_pub = $datos_v[$i][21]?>
+															<?php $denuncia_pub = $datos_v[$i][22]?>
+															<?php $activa = $datos_v[$i][23]?>
+															<?php $nom_usu_permuta = $datos_v[$i][28]?>
+															<?php $ape_usu_permuta = $datos_v[$i][30]?>
+															<?php $email_usu_per = $datos_v[$i][32]?>
+															<?php $tel_usu_per = $datos_v[$i][33]?>
+															<?php $direccion_usu_perm = $datos_v[$i][34]?>
+												
+												
+													<tr>
+													
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $img01_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nom_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  >$&nbsp<?php echo $precio_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $nuevo_pub ;?></a></td>
+															<td><a value="<?php echo $datos_v[$i][0]?>"  ><?php echo $fecha_pub ;?></a></td>
+															<td><a href="Cargaarticulo.php?id_pub=<?php echo $id_pub1; ?>">IR A PUBLICACION</a></td>
+															
+												</form>			
+											<form action="DatosCompradorEmergente.php" method="POST">
+															
+
+															<input  type="hidden" name="nom1_per" value= "<?php echo $nom_usu_permuta; ?>" />
+															<input  type="hidden" name="ape1_per" value= "<?php echo $ape_usu_permuta; ?>" />
+															<input  type="hidden" name="email_per" value= "<?php echo $email_usu_per; ?>" />
+															<input  type="hidden" name="tel_per" value= "<?php echo $tel_usu_per; ?>" />
+															<input  type="hidden" name="dir_per" value= "<?php echo $direccion_usu_perm; ?>" />
+
+
+															
+															
+																<td><button class="btn btn-sm btn-warning btn-block" type="submit">Ver Datos de comprador</button></td>
+	
+											</form>															
+															
+
+
+													</tr>
+															
+													
+												<?php
+												}
+												?>	
+										</table>
+
+						
+					</ol>
+					
+					
+					</div>
+					
+				</section>
+			</div>
+			</div>
+			</div>
+		</div>		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 				<h2>Datos personales</h2>	
 <!--Trae Datos -->
 

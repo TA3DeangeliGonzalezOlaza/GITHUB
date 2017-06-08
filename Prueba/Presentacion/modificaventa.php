@@ -67,7 +67,7 @@
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
+					  <a class="navbar-brand" href="cargamenu.php">VendoYA.com</a>
 					  <div class="navbar-brand">
 					  
 					  </div>

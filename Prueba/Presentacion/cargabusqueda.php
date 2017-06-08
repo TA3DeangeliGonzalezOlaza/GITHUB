@@ -28,7 +28,7 @@ $busqueda=strip_tags($_POST['keywords']);
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
+					  <a class="navbar-brand" href="cargamenu.php">VendoYA.com</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
 								<label for="search_box">
@@ -139,13 +139,7 @@ $busqueda=strip_tags($_POST['keywords']);
 				</section>
 			</div>
 		</div>
-		<div class="jumbotron">
-		<div class="container">
-			<div class="row">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, repellat, sunt, rerum sit ab est consequuntur quo id optio minima repellendus debitis omnis quidem nihil ullam saepe nisi nulla. Similique.
-				</div>	
-	
-		</div>
+
 
 
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

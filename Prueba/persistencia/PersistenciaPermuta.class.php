@@ -1,8 +1,7 @@
 <?php
 class PersistenciaPermuta
 {
-    //param es un objeto de tipo Usuario
-    //conex es una variable de tipo conexion
+
   
 
    public function consTodos( $conex)
@@ -32,28 +31,89 @@ class PersistenciaPermuta
     }
 
 
-  // public function compra($obj,$conex,$IdEsp,$IdSec,$IdUsu,$IdLug,$cant,$preciofinal)
-  // {
-//        $id_usut=trim($IdUsu);
-//		$id_pubt=trim($IdSec);
-//		$precio_finalt=trim($IdEsp);
-//		$fechat=trim($preciofinal);
-//		$cantidad=trim($cambiar);
-	//	$calificaciont=trim($cambiar);
-	//	$pago_comision=trim($cambiar);
-	//	
-    //    $sql = "insert into transaccion (id_usut,id_pubt,precio_finalt,fechat,cantidad,calificaciont,pago_comision) values (:id_usut,:id_pubt,:precio_finalt,:fechat,:cantidad,:calificaciont,:pago_comision)";
+    public function solic($obj, $conex)
+   {
+       $id_pub1 = $obj->getIdpub1();
+	   $id_pub2 = $obj->getIdpub2();
+	   $fechap = $obj->getFecha();
+	   $id_ususolper = $obj->getIdususolper();
+	   $id_usurecper = $obj->getIdusurecper();
+	   
+        $sql = "insert into permuta (`id_pub1`, `id_pub2`, `fechap`, `solicita_permuta`, `permutar`, `id_ususolper`, `id_usurecper`) values (:id_pub1,:id_pub2,:fechap,1,1,:id_ususolper,:id_usurecper)";
+		$sql2 = "UPDATE `publicacion` SET stock_pub= stock_pub-1 WHERE id_pub=:id_pub2";
 		
-//		$sql2="update publicacion set stock_pub= stock_pub-:cantidad where id_pub=:id_pub";
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_pub1" => $id_pub1,":id_pub2" => $id_pub2,":fechap" => $fechap,":id_ususolper" => $id_ususolper,":id_usurecper" => $id_usurecper));
+
+		$result2 = $conex->prepare($sql2);
+		$result2->execute(array(":id_pub2" => $id_pub2));
+    }
+	
+	public function conpermrec($obj, $conex)
+   {
+        $id_usurecper= trim($obj->getIdusurecper());   
+        $sql = "select * from permuta, publicacion where id_usurecper=:id_usurecper and id_pub1=id_pub and permuta_concretada = 0 and permutar = 1";
 		
-//        $result = $conex->prepare($sql);
-//	    $result->execute(array(":id_usut" => $id_usut,":id_pubt" => $id_pubt,":precio_finalt" => $precio_finalt,":fechat"=>$fechat,":cantidad"=>$cantidad,":calificaciont"=>$calificaciont,":pago_comision"=>$pago_comision));
-//		$result2 = $conex->prepare($sql2);
-//	    $result2->execute(array(":id_pub" => $id_pubt,":cantidad"=>$cantidad));
-		//$resultados=$result->fetchAll();
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_usurecper" => $id_usurecper));
+		$resultados=$result->fetchAll();
        
 
-       //return $resultados;
+       return $resultados;
+    }
+	
+	   public function permuta($obj, $conex)
+   {
+       $id_permuta = $obj->getIdpermuta();
+		   
+        $sql = "UPDATE `permuta` SET `permuta_concretada` = '1' WHERE `permuta`.`id_permuta` = :id_permuta";
+				
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_permuta" => $id_permuta));
+
+    }	
+	
+	public function canpermuta($obj, $conex)
+   {
+       $id_permuta = $obj->getIdpermuta();
+		   
+        $sql = "UPDATE `permuta` SET `permutar` = '0' WHERE `permuta`.`id_permuta` = :id_permuta";
+				
+        $result = $conex->prepare($sql);
+		$result->execute(array(":id_permuta" => $id_permuta));
+
+    }	
+	
+		public function conpermsol($obj, $conex)
+   {
+        $id_ususolper= trim($obj->getIdususolper());   
+        $sql = "select * from permuta, publicacion where id_ususolper=:id_ususolper and id_pub2=id_pub and permuta_concretada = 0 and permutar = 1";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_ususolper" => $id_ususolper));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
+	
+	public function conpermcon($obj, $conex)
+   {
+        $id_ususolper= trim($obj->getIdususolper());   
+        $sql = "select * from permuta, publicacion, persona where id_ususolper=:id_ususolper and id_pub2=id_pub and permuta_concretada = 1 and permutar = 1 and id_per=id_usup";
+		
+        $result = $conex->prepare($sql);
+	    $result->execute(array(":id_ususolper" => $id_ususolper));
+		$resultados=$result->fetchAll();
+       
+
+       return $resultados;
+    }
+	
+	
+	
+	
+	
     }	
 	
  

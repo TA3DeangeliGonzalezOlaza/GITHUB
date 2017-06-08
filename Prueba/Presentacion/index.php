@@ -30,7 +30,7 @@ require_once('../clases/Publicacion.class.php');
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="index.php?categoria=Index">PAGINA</a>
+					  <a class="navbar-brand" href="index.php?categoria=Index">VendoYA.com</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="busqueda.php" method="post">
 								<label for="search_box">
@@ -131,14 +131,7 @@ require_once('../clases/Publicacion.class.php');
 				</section>
 			</div>
 		</div>
-		<div class="jumbotron">
-		<div class="container">
-			<div class="row">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, repellat, sunt, rerum sit ab est consequuntur quo id optio minima repellendus debitis omnis quidem nihil ullam saepe nisi nulla. Similique.
-		
-		</div>	
-	
-		</div>
+
 
 
 

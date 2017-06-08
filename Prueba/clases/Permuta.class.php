@@ -10,9 +10,11 @@ class Permuta
 	private $solicita_permuta; // fecha
 	private $permutar; // fecha
 	private $permuta_concretada; // fecha
+	private $id_ususolper; // fecha
+	private $id_usurecper; // fecha
 
       
-    function __construct($id='',$idp1='',$idp2='',$fec='',$solper='',$permu='',$permucon='')
+    function __construct($id='',$idp1='',$idp2='',$fec='',$solper='',$permu='',$permucon='',$idusp='',$idurp='')
     {
         $this->id_permuta= $id;
         $this->id_pub1= $idp1;
@@ -21,6 +23,8 @@ class Permuta
 		$this->solicita_permuta= $solper;
 		$this->permutar= $permu;
 		$this->permuta_concretada= $permucon;
+		$this->id_ususolper= $idusp;
+		$this->id_usurecper= $idurp;
        
     }
     
@@ -60,6 +64,18 @@ class Permuta
     {
       $this->permuta_concretada= $permucon;
     }
+	
+	public function setIdususolper($idusp)
+    {
+      $this->id_ususolper= $idusp;
+    }
+	
+	
+	public function setIdusurecper($idurp)
+    {
+      $this->id_usurecper= $idurp;
+    }
+
     
 
     //Métodos get
@@ -98,6 +114,19 @@ class Permuta
     {
       return $this->permuta_concretada;
     }
+	
+    public function getIdususolper()
+    {
+      return $this->id_ususolper;
+    }
+	
+    public function getIdusurecper()
+    {
+      return $this->id_usurecper;
+    }
+	
+	
+
      
     //Otros Métodos
     public function alta($conex)
@@ -133,6 +162,47 @@ class Permuta
       $datos= $pu->consUno($this,$conex);
       return $datos;
     }
+	
+	    public function Solicita($conex)
+    {
+        $pu=new PersistenciaPermuta;
+        return ($pu->solic($this, $conex));
+    }
+	
+	    public function ConsultaPermutaSolicitada($conex)
+    {
+        $pu=new PersistenciaPermuta;
+        return ($pu->conpermsol($this, $conex));
+    }
+
+	    public function ConsultaPermutaRecibida($conex)
+    {
+        $pu=new PersistenciaPermuta;
+        return ($pu->conpermrec($this, $conex));
+    }
+	
+	
+	 public function ConsultaPermutaConcretadas($conex)
+    {
+        $pu=new PersistenciaPermuta;
+        return ($pu->conpermcon($this, $conex));
+    }
+	
+
+	    public function Permutar($conex)
+    {
+        $pu=new PersistenciaPermuta;
+        return ($pu->permuta($this, $conex));
+    }
+
+	    public function CancelaPermutar($conex)
+    {
+        $pu=new PersistenciaPermuta;
+        return ($pu->canpermuta($this, $conex));
+    }
+
+	
+	
     //Devuelve true si el Login y el Password coinciden
   //  public function coincideLoginPassword($conex)
  //   {

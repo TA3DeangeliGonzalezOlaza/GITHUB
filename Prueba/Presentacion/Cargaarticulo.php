@@ -33,7 +33,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					  </button>
-					  <a class="navbar-brand" href="cargamenu.php">PAGINA</a>
+					  <a class="navbar-brand" href="../presentacion/cargamenu.php">VendoYA.com</a>
 					  <div class="navbar-brand">
 							<form class="forma-busqueda cf" action="cargabusqueda.php" method="post">
 								<label for="search_box">
@@ -56,7 +56,7 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 									<!--Cuenta <b class="caret"></b>-->
 								</a>
 								<ul class="dropdown-menu" style="background:#f0ad4e">
-									<li><a href="usuario_menu.php"><b>Mi Cuenta</b></a></li>
+									<li><a href="../presentacion/usuario_menu.php"><b>Mi Cuenta</b></a></li>
 									<li><a href="../logica/salir.php"><b>Logout</b></a></li>
 								</ul>
 								<a href="venta.php" class="btn btn-warning btn-sm">VENDER</a>
@@ -216,13 +216,18 @@ $id_pub= strip_tags(trim($_GET['id_pub']));
 								
 							</form>	
 			<!--PERMUTA   -->	
-							<form action="../logica/procesapermuta.php" method="POST">
+							<form action="../logica/procesasolicitudpermuta.php" method="POST">
 							
 							
 								<input  type="hidden" name="usuario" value= "<?php echo $_SESSION["ID"]; ?>" />
 								<input  type="hidden" name="publicacion" value= "<?php echo $id_pub; ?>" />
 								<input  type="hidden" name="fechaactual" value= "<?php echo $fechaactual; ?>" />
 								<input  type="hidden" name="nombrepub" value= "<?php echo $nom_pub; ?>" />
+								<input  type="hidden" name="precio" value= "<?php echo $precio; ?>" />
+								<input  type="hidden" name="imgportada" value= "<?php echo $imgportada; ?>" />
+								<input  type="hidden" name="estado" value= "<?php echo $estado; ?>" />
+								<input  type="hidden" name="id_usuapermutar" value= "<?php echo $id_usup; ?>" />
+								
 							
 								<li><?php if ($permuta == "permuta"){ ?>
 									
